@@ -14,6 +14,9 @@
 		6C24561F1B0B6FCC005DB245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C24561E1B0B6FCC005DB245 /* Images.xcassets */; };
 		6C2456221B0B6FCC005DB245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */; };
 		6C24562E1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C24562D1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift */; };
+		6CBDE1461B0D1D2E00FCC50B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBDE1451B0D1D2E00FCC50B /* Event.swift */; };
+		6CBDE1481B0D1E1500FCC50B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBDE1471B0D1E1500FCC50B /* User.swift */; };
+		6CBDE14A1B0D1E4600FCC50B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBDE1491B0D1E4600FCC50B /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		6C2456271B0B6FCC005DB245 /* Imperial ConnectionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Imperial ConnectionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C24562C1B0B6FCC005DB245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C24562D1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imperial_ConnectionsTests.swift; sourceTree = "<group>"; };
+		6CBDE1451B0D1D2E00FCC50B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6CBDE1471B0D1E1500FCC50B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6CBDE1491B0D1E4600FCC50B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 				6C2456151B0B6FCC005DB245 /* AppDelegate.swift */,
 				6C2456171B0B6FCC005DB245 /* FirstViewController.swift */,
 				6C2456191B0B6FCC005DB245 /* SecondViewController.swift */,
+				6CBDE1451B0D1D2E00FCC50B /* Event.swift */,
+				6CBDE1471B0D1E1500FCC50B /* User.swift */,
+				6CBDE1491B0D1E4600FCC50B /* Category.swift */,
 				6C24561B1B0B6FCC005DB245 /* Main.storyboard */,
 				6C24561E1B0B6FCC005DB245 /* Images.xcassets */,
 				6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */,
@@ -215,8 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CBDE14A1B0D1E4600FCC50B /* Category.swift in Sources */,
+				6CBDE1461B0D1D2E00FCC50B /* Event.swift in Sources */,
 				6C24561A1B0B6FCC005DB245 /* SecondViewController.swift in Sources */,
 				6C2456161B0B6FCC005DB245 /* AppDelegate.swift in Sources */,
+				6CBDE1481B0D1E1500FCC50B /* User.swift in Sources */,
 				6C2456181B0B6FCC005DB245 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +427,7 @@
 				6C2456331B0B6FCC005DB245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6C2456341B0B6FCC005DB245 /* Build configuration list for PBXNativeTarget "Imperial ConnectionsTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				6C2456361B0B6FCC005DB245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
