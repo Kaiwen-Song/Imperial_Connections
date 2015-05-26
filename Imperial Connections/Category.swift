@@ -1,18 +1,18 @@
 //
-//  Subscription.swift
+//  Category.swift
 //  Imperial Connections
 //
-//  Created by Kaiwen Song on 20/05/2015.
+//  Created by Kaiwen Song on 26/05/2015.
 //  Copyright (c) 2015 HJK Webapps. All rights reserved.
 //
 
 import Foundation
-
-class Category{
-    
-    var name:String
-    
-    init(name:String){
-        self.name = name
-    }
+public enum Category : String{
+    case Football = "Football"
+    case Music = "Music"
+    case Dancing = "Dancing"
+    case Photography = "Photography"
+    case Basketball = "Basketball"
+    case Robotics = "Robotics"
+    case Tech = "Tech"
 }
