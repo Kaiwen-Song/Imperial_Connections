@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        /*let rootController = self.window!.rootViewController as! UITabBarController
+        let splitController = rootController.viewControllers?.first as! UISplitViewController
+        let topNavigationController = splitController.viewControllers.first as! UINavigationController
+        let subscriptionController = topNavigationController.topViewController as! SubscriptionTableController
+        let eventController = splitController.viewControllers.last as! EventDisplayController
+        eventController.category = Category.Recommended
+        subscriptionController.delegate = eventController
+
+*/
         return true
     }
 

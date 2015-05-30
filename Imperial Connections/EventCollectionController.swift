@@ -1,23 +1,26 @@
 //
-//  MyEventsController.swift
+//  EventCollectionController.swift
 //  Imperial Connections
 //
-//  Created by Kaiwen Song on 30/05/2015.
+//  Created by Kaiwen Song on 29/05/2015.
 //  Copyright (c) 2015 HJK Webapps. All rights reserved.
 //
 
 import UIKit
 
-class MyEventsController: UICollectionViewController {
+let reuseIdentifier = "EventCell"
 
-    @IBOutlet weak var SegControl: UISegmentedControl!
-    
-    var user:User!
+class EventCollectionController: UICollectionViewController {
+
     var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let event:Event = Event(eventID: 1, owner: User(login: "test owner"), title: "test event", description: "empty description", category: Category.Photography)
+        
+        events.append(event)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,10 +35,11 @@ class MyEventsController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
@@ -56,10 +60,15 @@ class MyEventsController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! UICollectionViewCell
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! //
+        UICollectionViewCell
+        //EventCell
+        
+        let event = self.events[indexPath.row]
+        //cell.event = event
+        //cell.update()
         // Configure the cell
-    
+        println(event.title)
         return cell
     }
 
@@ -93,14 +102,5 @@ class MyEventsController: UICollectionViewController {
     
     }
     */
-    @IBAction func SegClicked(sender: UISegmentedControl) {
-        switch SegControl.selectedSegmentIndex{
-        case 0: println ("my events selcted")//events = user.posted_events.values.array
-        case 1: println ("watched events selected")//events = user.watched_events.values.array
-        default:break
-        }
-        self.collectionView?.reloadData()
-        
-    }
 
 }

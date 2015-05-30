@@ -1,22 +1,39 @@
 //
-//  MyEventsSegController.swift
+//  EventDetailController.swift
 //  Imperial Connections
 //
-//  Created by Kaiwen Song on 26/05/2015.
+//  Created by Kaiwen Song on 30/05/2015.
 //  Copyright (c) 2015 HJK Webapps. All rights reserved.
 //
 
 import UIKit
 
-class MyEventsSegController: UIViewController {
+class EventDetailController: UIViewController {
+    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var CategoryLabel: UILabel!
 
-    @IBOutlet weak var MyEvents: UIView!
-    @IBOutlet weak var WatchedEvents: UIView!
-    @IBOutlet weak var segmentation: UISegmentedControl!
+    @IBOutlet weak var DescriptionLabel: UILabel!
+    
+    @IBOutlet weak var WatchButton: UIButton!
+    
+    @IBOutlet weak var QnAButton: UIButton!
+    
+    @IBOutlet weak var RemoveButton: UIButton!
+    
+    var event:Event!
+    var user:User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
+        if event.owner.login == user.login{
+            WatchButton.hidden = true
+        } else if (user.watched_events[event.eventID] != nil) {
+            WatchButton.titleLabel?.text = "Unwatch"
+            RemoveButton.hidden = true
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,20 +41,7 @@ class MyEventsSegController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func IndexChanged(sender: UISegmentedControl) {
-        switch segmentation.selectedSegmentIndex{
-        case 0:
-            MyEvents.hidden = false
-            WatchedEvents.hidden = true
-        case 1:
-            MyEvents.hidden = true
-            WatchedEvents.hidden = false
-        default:
-            break
-        }
-    }
-    
+
     /*
     // MARK: - Navigation
 

@@ -8,6 +8,7 @@
 
 import Foundation
 public enum Category : String{
+    case Recommended = "Recommended"
     case Football = "Football"
     case Music = "Music"
     case Dancing = "Dancing"
