@@ -20,9 +20,10 @@ class MyEventsController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        let event = Event(eventID: 1, owner: User(login: "jefffer"), title: "test", description: "test event", category: Category.Photography)
+        events.append(event)
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -56,10 +57,10 @@ class MyEventsController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! UICollectionViewCell
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
+        cell.event = events[indexPath.row]
+        cell.update()
         // Configure the cell
-    
         return cell
     }
 
@@ -102,5 +103,7 @@ class MyEventsController: UICollectionViewController {
         self.collectionView?.reloadData()
         
     }
+    
+    @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}
 
 }

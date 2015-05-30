@@ -9,16 +9,17 @@
 import UIKit
 
 class EventDetailController: UIViewController {
-    @IBOutlet weak var TitleLabel: UILabel!
-    @IBOutlet weak var CategoryLabel: UILabel!
 
+    @IBOutlet weak var TitleLabel: UILabel!
+    
     @IBOutlet weak var DescriptionLabel: UILabel!
-    
+    @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var WatchButton: UIButton!
-    
     @IBOutlet weak var QnAButton: UIButton!
-    
     @IBOutlet weak var RemoveButton: UIButton!
+    
+    @IBOutlet weak var BackButton: UIBarButtonItem!
+    
     
     var event:Event!
     var user:User!
@@ -27,12 +28,12 @@ class EventDetailController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if event.owner.login == user.login{
+       /* if event.owner.login == user.login{
             WatchButton.hidden = true
         } else if (user.watched_events[event.eventID] != nil) {
             WatchButton.titleLabel?.text = "Unwatch"
             RemoveButton.hidden = true
-        }
+        }*/
         
     }
 
@@ -41,7 +42,10 @@ class EventDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    @IBAction func BackButtonPressed(sender: UIBarButtonItem) {
+        navigationController!.popViewControllerAnimated(true)
+    }
     /*
     // MARK: - Navigation
 

@@ -8,8 +8,6 @@
 
 import UIKit
 
-let reuseIdentifier = "EventCell"
-
 class EventCollectionController: UICollectionViewController {
 
     var events = [Event]()
@@ -25,7 +23,6 @@ class EventCollectionController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -60,18 +57,12 @@ class EventCollectionController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! //
-        UICollectionViewCell
-        //EventCell
-        
-        let event = self.events[indexPath.row]
-        //cell.event = event
-        //cell.update()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
+        cell.event = events[indexPath.row]
+        cell.update()
         // Configure the cell
-        println(event.title)
         return cell
     }
-
     // MARK: UICollectionViewDelegate
 
     /*
@@ -102,5 +93,6 @@ class EventCollectionController: UICollectionViewController {
     
     }
     */
+    @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}
 
 }
