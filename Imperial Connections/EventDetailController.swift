@@ -15,12 +15,10 @@ class EventDetailController: UIViewController {
     @IBOutlet weak var DescriptionLabel: UILabel!
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var WatchButton: UIButton!
-    @IBOutlet weak var QnAButton: UIButton!
     @IBOutlet weak var RemoveButton: UIButton!
-    
     @IBOutlet weak var BackButton: UIBarButtonItem!
-    
-    
+    @IBOutlet weak var Message: UIButton!
+    @IBOutlet weak var Chatrooms: UIButton!
     var event:Event!
     var user:User!
     
@@ -34,6 +32,8 @@ class EventDetailController: UIViewController {
             WatchButton.titleLabel?.text = "Unwatch"
             RemoveButton.hidden = true
         }*/
+        
+        
         
     }
 
@@ -55,5 +55,7 @@ class EventDetailController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func unwindEventDetail(segue:UIStoryboardSegue) {}
+    
 }

@@ -14,7 +14,7 @@ public class Event{
     var title:String
     let category:Category
     let owner:User
-    var QA = [Int:QnA]()
+    var chatrooms = [Chatroom]()
     let date:String
     
     
@@ -32,18 +32,5 @@ public class Event{
     func getID()->Int{
       return eventID
     }
-    
-    func postQuestion(question:String){
-        //need to retrieve form server the int to the question
-        var questionID = 0
-        QA[questionID] = QnA(questionID: questionID, question: question)
-    }
-    
-    func postAnswer(qna: QnA, answer:String){
-        var newQnA = qna.postAnswer(answer)
-        QA.updateValue(newQnA, forKey: qna.questionID)
-    }
-    
-    
     
 }

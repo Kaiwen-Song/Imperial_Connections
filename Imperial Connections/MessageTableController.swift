@@ -1,14 +1,14 @@
 //
-//  SettingsController.swift
+//  MessageTableController.swift
 //  Imperial Connections
 //
-//  Created by Kaiwen Song on 25/05/2015.
+//  Created by Kaiwen Song on 01/06/2015.
 //  Copyright (c) 2015 HJK Webapps. All rights reserved.
 //
 
 import UIKit
 
-class SettingsController: UITableViewController {
+class MessageTableController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +30,13 @@ class SettingsController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 3
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 2
+        return 0
     }
 
     /*
@@ -47,8 +47,8 @@ class SettingsController: UITableViewController {
 
         return cell
     }
-    
-*/
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -94,5 +94,4 @@ class SettingsController: UITableViewController {
     }
     */
 
-    @IBAction func unwindToSettings(segue:UIStoryboardSegue) {}
 }
