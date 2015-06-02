@@ -17,11 +17,11 @@
 		6C2456221B0B6FCC005DB245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */; };
 		6C24562E1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C24562D1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift */; };
 		6C4C98A91B16276B00CBA12E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C98A81B16276B00CBA12E /* EventCell.swift */; };
-		6C569EE21B18F79E0052CF75 /* SubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C569EE11B18F79E0052CF75 /* SubscriptionController.swift */; };
 		6C569EF01B1907960052CF75 /* EventCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C569EEF1B1907960052CF75 /* EventCollectionController.swift */; };
 		6C5910E21B147DCF00CA4F83 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5910E11B147DCF00CA4F83 /* User.swift */; };
 		6C5910E41B147F4100CA4F83 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5910E31B147F4100CA4F83 /* Event.swift */; };
 		6C5910E81B1481A200CA4F83 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5910E71B1481A200CA4F83 /* Category.swift */; };
+		6C5D7A091B1DDFA700C2C26E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5D7A081B1DDFA700C2C26E /* MessageCell.swift */; };
 		6C742B671B11F81700441707 /* HubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C742B661B11F81700441707 /* HubController.swift */; };
 		6CA783D61B19D3B3008DF4D9 /* MyEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA783D51B19D3B3008DF4D9 /* MyEventsController.swift */; };
 		6CA783D81B19DBB7008DF4D9 /* EventDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA783D71B19DBB7008DF4D9 /* EventDetailController.swift */; };
@@ -63,11 +63,11 @@
 		6C24562C1B0B6FCC005DB245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C24562D1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imperial_ConnectionsTests.swift; sourceTree = "<group>"; };
 		6C4C98A81B16276B00CBA12E /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		6C569EE11B18F79E0052CF75 /* SubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionController.swift; sourceTree = "<group>"; };
 		6C569EEF1B1907960052CF75 /* EventCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionController.swift; sourceTree = "<group>"; };
 		6C5910E11B147DCF00CA4F83 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6C5910E31B147F4100CA4F83 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6C5910E71B1481A200CA4F83 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		6C5D7A081B1DDFA700C2C26E /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		6C742B661B11F81700441707 /* HubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HubController.swift; path = ../HubController.swift; sourceTree = "<group>"; };
 		6CA783D51B19D3B3008DF4D9 /* MyEventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsController.swift; sourceTree = "<group>"; };
 		6CA783D71B19DBB7008DF4D9 /* EventDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailController.swift; sourceTree = "<group>"; };
@@ -123,33 +123,27 @@
 		6C2456121B0B6FCC005DB245 /* Imperial Connections */ = {
 			isa = PBXGroup;
 			children = (
+				6C5D7A0A1B1DE0A000C2C26E /* ClassFiles */,
 				6C2456151B0B6FCC005DB245 /* AppDelegate.swift */,
 				6C2041A81B1D0F0700D5D198 /* backend */,
-				6C5910E71B1481A200CA4F83 /* Category.swift */,
 				6CF92F2F1B1CB2240001EAF1 /* CategoryCell.swift */,
 				6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */,
-				6CF92F251B1C962D0001EAF1 /* Chatroom.swift */,
 				6CF92F271B1C9C3F0001EAF1 /* ChatViewController.swift */,
-				6C5910E31B147F4100CA4F83 /* Event.swift */,
 				6C4C98A81B16276B00CBA12E /* EventCell.swift */,
 				6C569EEF1B1907960052CF75 /* EventCollectionController.swift */,
 				6CA783D71B19DBB7008DF4D9 /* EventDetailController.swift */,
-				6C2041A11B1D0EF700D5D198 /* EventService.swift */,
 				6C742B661B11F81700441707 /* HubController.swift */,
 				6C24561E1B0B6FCC005DB245 /* Images.xcassets */,
 				6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */,
 				6C24561B1B0B6FCC005DB245 /* Main.storyboard */,
 				6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */,
-				6CF92F231B1C958D0001EAF1 /* Message.swift */,
+				6C5D7A081B1DDFA700C2C26E /* MessageCell.swift */,
 				6CF92F2B1B1CA9330001EAF1 /* MessageTableCell.swift */,
 				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
 				6CF92F291B1CA8A10001EAF1 /* MessageTableController.swift */,
 				6CA783D51B19D3B3008DF4D9 /* MyEventsController.swift */,
-				6C5910E11B147DCF00CA4F83 /* User.swift */,
 				6CDF395A1B136B7F001CDF13 /* NewPostController.swift */,
-				6C2041A21B1D0EF700D5D198 /* Settings.swift */,
 				6CDF395C1B138BD2001CDF13 /* SettingsController.swift */,
-				6C569EE11B18F79E0052CF75 /* SubscriptionController.swift */,
 				6C2456131B0B6FCC005DB245 /* Supporting Files */,
 				6C2041A31B1D0EF700D5D198 /* User Data Model.xcdatamodeld */,
 			);
@@ -179,6 +173,20 @@
 				6C24562C1B0B6FCC005DB245 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6C5D7A0A1B1DE0A000C2C26E /* ClassFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6C5910E71B1481A200CA4F83 /* Category.swift */,
+				6C5910E31B147F4100CA4F83 /* Event.swift */,
+				6CF92F231B1C958D0001EAF1 /* Message.swift */,
+				6C2041A21B1D0EF700D5D198 /* Settings.swift */,
+				6C2041A11B1D0EF700D5D198 /* EventService.swift */,
+				6CF92F251B1C962D0001EAF1 /* Chatroom.swift */,
+				6C5910E11B147DCF00CA4F83 /* User.swift */,
+			);
+			name = ClassFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +301,7 @@
 				6CF92F2A1B1CA8A10001EAF1 /* MessageTableController.swift in Sources */,
 				6C2041A61B1D0EF700D5D198 /* Settings.swift in Sources */,
 				6CDF395B1B136B7F001CDF13 /* NewPostController.swift in Sources */,
+				6C5D7A091B1DDFA700C2C26E /* MessageCell.swift in Sources */,
 				6CF92F321B1CBD1D0001EAF1 /* CategoryCollectionCell.swift in Sources */,
 				6CF92F261B1C962E0001EAF1 /* Chatroom.swift in Sources */,
 				6CDF395D1B138BD2001CDF13 /* SettingsController.swift in Sources */,
@@ -300,7 +309,6 @@
 				6C4C98A91B16276B00CBA12E /* EventCell.swift in Sources */,
 				6C5910E21B147DCF00CA4F83 /* User.swift in Sources */,
 				6C569EF01B1907960052CF75 /* EventCollectionController.swift in Sources */,
-				6C569EE21B18F79E0052CF75 /* SubscriptionController.swift in Sources */,
 				6CF92F241B1C958D0001EAF1 /* Message.swift in Sources */,
 				6C2456161B0B6FCC005DB245 /* AppDelegate.swift in Sources */,
 				6C5910E81B1481A200CA4F83 /* Category.swift in Sources */,

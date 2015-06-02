@@ -47,8 +47,10 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //retrieves the new list of events to display 
         let newCategory = subscriptions[indexPath.row]
+        /*  TODO:
+        retrieves the new list of events to display
+        */
         EventCollection.reloadData()
     }
     

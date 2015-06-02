@@ -21,7 +21,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        MessageTable.dataSource = self
+        MessageTable.delegate = self
         // Do any additional setup after loading the view.
     }
 

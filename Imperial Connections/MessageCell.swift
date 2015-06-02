@@ -1,20 +1,16 @@
+
 //
-//  MessageTableCell.swift
+//  MessageCell.swift
 //  Imperial Connections
 //
-//  Created by Kaiwen Song on 01/06/2015.
+//  Created by Kaiwen Song on 02/06/2015.
 //  Copyright (c) 2015 HJK Webapps. All rights reserved.
 //
 
 import UIKit
 
-class MessageTableCell: UITableViewCell {
+class MessageCell: UITableViewCell {
 
-    @IBOutlet weak var MessageTitleLabel: UILabel!
-    @IBOutlet weak var StatusLabel: UILabel!
-    @IBOutlet weak var DateLabel: UILabel!
-    var chatroom:Chatroom!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -10,6 +10,8 @@ import UIKit
 
 class MessageTableController: UITableViewController {
 
+    var event:Event!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,24 +32,23 @@ class MessageTableController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return event.chatrooms.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableCell", forIndexPath: indexPath) as! MessageTableCell
+        cell.chatroom = self.event.chatrooms[indexPath.row]
         // Configure the cell...
-
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

@@ -24,7 +24,6 @@ class EventDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
        /* if event.owner.login == user.login{
             WatchButton.hidden = true
@@ -32,9 +31,20 @@ class EventDetailController: UIViewController {
             WatchButton.titleLabel?.text = "Unwatch"
             RemoveButton.hidden = true
         }*/
-        
-        
-        
+    }
+    
+    func configurateEventDetail(event:Event){
+        self.event = event
+        TitleLabel.text = event.title
+        DescriptionLabel.text = event.description
+        CategoryLabel.text = event.category.rawValue
+        if(event.owner === user){
+            WatchButton.hidden = true
+            Message.hidden = true
+        } else {
+            RemoveButton.hidden = true
+            Chatrooms.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,10 +52,6 @@ class EventDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func BackButtonPressed(sender: UIBarButtonItem) {
-        navigationController!.popViewControllerAnimated(true)
-    }
     /*
     // MARK: - Navigation
 
@@ -58,4 +64,16 @@ class EventDetailController: UIViewController {
     
     @IBAction func unwindEventDetail(segue:UIStoryboardSegue) {}
     
+    @IBAction func RemoveButtonClicked(sender: UIButton) {
+      /*  TODO:
+      goes to server and removes the event
+      */
+    }
+    
+    @IBAction func WatchButtonclicked(sender: UIButton) {
+      /*  TODO:
+        goes to the server and change the watched event table
+      */
+      //self.user.watchEvent[event.eventID] = self.event
+    }
 }

@@ -10,7 +10,13 @@ import UIKit
 
 class NewPostController: UIViewController {
 
-    @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var TitleField: UITextField!
+    @IBOutlet weak var DescriptionField: UITextField!
+    @IBOutlet weak var SearchBar: UISearchBar!
+    @IBOutlet weak var CategoryLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +29,24 @@ class NewPostController: UIViewController {
     }
     
     @IBAction func ClearButtonPress(sender: UIButton) {
-        println("clear button pressed")
+        /*  TODO:
+          pop up a box asking for confirmation
+        */
+        TitleField.text = ""
+        DescriptionField.text = ""
+        SearchBar.text = ""
+    }
     
+    @IBAction func SubmitButtonPress(sender: UIButton) {
+        /*  TODO:
+          pop up a box asking for confirmation
+        */
+        var user:User!
+        var eventID:Int!
+        let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
+        /*  TODO:
+        
+        */
     }
 
     /*

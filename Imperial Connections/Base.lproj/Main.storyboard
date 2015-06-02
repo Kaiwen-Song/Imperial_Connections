@@ -134,8 +134,8 @@
                             <rect key="frame" x="187.5" y="7.5" width="225" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="My Events"/>
-                                <segment title="Watched Events"/>
+                                <segment title="My Activities"/>
+                                <segment title="Watched Activities"/>
                             </segments>
                             <connections>
                                 <action selector="SegClicked:" destination="sdB-rs-zbW" eventType="valueChanged" id="mxn-CJ-FGw"/>
@@ -182,6 +182,9 @@
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="403" y="483" width="49" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="SubmitButtonPress:" destination="42q-V3-WvI" eventType="touchUpInside" id="cS1-f1-5Hl"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uyv-j5-dkb">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -199,13 +202,6 @@
                                     <rect key="frame" x="16" y="322" width="568" height="30"/>
                                 </variation>
                             </textField>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="ZcL-FU-Qxr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="403" y="180" width="110" height="44"/>
-                                </variation>
-                            </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ1-5y-nJP">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -215,6 +211,13 @@
                                     <rect key="frame" x="425" y="224" width="88" height="21"/>
                                 </variation>
                             </label>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="ZcL-FU-Qxr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="403" y="180" width="110" height="44"/>
+                                </variation>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -223,8 +226,8 @@
                                 <exclude reference="ppa-cD-5uI"/>
                                 <exclude reference="Uyv-j5-dkb"/>
                                 <exclude reference="ajC-2R-mkt"/>
-                                <exclude reference="ZcL-FU-Qxr"/>
                                 <exclude reference="dQ1-5y-nJP"/>
+                                <exclude reference="ZcL-FU-Qxr"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -233,12 +236,18 @@
                                 <include reference="ppa-cD-5uI"/>
                                 <include reference="Uyv-j5-dkb"/>
                                 <include reference="ajC-2R-mkt"/>
-                                <include reference="ZcL-FU-Qxr"/>
                                 <include reference="dQ1-5y-nJP"/>
+                                <include reference="ZcL-FU-Qxr"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" selectedImage="NewPost" id="3m6-XP-2WC"/>
+                    <connections>
+                        <outlet property="CategoryLabel" destination="dQ1-5y-nJP" id="1ge-Be-xsP"/>
+                        <outlet property="DescriptionField" destination="ajC-2R-mkt" id="QGM-tL-hKE"/>
+                        <outlet property="SearchBar" destination="ZcL-FU-Qxr" id="fbf-BJ-9w2"/>
+                        <outlet property="TitleField" destination="Uyv-j5-dkb" id="WGe-5d-Oys"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gK-rU-dIi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87952394551949364" green="0.98027084137261711" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SMK-eO-b9u">
-                            <size key="itemSize" width="155" height="149"/>
+                            <size key="itemSize" width="157" height="149"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -393,7 +402,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="155" height="149"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="157" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWP-Ld-IvQ">
@@ -483,15 +492,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-GF-jhC">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="128" y="107" width="325" height="43"/>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDm-Os-bnv">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Watch">
@@ -500,6 +500,9 @@
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="441" y="495" width="82" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="WatchButtonclicked:" destination="GhE-2C-cYZ" eventType="touchUpInside" id="UHM-Qh-Ffm"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUW-jt-Ja8">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -518,6 +521,9 @@
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="94" y="495" width="57" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="RemoveButtonClicked:" destination="GhE-2C-cYZ" eventType="touchUpInside" id="gB8-BC-WLR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-ZA-oGg">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -528,6 +534,7 @@
                                     <rect key="frame" x="450" y="585" width="73" height="30"/>
                                 </variation>
                                 <connections>
+                                    <action selector="MessageButtonPressed:" destination="GhE-2C-cYZ" eventType="touchUpInside" id="4Aa-VN-Kew"/>
                                     <segue destination="tZE-yx-tB5" kind="show" id="yvD-mG-D7S"/>
                                 </connections>
                             </button>
@@ -540,6 +547,7 @@
                                     <rect key="frame" x="455" y="585" width="73" height="30"/>
                                 </variation>
                                 <connections>
+                                    <action selector="ChatroomButtonClicked:" destination="GhE-2C-cYZ" eventType="touchUpInside" id="MbY-jb-nZA"/>
                                     <segue destination="ObT-bi-gq4" kind="show" id="cps-mh-0pN"/>
                                 </connections>
                             </button>
@@ -549,31 +557,40 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="450" y="209" width="73" height="22"/>
+                                    <rect key="frame" x="441" y="253" width="73" height="22"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-GF-jhC">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="107" width="325" height="43"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="H4l-GF-jhC"/>
                                 <exclude reference="qDm-Os-bnv"/>
                                 <exclude reference="SUW-jt-Ja8"/>
                                 <exclude reference="VFt-Yq-2ks"/>
                                 <exclude reference="ISb-ZA-oGg"/>
                                 <exclude reference="puS-vZ-GGn"/>
                                 <exclude reference="8iS-Sm-dOZ"/>
+                                <exclude reference="H4l-GF-jhC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
-                                <include reference="H4l-GF-jhC"/>
                                 <include reference="qDm-Os-bnv"/>
                                 <include reference="SUW-jt-Ja8"/>
                                 <include reference="VFt-Yq-2ks"/>
                                 <include reference="ISb-ZA-oGg"/>
                                 <include reference="puS-vZ-GGn"/>
                                 <include reference="8iS-Sm-dOZ"/>
+                                <include reference="H4l-GF-jhC"/>
                             </mask>
                         </variation>
                     </view>
@@ -598,7 +615,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRn-Nw-lh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mfW-Eo-NRU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="-1698.75"/>
+            <point key="canvasLocation" x="1828" y="-1698.75"/>
         </scene>
         <!--Test Home Screen Controller-->
         <scene sceneID="bEs-ee-3BR">
@@ -949,7 +966,7 @@
                 <exit id="2cy-X3-Afc" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7s-4Z-Ehe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="-959.25"/>
+            <point key="canvasLocation" x="1828" y="-959.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9GB-7j-4tU">
@@ -967,7 +984,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIj-NK-WwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146" y="225.75"/>
+            <point key="canvasLocation" x="1112" y="225.75"/>
         </scene>
         <!--Home-->
         <scene sceneID="Siu-WJ-Fq8">
@@ -997,6 +1014,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aag-77-kc9"/>
-        <segue reference="yvD-mG-D7S"/>
+        <segue reference="Bp6-3x-DA3"/>
     </inferredMetricsTieBreakers>
 </document>

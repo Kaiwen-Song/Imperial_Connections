@@ -37,6 +37,10 @@ class MyEventsController: UICollectionViewController {
         service = EventService()
         load(service.getEvent())
         
+        /*  TODO:
+        load initial user events from coredata 
+        */
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,7 +129,6 @@ class MyEventsController: UICollectionViewController {
         default:break
         }
         self.collectionView?.reloadData()
-        
     }
     
     @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}
