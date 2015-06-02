@@ -12,15 +12,12 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var CategoryList: UITableView!
     @IBOutlet weak var EventCollection: UICollectionView!
     
-    var subscriptions = [Category]()
+    var subscriptions:[Category] = [Category.Recommended, Category.Tech]
     var events:[Event] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subscriptions.append(Category.Recommended)
-        subscriptions.append(Category.Tech)
-        CategoryList.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -33,13 +30,20 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
+        println(cell.category.rawValue)
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
             return subscriptions.count
     }
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //retrieves the new list of events to display 
+        let newCategory = subscriptions[indexPath.row]
+        EventCollection.reloadData()
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
             return events.count
     }
@@ -50,12 +54,6 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         cell.event = events[indexPath.row]
         cell.update()
         return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //retrieves the new list of events to display 
-        let newCategory = subscriptions[indexPath.row]
-        EventCollection.reloadData()
     }
     
     /*
