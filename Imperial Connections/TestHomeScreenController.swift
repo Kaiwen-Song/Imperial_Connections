@@ -13,11 +13,15 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var EventCollection: UICollectionView!
     
     var subscriptions:[Category] = [Category.Recommended, Category.Tech]
-    var events:[Event] = []
+    var events:[Event] = [Event(eventID: 1, owner: User(login: "Jeff"), title: "test", description: "test", category: Category.Recommended)]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CategoryList.dataSource = self
+        CategoryList.delegate = self
+        EventCollection.dataSource = self
+        EventCollection.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -28,10 +32,14 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
+        var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
         println(cell.category.rawValue)
         return cell
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -44,6 +52,11 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         EventCollection.reloadData()
     }
     
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        //#warning Incomplete method implementation -- Return the number of sections
+        return 1
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
             return events.count
     }
@@ -53,6 +66,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
         cell.event = events[indexPath.row]
         cell.update()
+        // Configure the cell
         return cell
     }
     
