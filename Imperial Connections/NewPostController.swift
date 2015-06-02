@@ -15,7 +15,8 @@ class NewPostController: UIViewController {
     @IBOutlet weak var DescriptionField: UITextField!
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var CategoryLabel: UILabel!
-    
+    var newEvent : Event = Event(eventID: 3, owner: User(login: "hannah"), title: "HI", description: "I like Webapp", category: Category.Recommended)
+    var setting: Settings = Settings()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,4 +60,13 @@ class NewPostController: UIViewController {
     }
     */
 
+    
+    func upload() {
+        var url: NSString = setting.uploadurl + "?event_id=\(newEvent.eventID)&owner=\(newEvent.owner.login)&title=\(newEvent.title)&category=\(newEvent.category.rawValue)&description=\(newEvent.description)"
+        url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
+        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
+    }
+    
 }

@@ -9,7 +9,7 @@ $connection = 'host=db.doc.ic.ac.uk dbname=g1427123_u user=g1427123_u password=1
 //$content = file_get_contents($url);
 //$json = json_decode($content, true);
 
-$query = "INSERT INTO department VALUES ('" . $_GET['x'] . "', '" . $_GET['y'] . "', '" . $_GET['z'] . "' );";
+$query = "INSERT INTO events VALUES ('" . $_GET['event_id'] . "', '" . $_GET['owner'] . "', '" . $_GET['title'] . "', '" . $_GET['description'] . "', '" . $_GET['category'] . "' );";
 echo $query;
 
 $link = pg_connect($connection);
