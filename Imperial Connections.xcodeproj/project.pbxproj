@@ -124,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				6C2456151B0B6FCC005DB245 /* AppDelegate.swift */,
+				6C2041A81B1D0F0700D5D198 /* backend */,
 				6C5910E71B1481A200CA4F83 /* Category.swift */,
 				6CF92F2F1B1CB2240001EAF1 /* CategoryCell.swift */,
 				6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */,
@@ -133,6 +134,7 @@
 				6C4C98A81B16276B00CBA12E /* EventCell.swift */,
 				6C569EEF1B1907960052CF75 /* EventCollectionController.swift */,
 				6CA783D71B19DBB7008DF4D9 /* EventDetailController.swift */,
+				6C2041A11B1D0EF700D5D198 /* EventService.swift */,
 				6C742B661B11F81700441707 /* HubController.swift */,
 				6C24561E1B0B6FCC005DB245 /* Images.xcassets */,
 				6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */,
@@ -140,18 +142,16 @@
 				6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */,
 				6CF92F231B1C958D0001EAF1 /* Message.swift */,
 				6CF92F2B1B1CA9330001EAF1 /* MessageTableCell.swift */,
-				6C5910E11B147DCF00CA4F83 /* User.swift */,
+				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
 				6CF92F291B1CA8A10001EAF1 /* MessageTableController.swift */,
 				6CA783D51B19D3B3008DF4D9 /* MyEventsController.swift */,
-				6C2041A81B1D0F0700D5D198 /* backend */,
-				6C2041A11B1D0EF700D5D198 /* EventService.swift */,
-				6C2041A21B1D0EF700D5D198 /* Settings.swift */,
-				6C2041A31B1D0EF700D5D198 /* User Data Model.xcdatamodeld */,
+				6C5910E11B147DCF00CA4F83 /* User.swift */,
 				6CDF395A1B136B7F001CDF13 /* NewPostController.swift */,
-				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
+				6C2041A21B1D0EF700D5D198 /* Settings.swift */,
 				6CDF395C1B138BD2001CDF13 /* SettingsController.swift */,
 				6C569EE11B18F79E0052CF75 /* SubscriptionController.swift */,
 				6C2456131B0B6FCC005DB245 /* Supporting Files */,
+				6C2041A31B1D0EF700D5D198 /* User Data Model.xcdatamodeld */,
 			);
 			path = "Imperial Connections";
 			sourceTree = "<group>";

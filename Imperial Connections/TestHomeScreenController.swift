@@ -12,13 +12,15 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var CategoryList: UITableView!
     @IBOutlet weak var EventCollection: UICollectionView!
     
-    let subscriptions = [Category]()
+    var subscriptions = [Category]()
     var events:[Event] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        subscriptions.append(Category.Recommended)
+        subscriptions.append(Category.Tech)
+        CategoryList.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -66,4 +68,5 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     }
     */
 
+    @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}
 }
