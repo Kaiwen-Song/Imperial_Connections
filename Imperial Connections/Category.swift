@@ -16,4 +16,6 @@ public enum Category : String{
     case Basketball = "Basketball"
     case Robotics = "Robotics"
     case Tech = "Tech"
+    
+    static let allCategories = [Recommended, Football, Music, Dancing, Photography, Basketball, Robotics, Tech]
 }

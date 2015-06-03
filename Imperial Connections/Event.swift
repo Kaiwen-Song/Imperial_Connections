@@ -14,7 +14,8 @@ public class Event{
     var title:String
     let category:Category
     let owner:User
-    var chatrooms = [Chatroom]()
+    // format is stored as sender:Chatroom
+    var chatrooms = [String:Chatroom]()
     let date:String
     
     

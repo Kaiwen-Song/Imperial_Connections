@@ -31,10 +31,10 @@ class EventDetailController: UIViewController {
             WatchButton.titleLabel?.text = "Unwatch"
             RemoveButton.hidden = true
         }*/
+        configurateEventDetail()
     }
     
-    func configurateEventDetail(event:Event){
-        self.event = event
+    func configurateEventDetail(){
         TitleLabel.text = event.title
         DescriptionLabel.text = event.description
         CategoryLabel.text = event.category.rawValue
@@ -61,6 +61,24 @@ class EventDetailController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject!){
+        if segue.identifier == "EventDetailToChat" {
+            var dst = segue.destinationViewController as! ChatViewController
+            dst.user = self.user
+            dst.event = self.event
+            if(event.chatrooms[user.login] != nil) {
+                dst.chatroom = event.chatrooms[user.login]
+            } else {
+                event.chatrooms[user.login] = Chatroom(event: event, sender: user, owner: event.owner)
+            }
+            
+        } else if segue.identifier == "ToChatrooms" {
+            var dst = segue.destinationViewController as! ChatroomTableController
+            dst.event = self.event
+            dst.user = self.user
+        }
+    }
     
     @IBAction func unwindEventDetail(segue:UIStoryboardSegue) {}
     

@@ -11,22 +11,26 @@ import UIKit
 class ManageSubscriptionController: UICollectionViewController {
 
     var categories = [Category]()
+    var subscription = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         // Do any additional setup after loading the view.
+        self.collectionView?.allowsMultipleSelection  = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    /*TODO
+      back button need to save subscription into core data
+    */
     /*
     // MARK: - Navigation
 
@@ -47,17 +51,35 @@ class ManageSubscriptionController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return categories.count
+        return Category.allCategories.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCollectionCell", forIndexPath: indexPath) as! CategoryCollectionCell
         
         // Configure the cell
-        cell.category = categories[indexPath.row]
+        cell.category = Category.allCategories[indexPath.row]
         return cell
     }
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        let cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
+        cell.highlighted = true
+        self.subscription.append(cell.category)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath){
+        let cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
+        cell.highlighted = false
+        var index = 0
+        do{
+        if(subscription[index] == cell.category){
+            subscription.removeAtIndex(index)
+            break
+          }
+        }while (index<subscription.count)
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*
