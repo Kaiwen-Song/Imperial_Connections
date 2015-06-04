@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class EventService {
     
@@ -33,6 +34,30 @@ class EventService {
         }*/
         //task.resume()
         return NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
+    }
+    
+    func upload(newEvent: Event, appDel: AppDelegate) {
+        var url: NSString = setting.uploadurl + "?event_id=\(newEvent.eventID)&owner=\(newEvent.owner.login)&title=\(newEvent.title)&category=\(newEvent.category.rawValue)&description=\(newEvent.description)"
+        url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
+        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        
+        // Saving Core Data
+        var context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        var event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! NSManagedObject
+        event.setValue(newEvent.eventID, forKey: "eventID")
+        event.setValue(newEvent.owner.login, forKey: "owner")
+        event.setValue(newEvent.title, forKey: "title")
+        event.setValue(newEvent.category.rawValue, forKey: "category")
+        event.setValue(newEvent.date, forKey: "date")
+        event.setValue(newEvent.description, forKey: "descriptions")
+        
+        context.save(nil)
+        
+        println(event)
+        println("Object saved!")
     }
     
 }

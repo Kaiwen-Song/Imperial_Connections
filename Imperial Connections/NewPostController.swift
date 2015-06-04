@@ -17,6 +17,7 @@ class NewPostController: UIViewController {
     @IBOutlet weak var CategoryLabel: UILabel!
     var newEvent : Event = Event(eventID: 3, owner: User(login: "hannah"), title: "HI", description: "I like Webapp", category: Category.Recommended)
     var setting: Settings = Settings()
+    var eventService: EventService = EventService ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class NewPostController: UIViewController {
         /*  TODO:
           pop up a box asking for confirmation
         */
+        clear()
+    }
+    
+    func clear() {
         TitleField.text = ""
         DescriptionField.text = ""
         SearchBar.text = ""
@@ -42,12 +47,12 @@ class NewPostController: UIViewController {
         /*  TODO:
           pop up a box asking for confirmation
         */
-        var user:User!
-        var eventID:Int!
+        var user:User = User(login: "Hannah")
+        var eventID:Int = 3
         let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
-        /*  TODO:
-        
-        */
+        var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        eventService.upload(newEvent, appDel: appDel)
+        clear()
     }
 
     /*
@@ -60,13 +65,5 @@ class NewPostController: UIViewController {
     }
     */
 
-    
-    func upload() {
-        var url: NSString = setting.uploadurl + "?event_id=\(newEvent.eventID)&owner=\(newEvent.owner.login)&title=\(newEvent.title)&category=\(newEvent.category.rawValue)&description=\(newEvent.description)"
-        url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
-        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
-        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
-        var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
-    }
     
 }
