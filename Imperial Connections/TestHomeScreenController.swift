@@ -14,7 +14,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     
     var subscriptions:[Category] = [Category.Recommended, Category.Tech]
     var events:[Event] = [Event(eventID: 1, owner: User(login: "Jeff"), title: "test", description: "test", category: Category.Recommended)]
-    
+    var user:User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,15 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         cell.update()
         // Configure the cell
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject!){
+        if segue.identifier == "HomeToEventDetail" {
+            var dst = segue.destinationViewController as! EventDetailController
+            dst.user = self.user
+            let src = sender as! EventCell
+            dst.event = src.event
+        }
     }
     
     /*

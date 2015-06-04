@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageTableCell: UITableViewCell {
+class ChatroomTableCell: UITableViewCell {
 
     @IBOutlet weak var MessageTitleLabel: UILabel!
     @IBOutlet weak var StatusLabel: UILabel!
@@ -25,5 +25,5 @@ class MessageTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

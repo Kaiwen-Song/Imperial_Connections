@@ -8,13 +8,15 @@
 
 import UIKit
 
-class MessageTableController: UITableViewController {
+class ChatroomTableController: UITableViewController {
 
     var event:Event!
-    
+    //user always depicks who is currently using the application
+    var user:User!
+    var keys:[String]!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        keys = event.chatrooms.keys.array
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,12 +45,13 @@ class MessageTableController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableCell", forIndexPath: indexPath) as! MessageTableCell
-        cell.chatroom = self.event.chatrooms[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableCell", forIndexPath: indexPath) as! ChatroomTableCell
+        cell.chatroom = self.event.chatrooms[keys[indexPath.row]]
         // Configure the cell...
         return cell
     }
 
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -85,14 +88,20 @@ class MessageTableController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        var dst = segue.destinationViewController as! ChatViewController
+        dst.user = self.user
+        dst.event = self.event
+        if event.chatrooms[user.login] != nil {
+            let chatroom = event.chatrooms[user.login]
+            dst.chatroom = chatroom
+        } else {
+            event.chatrooms[user.login] = Chatroom(event: self.event, sender: self.user, owner: event.owner)
+        }
+        
     }
-    */
 
 }

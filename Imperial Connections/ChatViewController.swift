@@ -36,7 +36,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let chatMessage = chatroom.messages[indexPath.row]
         let cell =  UITableViewCell()
         cell.textLabel!.text = chatMessage.message
@@ -52,6 +51,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let message = TextField.text
         if message != nil {
             chatroom.messages.append(Message(message: message, user: self.user))
+            /*TODO
+              update the server and store in core data
+            */
+            
             MessageTable.reloadData()
         }
     }
