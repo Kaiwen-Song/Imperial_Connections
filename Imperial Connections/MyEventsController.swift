@@ -18,7 +18,7 @@ class MyEventsController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println(user.login)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         //let event = Event(eventID: 1, owner: User(login: "jefffer"), title: "test", description: "test event", category: Category.Photography)

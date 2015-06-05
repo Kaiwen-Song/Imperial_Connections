@@ -18,6 +18,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println(user.login)
         CategoryList.dataSource = self
         CategoryList.delegate = self
         EventCollection.dataSource = self

@@ -8,20 +8,25 @@
 
 import UIKit
 
-class NewPostController: UIViewController {
+class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     
     @IBOutlet weak var TitleField: UITextField!
     @IBOutlet weak var DescriptionField: UITextField!
-    @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var CategoryLabel: UILabel!
+    @IBOutlet weak var picker: UIPickerView!
     var newEvent : Event = Event(eventID: 3, owner: User(login: "hannah"), title: "HI", description: "I like Webapp", category: Category.Recommended)
     var setting: Settings = Settings()
+    var user:User!
     
+    var data = Category.allCategories
+    var CategorySelected = Category.Recommended
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println(user.login)
         // Do any additional setup after loading the view.
+        picker.delegate = self
+        picker.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,21 +40,39 @@ class NewPostController: UIViewController {
         */
         TitleField.text = ""
         DescriptionField.text = ""
-        SearchBar.text = ""
     }
     
     @IBAction func SubmitButtonPress(sender: UIButton) {
         /*  TODO:
           pop up a box asking for confirmation
         */
-        var user:User!
         var eventID:Int!
-        let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
+        let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:CategorySelected)
         /*  TODO:
         
         */
     }
 
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+      return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView,
+        numberOfRowsInComponent component: Int) -> Int{
+            return data.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int,
+        forComponent component: Int) -> String!{
+            return data[row].rawValue
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int,
+        inComponent component: Int){
+            println("selected row is " + data[row].rawValue)
+            CategorySelected = data[row]
+    }
+    
     /*
     // MARK: - Navigation
 

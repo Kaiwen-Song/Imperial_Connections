@@ -11,7 +11,6 @@ import UIKit
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var MessageTable: UITableView!
-    @IBOutlet weak var BackButton: UIBarButtonItem!
     @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var SendButton: UIButton!
     var user:User!
