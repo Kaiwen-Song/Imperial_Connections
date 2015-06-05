@@ -32,6 +32,7 @@ public class User{
     
     func removePostedEvent(event:Event){
         posted_events.removeValueForKey(event.getID())
+        // posted_events[event.getID()] = nil
     }
     
     func removeWatchedEvent(event:Event){

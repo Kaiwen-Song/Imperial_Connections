@@ -16,7 +16,7 @@ public class Event{
     var title:String
     var category:Category
     var owner:User
-    var chatrooms = [Chatroom]()
+    var chatrooms = [String:Chatroom]()
     var date:String
     
     

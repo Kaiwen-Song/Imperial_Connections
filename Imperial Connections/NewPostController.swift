@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewPostController: UIViewController {
 
@@ -15,14 +16,20 @@ class NewPostController: UIViewController {
     @IBOutlet weak var DescriptionField: UITextField!
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var CategoryLabel: UILabel!
+    
     var newEvent : Event = Event(eventID: 3, owner: User(login: "hannah"), title: "HI", description: "I like Webapp", category: Category.Recommended)
     var setting: Settings = Settings()
     var eventService: EventService = EventService ()
     
+
+    
+    // Retreive the managedObjectContext from AppDelegate
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,15 +50,31 @@ class NewPostController: UIViewController {
         SearchBar.text = ""
     }
     
-    @IBAction func SubmitButtonPress(sender: UIButton) {
+    
+    @IBAction func SubmitButtonPress() {
         /*  TODO:
           pop up a box asking for confirmation
         */
         var user:User = User(login: "Hannah")
         var eventID:Int = 3
-        let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
-        var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        eventService.upload(newEvent, appDel: appDel)
+        //let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
+        eventService.upload(newEvent)
+        
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        var event = NSEntityDescription.insertNewObjectForEntityForName("Events", inManagedObjectContext: context!) as! NSManagedObjectContext
+        //event.setValue(newEvent.eventID, forKey: "eventID")
+        event.setValue(newEvent.owner.login, forKey: "owner")
+        event.setValue(newEvent.title, forKey: "title")
+        event.setValue(newEvent.category.rawValue, forKey: "category")
+        event.setValue(newEvent.date, forKey: "date")
+        event.setValue(newEvent.description, forKey: "descriptions")
+        
+        context!.save(nil)
+        
+        println(event)
+        println("Object saved!")
+        
         clear()
     }
 

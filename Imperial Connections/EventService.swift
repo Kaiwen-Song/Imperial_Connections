@@ -36,7 +36,7 @@ class EventService {
         return NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
     }
     
-    func upload(newEvent: Event, appDel: AppDelegate) {
+    func upload(newEvent: Event) {
         var url: NSString = setting.uploadurl + "?event_id=\(newEvent.eventID)&owner=\(newEvent.owner.login)&title=\(newEvent.title)&category=\(newEvent.category.rawValue)&description=\(newEvent.description)"
         url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
         url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
@@ -44,6 +44,7 @@ class EventService {
         var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
         
         // Saving Core Data
+        /*
         var context: NSManagedObjectContext = appDel.managedObjectContext!
         
         var event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! NSManagedObject
@@ -57,7 +58,7 @@ class EventService {
         context.save(nil)
         
         println(event)
-        println("Object saved!")
+        println("Object saved!")*/
     }
     
 }
