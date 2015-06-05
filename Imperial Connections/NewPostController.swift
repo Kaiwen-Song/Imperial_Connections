@@ -56,28 +56,16 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         var eventID:Int = 3
         //let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
         // Upload to database
+        var eventService = EventService()
         eventService.upload(newEvent)
         
         
         // Storing with core data
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        var coreDataService = EventCoreDataService()
+        coreDataService.saveEvent(context)
         
-        var ent = NSEntityDescription.entityForName("EventModel", inManagedObjectContext: context!)
-        
-        // Create entity for the core data model.
-        var event = EventModel(entity: ent!, insertIntoManagedObjectContext: context)
-        event.title = newEvent.title
-        event.eventID = "\(newEvent.eventID)"
-        event.descriptions = newEvent.description
-        event.date = newEvent.date
-        event.owner = newEvent.owner.login
-        event.category = newEvent.category.rawValue
-        
-        context!.save(nil)
-        
-        println(event)
-        println("Object saved!")
         
         clear()
     }

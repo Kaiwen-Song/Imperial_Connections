@@ -16,6 +16,7 @@ class MyEventsController: UICollectionViewController {
     var user:User!
     var events = [Event]()
     var service: EventService!
+    var eventCoreDataService = EventCoreDataService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +37,9 @@ class MyEventsController: UICollectionViewController {
         }*/
         
         
-        // Functions loading from database
-        //service = EventService()
-        //load(service.getEvent())
+        // Functions loading from database (Enable to load from online database)
+        // service = EventService()
+        // events = events + service.getEvent()
         
         // Functions loading from Core Data
         loadFromCoreData()
@@ -60,32 +61,10 @@ class MyEventsController: UICollectionViewController {
     func loadFromCoreData() {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
+        events = events + eventCoreDataService.fetchEvent(context)
         
-        let request = NSFetchRequest(entityName: "EventModel")
-        request.returnsObjectsAsFaults = false;
-        
-        var results: NSArray = context.executeFetchRequest(request, error: nil)!
-        
-        for result in results {
-            var res = result as! EventModel
-            var event = Event(eventID: res.eventID.toInt()!, owner: User(login: res.owner), title: res.title, description: res.descriptions, category: Category(rawValue: res.category)!)
-            events.append(event)
-        }
     }
     
-    //Parsing the fetched json data from url and append them to the list of events to be shown on collection view
-    func load(eventss: NSArray) {
-        for event in eventss {
-            var id = (event["event_id"]! as! String).toInt()!
-            var owner = event["owner"]! as! String
-            var title = event["title"]! as! String
-            var cate = event["catagories"] as! String
-            var category = Category(rawValue: cate)
-            var description = event["content"] as! String
-            var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: Category.Recommended)
-            events.append(event)
-        }
-    }
 
     /*
     // MARK: - Navigation
