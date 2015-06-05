@@ -16,7 +16,10 @@ class ChatroomTableController: UITableViewController {
     var keys:[String]!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //index into all the chatrooms of the event
         keys = event.chatrooms.keys.array
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,6 +51,7 @@ class ChatroomTableController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableCell", forIndexPath: indexPath) as! ChatroomTableCell
         cell.chatroom = self.event.chatrooms[keys[indexPath.row]]
         // Configure the cell...
+        cell.updateCell()
         return cell
     }
 
