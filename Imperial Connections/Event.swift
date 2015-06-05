@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import CoreData
+
 public class Event{
     
-    let eventID:Int
+    var eventID:Int
     var description:String
     var title:String
-    let category:Category
-    let owner:User
-    // format is stored as sender:Chatroom
+    var category:Category
+    var owner:User
     var chatrooms = [String:Chatroom]()
-    let date:String
+    var date:String
     
     
     init(eventID:Int, owner:User, title:String, description:String, category:Category){

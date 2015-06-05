@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6C2041A51B1D0EF700D5D198 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2041A11B1D0EF700D5D198 /* EventService.swift */; };
 		6C2041A61B1D0EF700D5D198 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2041A21B1D0EF700D5D198 /* Settings.swift */; };
-		6C2041A71B1D0EF700D5D198 /* User Data Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C2041A31B1D0EF700D5D198 /* User Data Model.xcdatamodeld */; };
 		6C2041A91B1D0F0700D5D198 /* backend in Resources */ = {isa = PBXBuildFile; fileRef = 6C2041A81B1D0F0700D5D198 /* backend */; };
 		6C2456161B0B6FCC005DB245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2456151B0B6FCC005DB245 /* AppDelegate.swift */; };
 		6C24561D1B0B6FCC005DB245 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C24561B1B0B6FCC005DB245 /* Main.storyboard */; };
@@ -38,6 +37,8 @@
 		6CF92F301B1CB2240001EAF1 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF92F2F1B1CB2240001EAF1 /* CategoryCell.swift */; };
 		6CF92F321B1CBD1D0001EAF1 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */; };
 		6CF92F341B1CBE2E0001EAF1 /* ManageSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */; };
+		A07B01AB1B21118200CFCD3B /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B01AA1B21118200CFCD3B /* EventModel.swift */; };
+		A09EAE9E1B1F53BA00D8BE93 /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,6 @@
 /* Begin PBXFileReference section */
 		6C2041A11B1D0EF700D5D198 /* EventService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		6C2041A21B1D0EF700D5D198 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		6C2041A41B1D0EF700D5D198 /* User Data Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "User Data Model.xcdatamodel"; sourceTree = "<group>"; };
 		6C2041A81B1D0F0700D5D198 /* backend */ = {isa = PBXFileReference; lastKnownFileType = folder; path = backend; sourceTree = SOURCE_ROOT; };
 		6C2456101B0B6FCC005DB245 /* Imperial Connections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Imperial Connections.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2456141B0B6FCC005DB245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 		6CF92F2F1B1CB2240001EAF1 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSubscriptionController.swift; sourceTree = "<group>"; };
+		A07B01AA1B21118200CFCD3B /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		A09EAE9D1B1F53BA00D8BE93 /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				6CA1B81D1B2085A900D13729 /* HomeScreenController.swift */,
 				6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */,
 				6C5D7A081B1DDFA700C2C26E /* MessageCell.swift */,
+				A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */,
 				6CF92F2B1B1CA9330001EAF1 /* ChatroomTableCell.swift */,
 				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
 				6CF92F291B1CA8A10001EAF1 /* ChatroomTableController.swift */,
@@ -151,7 +154,6 @@
 				6CDF395A1B136B7F001CDF13 /* NewPostController.swift */,
 				6CDF395C1B138BD2001CDF13 /* SettingsController.swift */,
 				6C2456131B0B6FCC005DB245 /* Supporting Files */,
-				6C2041A31B1D0EF700D5D198 /* User Data Model.xcdatamodeld */,
 			);
 			path = "Imperial Connections";
 			sourceTree = "<group>";
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				6C5910E31B147F4100CA4F83 /* Event.swift */,
+				A07B01AA1B21118200CFCD3B /* EventModel.swift */,
 				6CF92F231B1C958D0001EAF1 /* Message.swift */,
 				6C2041A21B1D0EF700D5D198 /* Settings.swift */,
 				6C5910E71B1481A200CA4F83 /* Category.swift */,
@@ -300,9 +303,9 @@
 				6C5910E41B147F4100CA4F83 /* Event.swift in Sources */,
 				6CF92F2C1B1CA9330001EAF1 /* ChatroomTableCell.swift in Sources */,
 				6CF92F281B1C9C3F0001EAF1 /* ChatViewController.swift in Sources */,
+				A07B01AB1B21118200CFCD3B /* EventModel.swift in Sources */,
 				6CA783D61B19D3B3008DF4D9 /* MyEventsController.swift in Sources */,
 				6CA783D81B19DBB7008DF4D9 /* EventDetailController.swift in Sources */,
-				6C2041A71B1D0EF700D5D198 /* User Data Model.xcdatamodeld in Sources */,
 				6C2041A51B1D0EF700D5D198 /* EventService.swift in Sources */,
 				6CF92F2A1B1CA8A10001EAF1 /* ChatroomTableController.swift in Sources */,
 				6C2041A61B1D0EF700D5D198 /* Settings.swift in Sources */,
@@ -320,6 +323,7 @@
 				6C2456161B0B6FCC005DB245 /* AppDelegate.swift in Sources */,
 				6CA1B81E1B2085A900D13729 /* HomeScreenController.swift in Sources */,
 				6C5910E81B1481A200CA4F83 /* Category.swift in Sources */,
+				A09EAE9E1B1F53BA00D8BE93 /* EventModel.xcdatamodeld in Sources */,
 				6CF92F301B1CB2240001EAF1 /* CategoryCell.swift in Sources */,
 				6CF92F341B1CBE2E0001EAF1 /* ManageSubscriptionController.swift in Sources */,
 			);
@@ -533,13 +537,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6C2041A31B1D0EF700D5D198 /* User Data Model.xcdatamodeld */ = {
+		A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				6C2041A41B1D0EF700D5D198 /* User Data Model.xcdatamodel */,
+				A09EAE9D1B1F53BA00D8BE93 /* EventModel.xcdatamodel */,
 			);
-			currentVersion = 6C2041A41B1D0EF700D5D198 /* User Data Model.xcdatamodel */;
-			path = "User Data Model.xcdatamodeld";
+			currentVersion = A09EAE9D1B1F53BA00D8BE93 /* EventModel.xcdatamodel */;
+			path = EventModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

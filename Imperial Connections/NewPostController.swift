@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -38,11 +39,16 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
+        clear()
+    }
+    
+    func clear() {
         TitleField.text = ""
         DescriptionField.text = ""
     }
     
-    @IBAction func SubmitButtonPress(sender: UIButton) {
+    
+    @IBAction func SubmitButtonPress() {
         /*  TODO:
           pop up a box asking for confirmation
         */
@@ -50,7 +56,27 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:CategorySelected)
         /*  TODO:
         
-        */
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        
+        var ent = NSEntityDescription.entityForName("EventModel", inManagedObjectContext: context!)
+        
+        // Create entity for the core data model.
+        var event = EventModel(entity: ent!, insertIntoManagedObjectContext: context)
+        
+        event.title = newEvent.title
+        event.eventID = "\(newEvent.eventID)"
+        event.descriptions = newEvent.description
+        event.date = newEvent.date
+        event.owner = newEvent.owner.login
+        event.category = newEvent.category.rawValue
+        
+        context!.save(nil)
+        
+        println(event)
+        println("Object saved!")
+        
+        clear()
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
@@ -83,13 +109,5 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     */
 
-    
-    func upload() {
-        var url: NSString = setting.uploadurl + "?event_id=\(newEvent.eventID)&owner=\(newEvent.owner.login)&title=\(newEvent.title)&category=\(newEvent.category.rawValue)&description=\(newEvent.description)"
-        url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
-        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
-        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
-        var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
-    }
     
 }
