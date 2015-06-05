@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 HJK Webapps. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
-class Events: NSManagedObject {
+// Custome core data object
+class EventModel: NSManagedObject {
 
     @NSManaged var category: String
     @NSManaged var date: String
@@ -18,17 +19,5 @@ class Events: NSManagedObject {
     @NSManaged var owner: String
     @NSManaged var title: String
     
-    class func createInManageObjectContext(moc: NSManagedObjectContext, event: Event) -> Events {
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Model", inManagedObjectContext: moc) as! Events
-        
-        newItem.category = event.category.rawValue
-        newItem.date = event.date
-        newItem.descriptions = event.description
-        newItem.eventID = "\(event.eventID)"
-        newItem.owner = event.owner.login
-        newItem.title = event.title
-        
-        return newItem
-    }
 
 }

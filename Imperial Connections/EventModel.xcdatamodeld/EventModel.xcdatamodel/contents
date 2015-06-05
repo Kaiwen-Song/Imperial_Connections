@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E26a" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Events" representedClassName="PRODUCT_MODULE_NAME.Events" syncable="YES">
+    <entity name="EventModel" representedClassName="PRODUCT_MODULE_NAME.Events" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,6 +9,6 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Events" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="EventModel" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

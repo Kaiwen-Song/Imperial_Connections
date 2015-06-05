@@ -985,9 +985,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="72" y="20" width="537" height="780"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="hHB-qe-15Y" id="EQG-p5-Kue"/>
                                     <outlet property="delegate" destination="hHB-qe-15Y" id="ESD-J3-7gZ"/>
@@ -995,16 +992,34 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PBQ-U3-9o9" firstAttribute="bottom" secondItem="VEU-Y7-zcV" secondAttribute="bottomMargin" id="KD0-z6-Otr"/>
+                            <constraint firstItem="PBQ-U3-9o9" firstAttribute="leading" secondItem="VEU-Y7-zcV" secondAttribute="leadingMargin" constant="56" id="k4z-8I-QaH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PBQ-U3-9o9" secondAttribute="trailing" constant="-25" id="oSI-s5-bNh"/>
+                            <constraint firstItem="PBQ-U3-9o9" firstAttribute="top" secondItem="YWJ-iJ-VeS" secondAttribute="bottom" id="rjK-59-vA7"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="2d5-3H-85U"/>
                                 <exclude reference="PBQ-U3-9o9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="KD0-z6-Otr"/>
+                                <exclude reference="k4z-8I-QaH"/>
+                                <exclude reference="oSI-s5-bNh"/>
+                                <exclude reference="rjK-59-vA7"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="2d5-3H-85U"/>
                                 <include reference="PBQ-U3-9o9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="KD0-z6-Otr"/>
+                                <include reference="k4z-8I-QaH"/>
+                                <include reference="oSI-s5-bNh"/>
+                                <include reference="rjK-59-vA7"/>
                             </mask>
                         </variation>
                     </view>
@@ -1250,7 +1265,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VIQ-UP-eJw"/>
+        <segue reference="aag-77-kc9"/>
         <segue reference="yvD-mG-D7S"/>
     </inferredMetricsTieBreakers>
 </document>

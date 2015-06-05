@@ -62,13 +62,18 @@ class NewPostController: UIViewController {
         
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
-        var event = NSEntityDescription.insertNewObjectForEntityForName("Events", inManagedObjectContext: context!) as! NSManagedObjectContext
-        //event.setValue(newEvent.eventID, forKey: "eventID")
-        event.setValue(newEvent.owner.login, forKey: "owner")
-        event.setValue(newEvent.title, forKey: "title")
-        event.setValue(newEvent.category.rawValue, forKey: "category")
-        event.setValue(newEvent.date, forKey: "date")
-        event.setValue(newEvent.description, forKey: "descriptions")
+        
+        var ent = NSEntityDescription.entityForName("EventModel", inManagedObjectContext: context!)
+        
+        // Create entity for the core data model.
+        var event = EventModel(entity: ent!, insertIntoManagedObjectContext: context)
+        
+        event.title = newEvent.title
+        event.eventID = "\(newEvent.eventID)"
+        event.descriptions = newEvent.description
+        event.date = newEvent.date
+        event.owner = newEvent.owner.login
+        event.category = newEvent.category.rawValue
         
         context!.save(nil)
         
