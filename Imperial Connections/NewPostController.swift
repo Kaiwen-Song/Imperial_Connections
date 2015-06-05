@@ -58,8 +58,11 @@ class NewPostController: UIViewController {
         var user:User = User(login: "Hannah")
         var eventID:Int = 3
         //let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
+        // Upload to database
         eventService.upload(newEvent)
         
+        
+        // Storing with core data
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
         
@@ -67,7 +70,6 @@ class NewPostController: UIViewController {
         
         // Create entity for the core data model.
         var event = EventModel(entity: ent!, insertIntoManagedObjectContext: context)
-        
         event.title = newEvent.title
         event.eventID = "\(newEvent.eventID)"
         event.descriptions = newEvent.description

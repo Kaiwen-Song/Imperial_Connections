@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MyEventsController: UICollectionViewController {
 
@@ -29,17 +30,24 @@ class MyEventsController: UICollectionViewController {
         //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
-        service = EventService()
         /*service.getEvent {
             (response) in
             self.load(response["events"]! as! NSArray)
         }*/
-        service = EventService()
-        load(service.getEvent())
+        
+        
+        // Functions loading from database
+        //service = EventService()
+        //load(service.getEvent())
+        
+        // Functions loading from Core Data
+        loadFromCoreData()
         
         /*  TODO:
         load initial user events from coredata 
         */
+        
+        
         
     }
 
@@ -48,6 +56,24 @@ class MyEventsController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Function doing initial loading from existing core data rather than fetching from network database
+    func loadFromCoreData() {
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "EventModel")
+        request.returnsObjectsAsFaults = false;
+        
+        var results: NSArray = context.executeFetchRequest(request, error: nil)!
+        
+        for result in results {
+            var res = result as! EventModel
+            var event = Event(eventID: res.eventID.toInt()!, owner: User(login: res.owner), title: res.title, description: res.descriptions, category: Category(rawValue: res.category)!)
+            events.append(event)
+        }
+    }
+    
+    //Parsing the fetched json data from url and append them to the list of events to be shown on collection view
     func load(eventss: NSArray) {
         for event in eventss {
             var id = (event["event_id"]! as! String).toInt()!

@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 // Custome core data object
+@objc(EventModel)
 class EventModel: NSManagedObject {
 
     @NSManaged var category: String
