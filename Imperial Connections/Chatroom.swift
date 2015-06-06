@@ -13,9 +13,12 @@ public class Chatroom{
     let sender:User
     let owner:User
     let event:Event
-    init(event:Event, sender:User, owner:User){
+    let chatroomID:Int
+    
+    init(event:Event, sender:User, owner:User, chatroomID:Int){
         self.event = event
         self.owner = owner
         self.sender = sender
+        self.chatroomID = chatroomID
     }
 }

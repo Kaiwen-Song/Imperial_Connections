@@ -38,7 +38,7 @@ class EventDetailController: UIViewController {
         TitleLabel.text = event.title
         DescriptionLabel.text = event.description
         CategoryLabel.text = event.category.rawValue
-        if(event.owner === user){
+        if(event.owner.login == user.login){
             WatchButton.hidden = true
             Message.hidden = true
         } else {

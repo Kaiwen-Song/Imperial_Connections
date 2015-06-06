@@ -15,6 +15,7 @@
 		6C24561F1B0B6FCC005DB245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C24561E1B0B6FCC005DB245 /* Images.xcassets */; };
 		6C2456221B0B6FCC005DB245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */; };
 		6C24562E1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C24562D1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift */; };
+		6C25AEFB1B23528300B1554C /* BackendServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C25AEFA1B23528300B1554C /* BackendServices.swift */; };
 		6C4C98A91B16276B00CBA12E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C98A81B16276B00CBA12E /* EventCell.swift */; };
 		6C569EF01B1907960052CF75 /* EventCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C569EEF1B1907960052CF75 /* EventCollectionController.swift */; };
 		6C5910E21B147DCF00CA4F83 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5910E11B147DCF00CA4F83 /* User.swift */; };
@@ -65,6 +66,7 @@
 		6C2456271B0B6FCC005DB245 /* Imperial ConnectionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Imperial ConnectionsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C24562C1B0B6FCC005DB245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C24562D1B0B6FCC005DB245 /* Imperial_ConnectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imperial_ConnectionsTests.swift; sourceTree = "<group>"; };
+		6C25AEFA1B23528300B1554C /* BackendServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendServices.swift; sourceTree = "<group>"; };
 		6C4C98A81B16276B00CBA12E /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		6C569EEF1B1907960052CF75 /* EventCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionController.swift; sourceTree = "<group>"; };
 		6C5910E11B147DCF00CA4F83 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				A07B01AA1B21118200CFCD3B /* EventModel.swift */,
 				6CF92F231B1C958D0001EAF1 /* Message.swift */,
 				6C2041A21B1D0EF700D5D198 /* Settings.swift */,
+				6C25AEFA1B23528300B1554C /* BackendServices.swift */,
 				6C5910E71B1481A200CA4F83 /* Category.swift */,
 				6C2041A11B1D0EF700D5D198 /* EventService.swift */,
 				6CF92F251B1C962D0001EAF1 /* Chatroom.swift */,
@@ -250,6 +253,11 @@
 				TargetAttributes = {
 					6C24560F1B0B6FCB005DB245 = {
 						CreatedOnToolsVersion = 6.3.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					6C2456261B0B6FCC005DB245 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -305,6 +313,7 @@
 				6C742B671B11F81700441707 /* HubController.swift in Sources */,
 				6C5910E41B147F4100CA4F83 /* Event.swift in Sources */,
 				6CF92F2C1B1CA9330001EAF1 /* ChatroomTableCell.swift in Sources */,
+				6C25AEFB1B23528300B1554C /* BackendServices.swift in Sources */,
 				6CF92F281B1C9C3F0001EAF1 /* ChatViewController.swift in Sources */,
 				A07B01AB1B21118200CFCD3B /* EventModel.swift in Sources */,
 				6CA783D61B19D3B3008DF4D9 /* MyEventsController.swift in Sources */,
