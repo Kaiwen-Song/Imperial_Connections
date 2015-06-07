@@ -16,8 +16,6 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     @IBOutlet weak var DescriptionField: UITextField!
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
-    var newEvent : Event = Event(eventID: 3, owner: User(login: "hannah"), title: "HI", description: "I like Webapp", category: Category.Recommended)
-    var setting: Settings = Settings()
     var user:User!
     
     var data = Category.allCategories
@@ -52,21 +50,19 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
-        var user:User = User(login: "Hannah")
-        var eventID:Int = 3
-        //let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.Recommended)
+        var eventID:Int = 6
+        let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories[
+            picker.selectedRowInComponent(0)])
         // Upload to database
-        var eventService = EventService()
-        eventService.upload(newEvent)
-        
+
+        BackendServices.SingleInstance.post_event(newEvent)
         
         // Storing with core data
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         var coreDataService = EventCoreDataService()
         coreDataService.saveEvent(context)
-        
-        
+    
         clear()
     }
 
