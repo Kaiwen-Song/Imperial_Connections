@@ -20,7 +20,7 @@ class EventService {
     }
     
     func getEvent () -> [Event] {
-        return request(setting.fetchurl)
+        return request(setting.queryalleventsurl)
     }
     
     func request (url:String) -> [Event]{
@@ -48,12 +48,13 @@ class EventService {
     
     //Parsing the fetched json data from url and append them to the list of events to be shown on collection view
     func parsingJSON(eventss: NSArray) -> [Event]{
-        events.removeAll(keepCapacity: false)
+        //events.removeAll(keepCapacity: false)
+        var events = [Event]()
         for event in eventss {
             var id = (event["event_id"]! as! String).toInt()!
             var owner = event["owner"]! as! String
             var title = event["title"]! as! String
-            var cate = event["catagories"] as! String
+            var cate = event["categories"] as! String
             var category = Category(rawValue: cate)
             var description = event["content"] as! String
             var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: Category.Recommended)
