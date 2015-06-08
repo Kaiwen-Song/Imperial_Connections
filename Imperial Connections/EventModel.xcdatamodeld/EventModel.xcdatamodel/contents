@@ -8,7 +8,12 @@
         <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="EventModel" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="User" positionX="-63" positionY="27" width="128" height="75"/>
     </elements>
 </model>

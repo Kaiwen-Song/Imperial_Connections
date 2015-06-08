@@ -12,6 +12,8 @@ import UIKit
 class LoginScreen: UIViewController {
 
     @IBOutlet weak var LoginField: UITextField!
+    @IBOutlet weak var Password: UITextField!
+    var successLogIn : Bool = true
     
     
     override func viewDidLoad() {
@@ -26,6 +28,20 @@ class LoginScreen: UIViewController {
     }
     
 
+    @IBAction func logOnButton(sender: AnyObject) {
+        // Check login details with database 
+        // If successful then goto tab screen, if not pop up error message
+        let backend = BackendServices()
+        successLogIn = backend.get_user("Jeffrey", password: "111111")
+        if successLogIn {
+            self.performSegueWithIdentifier("ToTabScreen", sender: self)
+        } else {
+            var alert = UIAlertController(title: "Log On Error", message: "Please check your log in details or your internet connection", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+    }
     
     // MARK: - Navigation
 

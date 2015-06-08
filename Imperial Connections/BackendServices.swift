@@ -10,15 +10,15 @@ import Foundation
 
 class BackendServices{
     
-    var setting = Settings()
+    let setting = Settings()
     
-    private let backend = BackendServices()
+    //private let backend = BackendServices()
     
     
     //returns the singleton instance, used as the entry point to the service
-    func getInstance()->BackendServices{
+    /*func getInstance()->BackendServices{
         return backend
-    }
+    }*/
     
     //returns an array of events that the user is watching
     func watched_events_for_user(user:User)->[Event]{
@@ -80,7 +80,20 @@ class BackendServices{
         
     }
     
+    func get_user(id: String, password: String) -> Bool {
+        
+        var url: NSString = setting.loginurl + "?username=\(id)&password=\(password)"
+        url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
+        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        var result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+        if (result == "success") {
+            return true
+        } else {
+            return false
+        }
 
+    }
     
     
     

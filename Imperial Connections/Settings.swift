@@ -12,4 +12,5 @@ class Settings{
     
     var fetchurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/webservice.php"
     var uploadurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/webquery.php"
+    var loginurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/login.php"
 }
