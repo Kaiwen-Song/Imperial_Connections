@@ -9,7 +9,7 @@
     //$content = file_get_contents($url);
     //$json = json_decode($content, true);
     
-    $query = "INSERT INTO my_events VALUES ('" . $_GET['u_id'] . "', " . $_GET['event_id'] . ");";
+    $query = "INSERT INTO my_events VALUES ('" . $_GET['u_id'] . "', '" . $_GET['event_id'] . ");";
     echo $query;
     
     $link = pg_connect($connection);

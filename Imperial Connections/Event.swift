@@ -30,6 +30,14 @@ public class Event{
         println(date)
     }
  
+    init(owner:User, title:String, description:String, category:Category){
+        self.eventID = BackendServices.SingleInstance.get_event_ID()
+        self.owner = owner
+        self.title = title
+        self.description = description
+        self.category = category
+        self.date = NSDateFormatter().stringFromDate(NSDate())
+    }
     
     func getID()->Int{
       return eventID

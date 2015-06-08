@@ -10,8 +10,15 @@ import Foundation
 
 class BackendServices{
     
-    let setting = Settings()
+    var setting = Settings()
+    //returns the singleton instance, used as the entry point to the service
     
+    class var SingleInstance:BackendServices{
+        struct Singleton {
+            static let instance = BackendServices()
+        }
+        return Singleton.instance
+    }
     //private let backend = BackendServices()
     
     
@@ -65,10 +72,19 @@ class BackendServices{
     func post_event(event:Event){
         var url: NSString = setting.uploadurl + "?event_id=\(event.eventID)&owner=\(event.owner.login)&title=\(event.title)&category=\(event.category.rawValue)&description=\(event.description)"
         upload(url)
-        add_to_my_events(event.owner, event: event)
+        add_to_my_events(event)
+        println("Here")
     }
     
+    func get_event_ID() -> Int{
+        return 0
+    }
     
+    //saves the event to the list of events that the user has posted
+    private func add_to_my_events(event:Event){
+        var url:NSString = setting.savetomyeventsurl + "?u_id=\(event.owner.login)&event_id=\(event.eventID)"
+        upload(url)
+    }
     
     //removes the event from the events, watched_events and my events table
     func remove_event(event:Event){
@@ -93,13 +109,7 @@ class BackendServices{
     
     //add the event to the list of events the user is currently watching
     func add_to_watched_events(user:User, event:Event){
-        var url:NSString = setting.savewatcheventurl + "?event_id =\(event.eventID)&u_id=\(user.login)"
-        upload(url)
-    }
-
-    //saves the event to the list of events that the user has posted
-    private func add_to_my_events(user:User, event:Event){
-        var url:NSString = setting.savetomyeventsurl + "?event_id =\(event.eventID)&u_id=\(user.login)"
+        var url:NSString = setting.savewatcheventurl + "?u_id=\(user.login)&event_id=\(event.eventID)"
         upload(url)
     }
     
@@ -109,6 +119,13 @@ class BackendServices{
         
     }
     
+    private func upload(input:NSString) {
+        var url:NSString = input.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
+        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
+    }
+        
     func get_user(id: String, password: String) -> Bool {
         
         var url: NSString = setting.loginurl + "?username=\(id)&password=\(password)"
@@ -116,13 +133,45 @@ class BackendServices{
         url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
         var data = NSData(contentsOfURL: NSURL(string: url as String)!)
         var result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
-        if (result == "success") {
+        if (result == "Success") {
             return true
         } else {
             return false
         }
-
     }
+    
+    private func parseJSONforEvents(eventss: NSArray) -> [Event]{
+        //events.removeAll(keepCapacity: false)
+        var events = [Event]()
+        for event in eventss {
+            var id = (event["event_id"]! as! String).toInt()!
+            var owner = event["owner"]! as! String
+            var title = event["title"]! as! String
+            var cate = event["categories"] as! String
+            var category = Category(rawValue: cate)
+            var description = event["content"] as! String
+            var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: category!)
+            events.append(event)
+        }
+        return events
+    }
+
+    /*
+    private func request (url:String) -> [Event]{
+        var nsURL = NSURL(string: url)
+        var data = NSData(contentsOfURL: NSURL(string: url)!)
+        //println(callback)
+        /*let task = NSURLSession.sharedSession().dataTaskWithURL(nsURL!) {
+        (data,response,error) in
+        var error:NSError?
+        var response = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+        callback(response)
+        }*/
+        //task.resume()
+        return parsingJSON(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray)
+    }
+    */
+    
     
     
     

@@ -32,7 +32,7 @@ class LoginScreen: UIViewController {
         // Check login details with database 
         // If successful then goto tab screen, if not pop up error message
         let backend = BackendServices()
-        successLogIn = backend.get_user("Jeffrey", password: "111111")
+        successLogIn = backend.get_user("Jeffrey", password: "11111")
         if successLogIn {
             self.performSegueWithIdentifier("ToTabScreen", sender: self)
         } else {

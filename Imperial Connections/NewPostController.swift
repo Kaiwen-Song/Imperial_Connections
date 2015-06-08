@@ -50,7 +50,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
-        var eventID:Int = 6
+        var eventID:Int = 9
         let newEvent = Event(eventID: eventID, owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories[
             picker.selectedRowInComponent(0)])
         // Upload to database
@@ -58,6 +58,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         BackendServices.SingleInstance.post_event(newEvent)
         
         // Storing with core data
+        
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         var coreDataService = EventCoreDataService()

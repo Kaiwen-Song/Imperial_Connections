@@ -103,7 +103,7 @@ class ChatroomTableController: UITableViewController {
             let chatroom = event.chatrooms[user.login]
             dst.chatroom = chatroom
         } else {
-            event.chatrooms[user.login] = Chatroom(event: self.event, sender: self.user, owner: event.owner, chatroomID: 1)
+            //event.chatrooms[user.login] = Chatroom(event: self.event, sender: self.user, owner: event.owner,chatroomID:1)
         }
         
     }
