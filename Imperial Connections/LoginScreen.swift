@@ -66,6 +66,7 @@ class LoginScreen: UIViewController {
         // Check login details with database 
         // If successful then goto tab screen, if not pop up error message
         let backend = BackendServices()
+        // successLogIn = backend.get_user(LoginField.text!, password: Password.text) HACKED
         successLogIn = backend.get_user("Jeffrey", password: "11111")
         if successLogIn {
             self.performSegueWithIdentifier("ToTabScreen", sender: self)
@@ -83,7 +84,8 @@ class LoginScreen: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let user = User(login:LoginField.text)
+        //let user = User(login:LoginField.text) HACKED
+        let user = User(login:"Jeffrey")
         let dst = segue.destinationViewController as! HomeScreenController
         dst.user = user
         // Get the new view controller using segue.destinationViewController.

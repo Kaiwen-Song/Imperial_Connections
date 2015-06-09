@@ -11,11 +11,11 @@ import CoreData
 
 public class Event{
     
-    var eventID:Int
-    var description:String
-    var title:String
-    var category:Category
-    var owner:User
+    var eventID:Int!
+    let description:String
+    let title:String
+    let category:Category
+    let owner:User
     var chatrooms = [String:Chatroom]()
     var date:String
     
@@ -31,7 +31,6 @@ public class Event{
     }
  
     init(owner:User, title:String, description:String, category:Category){
-        self.eventID = BackendServices.SingleInstance.get_event_ID()
         self.owner = owner
         self.title = title
         self.description = description
@@ -39,8 +38,14 @@ public class Event{
         self.date = NSDateFormatter().stringFromDate(NSDate())
     }
     
-    func getID()->Int{
-      return eventID
+    func get_event_ID() -> Int{
+        var url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createEventID.php"
+        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        var result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+        let resultint = result.stringByReplacingOccurrencesOfString("\n", withString:"").toInt()!
+        eventID = resultint
+        return resultint
     }
+    
     
 }

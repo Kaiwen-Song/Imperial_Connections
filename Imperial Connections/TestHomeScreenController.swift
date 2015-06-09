@@ -11,10 +11,14 @@ import UIKit
 class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var CategoryList: UITableView!
     @IBOutlet weak var EventCollection: UICollectionView!
-    
-    var subscriptions:[Category] = [Category.Recommended, Category.Tech]
-    var events:[Event] = [Event(eventID: 1, owner: User(login: "Jeff"), title: "test", description: "test", category: Category.Recommended)]
     var user:User!
+    let backend = BackendServices.SingleInstance
+    
+    var subscriptions:[Category] = [Category]()
+    //var categoryCell: [CategoryCell] = [CategoryCell]()
+    var events: [Event] = [Event]()
+    var index: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,9 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         CategoryList.delegate = self
         EventCollection.dataSource = self
         EventCollection.delegate = self
+        
+        subscriptions = backend.user_subscriptions(user)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -36,6 +43,8 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
         println(cell.category.rawValue)
+        //categoryCell.append(cell)
+        events = cell.events
         return cell
     }
     
@@ -52,6 +61,11 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         /*  TODO:
         retrieves the new list of events to display
         */
+        var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
+        cell.setCategory(subscriptions[indexPath.row])
+        println(cell.category.rawValue)
+        //categoryCell.append(cell)
+        events = cell.events
         EventCollection.reloadData()
     }
     

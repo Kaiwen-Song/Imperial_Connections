@@ -658,6 +658,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="RemoveButtonClicked:" destination="GhE-2C-cYZ" eventType="touchUpInside" id="gB8-BC-WLR"/>
+                                    <segue destination="mfW-Eo-NRU" kind="unwind" unwindAction="unwindToSegue:" id="rVM-E3-hwO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-ZA-oGg">
@@ -1293,7 +1294,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VIQ-UP-eJw"/>
+        <segue reference="aag-77-kc9"/>
         <segue reference="yvD-mG-D7S"/>
     </inferredMetricsTieBreakers>
 </document>

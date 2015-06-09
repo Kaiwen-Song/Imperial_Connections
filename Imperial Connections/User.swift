@@ -31,16 +31,16 @@ public class User{
     
     
     func removePostedEvent(event:Event){
-        posted_events.removeValueForKey(event.getID())
+       // posted_events.removeValueForKey(event.getID())
         // posted_events[event.getID()] = nil
     }
     
     func removeWatchedEvent(event:Event){
-        watched_events.removeValueForKey(event.getID())
+       // watched_events.removeValueForKey(event.getID())
     }
     
     func watchEvent(event:Event){
-        watched_events[event.getID()] = event
+       // watched_events[event.getID()] = event
     }
     
     
