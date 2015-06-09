@@ -86,6 +86,7 @@ class EventDetailController: UIViewController {
       /*  TODO:
       goes to server and removes the event
       */
+        BackendServices.SingleInstance.remove_event(event)
     }
     
     @IBAction func WatchButtonclicked(sender: UIButton) {

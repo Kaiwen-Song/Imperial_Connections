@@ -27,6 +27,13 @@ class BackendServices{
         return backend
     }*/
     
+    func get_category_event(category: Category) -> [Event] {
+        var url = setting.categorieseventsurl + "?categories=\(category.rawValue)"
+        var nsURL = NSURL(string: url)
+        var data = NSData(contentsOfURL: NSURL(string: url)!)
+        return parseJSONforEvents(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray)
+    }
+    
     //returns an array of events that the user is watching
     func watched_events_for_user(user:User)->[Event]{
         var url = setting.getwatcheventsurl + "?u_id=\(user.login)"
@@ -52,7 +59,8 @@ class BackendServices{
         var array = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
         var result = [Category]()
         for item in array{
-            var category = Category(rawValue: (item["category"] as! String))
+            var cate = (item["category"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var category = Category(rawValue: cate)
             result.append(category!)
         }
         return result
@@ -70,19 +78,10 @@ class BackendServices{
     
     //posts the event to the database, owner of the event is accessed through the event object
     func post_event(event:Event){
+        if (event.eventID == nil) {
+            event.get_event_ID()
+        }
         var url: NSString = setting.uploadurl + "?event_id=\(event.eventID)&owner=\(event.owner.login)&title=\(event.title)&category=\(event.category.rawValue)&description=\(event.description)"
-        upload(url)
-        add_to_my_events(event)
-        println("Here")
-    }
-    
-    func get_event_ID() -> Int{
-        return 0
-    }
-    
-    //saves the event to the list of events that the user has posted
-    private func add_to_my_events(event:Event){
-        var url:NSString = setting.savetomyeventsurl + "?u_id=\(event.owner.login)&event_id=\(event.eventID)"
         upload(url)
     }
     
@@ -96,11 +95,7 @@ class BackendServices{
         var url:NSString = setting.removefromwatchedeventurl + "?u_id=\(user.login)&event_id=\(event.eventID)"
         upload(url)
     }
-    
-    private func remove_from_my_events(user:User, event:Event){
-        
-    }
-    
+
     //sends a message to the chatroom, sender accessed throught the message object
     func send_message(message:Message, chatroom:Chatroom){
       
@@ -119,11 +114,12 @@ class BackendServices{
         
     }
     
-    private func upload(input:NSString) {
+    private func upload(input:NSString)->String{
         var url:NSString = input.stringByReplacingOccurrencesOfString(" ", withString: "%20")
         url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
         var data = NSData(contentsOfURL: NSURL(string: url as String)!)
         var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        return result as! String
     }
         
     func get_user(id: String, password: String) -> Bool {
@@ -142,14 +138,17 @@ class BackendServices{
     
     private func parseJSONforEvents(eventss: NSArray) -> [Event]{
         //events.removeAll(keepCapacity: false)
+      /*  if (eventss == nil) {
+            return [Event]()
+        }*/
         var events = [Event]()
         for event in eventss {
             var id = (event["event_id"]! as! String).toInt()!
-            var owner = event["owner"]! as! String
-            var title = event["title"]! as! String
-            var cate = event["categories"] as! String
+            var owner = (event["owner"]! as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var title = (event["title"]! as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            var cate = (event["categories"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             var category = Category(rawValue: cate)
-            var description = event["content"] as! String
+            var description = (event["content"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: category!)
             events.append(event)
         }

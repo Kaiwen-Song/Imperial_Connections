@@ -11,10 +11,10 @@ import CoreData
 
 class EventCoreDataService {
     
-    var newEvent : Event = Event(eventID: 3, owner: User(login: "hannah"), title: "HI", description: "I like Webapp", category: Category.Recommended)
+    
     var events = [Event]()
     
-    func saveEvent(context: NSManagedObjectContext) {
+    func saveEvent(context: NSManagedObjectContext, newEvent: Event) {
         var ent = NSEntityDescription.entityForName("EventModel", inManagedObjectContext: context)
         
         // Create entity for the core data model.

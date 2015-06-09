@@ -12,6 +12,7 @@ class CategoryCell: UITableViewCell {
 
     @IBOutlet weak var CategoryLabel: UILabel!
     var category:Category!
+    var events: [Event] = [Event]()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
@@ -20,7 +21,13 @@ class CategoryCell: UITableViewCell {
     func setCategory(category:Category){
         self.category = category
         CategoryLabel.text = category.rawValue
-        //retrieve image data from database
+        
+        // Retrieve certain category events
+        let backend = BackendServices.SingleInstance
+        events = backend.get_category_event(category)
+        
+        // TODO: retrieve image data from database
+        
     }
     
     override func awakeFromNib() {

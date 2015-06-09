@@ -14,12 +14,12 @@ class MyEventsController: UICollectionViewController {
     @IBOutlet weak var SegControl: UISegmentedControl!
     
     var user:User!
-    var events = [Event]()
-    var service: EventService!
+    var events:[Event]!
     var eventCoreDataService = EventCoreDataService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        events = BackendServices.SingleInstance.posted_events_for_user(user)
         println(user.login)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,14 +42,20 @@ class MyEventsController: UICollectionViewController {
         // events = events + service.getEvent()
         
         // Functions loading from Core Data
-        loadFromCoreData()
+        //loadFromCoreData()
         
         /*  TODO:
         load initial user events from coredata 
         */
         
+        self.collectionView?.reloadData()
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,8 +144,10 @@ class MyEventsController: UICollectionViewController {
     */
     @IBAction func SegClicked(sender: UISegmentedControl) {
         switch SegControl.selectedSegmentIndex{
-        case 0: println ("my events selcted")//events = user.posted_events.values.array
-        case 1: println ("watched events selected")//events = user.watched_events.values.array
+        case 0: events = BackendServices.SingleInstance.posted_events_for_user(user);
+            self.collectionView?.reloadData()
+        case 1: events = BackendServices.SingleInstance.watched_events_for_user(user);
+            self.collectionView?.reloadData()
         default:break
         }
         self.collectionView?.reloadData()

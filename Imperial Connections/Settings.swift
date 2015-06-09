@@ -23,4 +23,6 @@ class Settings{
     var sendmessageurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/sendmessage.php"
     var uploadurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/uploadevent.php"
     var loginurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/login.php"
+    var createeventidurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createEventID.php"
+    var categorieseventsurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/getcategoriesevents.php"
 }
