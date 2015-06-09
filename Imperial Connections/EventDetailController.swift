@@ -72,7 +72,9 @@ class EventDetailController: UIViewController {
             if(event.chatrooms[user.login] != nil) {
                 dst.chatroom = event.chatrooms[user.login]
             } else {
-                dst.chatroom = Chatroom(event: event, sender: user, owner: event.owner, chatroomID: 1, title: "hi")
+                var newchatroom = Chatroom(event: event, sender: user, title: "hi")
+                BackendServices.SingleInstance.create_new_chatroom(event, sender: user, chatroom: newchatroom)
+                dst.chatroom = newchatroom
             }
             
         } else if (segue.identifier == "ToChatrooms") {

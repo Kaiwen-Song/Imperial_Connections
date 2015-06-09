@@ -133,31 +133,31 @@
 		6C2456121B0B6FCC005DB245 /* Imperial Connections */ = {
 			isa = PBXGroup;
 			children = (
-				6C5D7A0A1B1DE0A000C2C26E /* ClassFiles */,
 				6C2456151B0B6FCC005DB245 /* AppDelegate.swift */,
 				6C2041A81B1D0F0700D5D198 /* backend */,
 				6CF92F2F1B1CB2240001EAF1 /* CategoryCell.swift */,
 				6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */,
+				6CF92F2B1B1CA9330001EAF1 /* ChatroomTableCell.swift */,
+				6CF92F291B1CA8A10001EAF1 /* ChatroomTableController.swift */,
 				6CF92F271B1C9C3F0001EAF1 /* ChatViewController.swift */,
+				6C5D7A0A1B1DE0A000C2C26E /* ClassFiles */,
 				6C4C98A81B16276B00CBA12E /* EventCell.swift */,
 				6C569EEF1B1907960052CF75 /* EventCollectionController.swift */,
 				6CA783D71B19DBB7008DF4D9 /* EventDetailController.swift */,
+				A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */,
+				6CA1B81D1B2085A900D13729 /* HomeScreenController.swift */,
 				6C742B661B11F81700441707 /* HubController.swift */,
 				6C24561E1B0B6FCC005DB245 /* Images.xcassets */,
 				6C2456201B0B6FCC005DB245 /* LaunchScreen.xib */,
-				6C24561B1B0B6FCC005DB245 /* Main.storyboard */,
 				6CA1B81F1B2085D700D13729 /* LoginScreen.swift */,
-				6CA1B81D1B2085A900D13729 /* HomeScreenController.swift */,
+				6C24561B1B0B6FCC005DB245 /* Main.storyboard */,
 				6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */,
 				6C5D7A081B1DDFA700C2C26E /* MessageCell.swift */,
-				A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */,
-				6CF92F2B1B1CA9330001EAF1 /* ChatroomTableCell.swift */,
-				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
-				6CF92F291B1CA8A10001EAF1 /* ChatroomTableController.swift */,
 				6CA783D51B19D3B3008DF4D9 /* MyEventsController.swift */,
 				6CDF395A1B136B7F001CDF13 /* NewPostController.swift */,
 				6CDF395C1B138BD2001CDF13 /* SettingsController.swift */,
 				6C2456131B0B6FCC005DB245 /* Supporting Files */,
+				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
 			);
 			path = "Imperial Connections";
 			sourceTree = "<group>";

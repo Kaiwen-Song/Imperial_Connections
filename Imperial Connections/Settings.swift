@@ -9,6 +9,7 @@
 import Foundation
 
 class Settings{
+    static var server_address = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/"
     var getchatroomsurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/getchatrooms.php"
     var getmessagesurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/getmessages.php"
     var getpostedeventsulr = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/getpostedevents.php"
@@ -25,4 +26,5 @@ class Settings{
     var loginurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/login.php"
     var createeventidurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createEventID.php"
     var categorieseventsurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/getcategoriesevents.php"
+    var createChatroomID = server_address + "createChatroomID.php"
 }

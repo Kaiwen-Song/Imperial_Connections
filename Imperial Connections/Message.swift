@@ -11,13 +11,13 @@ public class Message{
     
     let message:String
     let user:User
-    let date:NSDate
+    let date:String
     let messageID:Int
     
-    init(message:String, user:User, messageID:Int){
+    init(message:String, user:User, messageID:Int, date: String){
         self.message = message
         self.user = user
-        self.date = NSDate()
+        self.date = date
         self.messageID = messageID
     }
     

@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-    $query = "SELECT DISTINCT category FROM subscriptions, users WHERE users.id = u_id AND username = '".$_GET['u_id']."'";
+    $query = "SELECT DISTINCT category FROM subscriptions WHERE u_id = '".$_GET['u_id']."'";
     
     $connectString = 'host=db.doc.ic.ac.uk dbname=g1427123_u user=g1427123_u password=1by9jrkgJO';
     $link = pg_connect($connectString);

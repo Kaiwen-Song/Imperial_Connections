@@ -67,7 +67,7 @@ class BackendServices{
     
     //returns an array of messages that are within the specified chatroom
     func get_messages(chatroom:Chatroom) -> [Message]{
-        return [Message]()
+        return parseJSONforMessages(chatroom.chatroomID)
     }
     
     //posts the event to the database, owner of the event is accessed through the event object
@@ -92,7 +92,9 @@ class BackendServices{
 
     //sends a message to the chatroom, sender accessed throught the message object
     func send_message(message:Message, chatroom:Chatroom){
-      
+        var url:NSString = setting.sendmessageurl + "?chatroom_id=\(chatroom.chatroomID)&message_id=\(message.messageID)&sender_id=\(message.user.login)&message_content=\(message.message)"
+        println(url)
+        upload(url)
     }
     
     
@@ -104,8 +106,12 @@ class BackendServices{
     
     
     //saves a new chatroom under the event in the database
-    func create_new_chatroom(event:Event, chatroom:Chatroom){
-        
+    func create_new_chatroom(event:Event, sender:User, chatroom:Chatroom){
+        if(chatroom.chatroomID == nil){
+            chatroom.get_chatroom_ID()
+        }
+        var url:NSString = setting.newchatroomurl + "?event_id=\(event.eventID)&event_owner_id=\(event.owner.login)&sender_id=\(sender.login)&chatroom_id=\(chatroom.chatroomID)"
+        upload(url)
     }
     
     private func upload(input:NSString)->String{
@@ -136,7 +142,7 @@ class BackendServices{
             return [Event]()
         }*/
         var nsURL = NSURL(string: url)
-        var data = NSData(contentsOfURL: NSURL(string: url)!)
+        var data = NSData(contentsOfURL: nsURL!)
         let eventss = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
         var events = [Event]()
         for event in eventss {
@@ -150,6 +156,25 @@ class BackendServices{
             events.append(event)
         }
         return events
+    }
+    
+    private func parseJSONforMessages(chatroom_id: Int) -> [Message] {
+        var nsURL = NSURL(string: setting.getmessagesurl + "?chatroom_id=\(chatroom_id)")
+        var data = NSData(contentsOfURL: nsURL!)
+        if (NSString(data: data!, encoding: NSUTF8StringEncoding) as! String == "\n") {
+            return [Message]()
+        }
+        let messagess = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
+        var messages = [Message]()
+        for message in messagess {
+            var id = message["sender_id"] as! String
+            var content = message["message_content"] as! String
+            var send_time = message["send_time"] as! String
+            var message_id = (message["message_id"]! as! String).toInt()
+            var message = Message(message: content, user: User(login: id), messageID: message_id!, date: send_time)
+            messages.append(message)
+        }
+        return messages
     }
 
     /*

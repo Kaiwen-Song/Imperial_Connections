@@ -23,6 +23,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         MessageTable.dataSource = self
         MessageTable.delegate = self
         // Do any additional setup after loading the view.
+        chatroom.get_messages()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,13 +50,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func SendButtonPressed(sender: UIButton) {
         let message = TextField.text
         if message != nil {
-            let new_message = Message(message: message, user: self.user,messageID: 1)
+            let new_message = Message(message: message, user: self.user, messageID: 1, date: "\(NSDate())")
             chatroom.messages.append(new_message)
-            println(NSDateFormatter().stringFromDate(new_message.date))
+            // println(NSDateFormatter().stringFromDate(new_message.date))
             /*TODO
               update the server and store in core data
             */
-            
+            BackendServices.SingleInstance.send_message(new_message, chatroom: chatroom)
             MessageTable.reloadData()
         }
     }
