@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoryCell: UITableViewCell {
 
@@ -22,9 +23,25 @@ class CategoryCell: UITableViewCell {
         self.category = category
         CategoryLabel.text = category.rawValue
         
-        // Retrieve certain category events
-        let backend = BackendServices.SingleInstance
-        events = backend.get_category_event(category)
+        
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        var coreDataService = EventCoreDataService()
+        if (events.count == 0) {
+            // Retrieve certain category events
+            let backend = BackendServices.SingleInstance
+            events = backend.get_category_event(category)
+            
+            //Storing core data
+            
+            for event in events {
+                coreDataService.saveEvent(context, newEvent: event)
+            }
+        }
+        
+        //coreDataService.fetchEvent(context)
+        
+        
         
         // TODO: retrieve image data from database
         

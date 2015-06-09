@@ -8,8 +8,8 @@ $connection = 'host=db.doc.ic.ac.uk dbname=g1427123_u user=g1427123_u password=1
 //$url = 'http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/webservice.php'
 //$content = file_get_contents($url);
 //$json = json_decode($content, true);
-
-$query = "INSERT INTO events VALUES ('" . $_GET['event_id'] . "', '" . $_GET['owner'] . "', '" . $_GET['title'] . "', '" . $_GET['category'] . "', '" . $_GET['description'] . "' );";
+$id = $_GET['event_id'];
+$query = "UPDATE events SET owner = '" . $_GET['owner'] . "', title = '" . $_GET['title'] . "', categories = '" . $_GET['category'] . "', content = '" . $_GET['description'] . "' WHERE event_id = '" . $id. "';";
 echo $query;
 
 $link = pg_connect($connection);

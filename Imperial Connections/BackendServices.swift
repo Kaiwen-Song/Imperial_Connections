@@ -29,25 +29,19 @@ class BackendServices{
     
     func get_category_event(category: Category) -> [Event] {
         var url = setting.categorieseventsurl + "?categories=\(category.rawValue)"
-        var nsURL = NSURL(string: url)
-        var data = NSData(contentsOfURL: NSURL(string: url)!)
-        return parseJSONforEvents(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray)
+        return parseJSONforEvents(url)
     }
     
     //returns an array of events that the user is watching
     func watched_events_for_user(user:User)->[Event]{
         var url = setting.getwatcheventsurl + "?u_id=\(user.login)"
-        var nsURL = NSURL(string: url)
-        var data = NSData(contentsOfURL: NSURL(string: url)!)
-        return parseJSONforEvents(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray)
+        return parseJSONforEvents(url)
     }
     
     //returns an array of events that the user has posted
     func posted_events_for_user(user:User) -> [Event]{
         var url = setting.getpostedeventsulr + "?u_id=\(user.login)"
-        var nsURL = NSURL(string: url)
-        var data = NSData(contentsOfURL: NSURL(string: url)!)
-        return parseJSONforEvents(NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray)
+        return parseJSONforEvents(url)
     }
     
     
@@ -136,11 +130,14 @@ class BackendServices{
         }
     }
     
-    private func parseJSONforEvents(eventss: NSArray) -> [Event]{
+    private func parseJSONforEvents(url: String) -> [Event]{
         //events.removeAll(keepCapacity: false)
       /*  if (eventss == nil) {
             return [Event]()
         }*/
+        var nsURL = NSURL(string: url)
+        var data = NSData(contentsOfURL: NSURL(string: url)!)
+        let eventss = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
         var events = [Event]()
         for event in eventss {
             var id = (event["event_id"]! as! String).toInt()!

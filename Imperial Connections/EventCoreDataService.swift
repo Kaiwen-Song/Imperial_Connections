@@ -34,10 +34,12 @@ class EventCoreDataService {
     }
     
     
-    func fetchEvent(context: NSManagedObjectContext) -> [Event]{
+    func fetchEvent(context: NSManagedObjectContext, predicate: String) -> [Event]{
         let request = NSFetchRequest(entityName: "EventModel")
         request.returnsObjectsAsFaults = false;
-        
+        if (predicate == "") {
+            request.predicate = NSPredicate(format: "category = %@", predicate)
+        }
         var results: NSArray = context.executeFetchRequest(request, error: nil)!
         events.removeAll(keepCapacity: false)
         for result in results {
@@ -47,4 +49,6 @@ class EventCoreDataService {
         }
         return events
     }
+    
+    
 }

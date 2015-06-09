@@ -95,4 +95,11 @@ class SettingsController: UITableViewController {
     */
 
     @IBAction func unwindToSettings(segue:UIStoryboardSegue) {}
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        if segue.identifier == "LogoutSegue" {
+            
+        }
+    
+    }
 }

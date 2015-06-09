@@ -32,6 +32,8 @@ class EventDetailController: UIViewController {
             RemoveButton.hidden = true
         }*/
         configurateEventDetail()
+        
+        println("\n\n\n\n" + event.owner.login + user.login + "\n\n\n")
     }
     
     func configurateEventDetail(){
@@ -63,18 +65,18 @@ class EventDetailController: UIViewController {
     */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject!){
-        if segue.identifier == "EventDetailToChat" {
+        if (segue.identifier == "EventDetailToChat") {
             var dst = segue.destinationViewController as! ChatViewController
             dst.user = self.user
             dst.event = self.event
             if(event.chatrooms[user.login] != nil) {
                 dst.chatroom = event.chatrooms[user.login]
             } else {
-               // event.chatrooms[user.login] = Chatroom(event: event, sender: user, owner: event.owner, chatroomID:1)
+                dst.chatroom = Chatroom(event: event, sender: user, owner: event.owner, chatroomID: 1, title: "hi")
             }
             
-        } else if segue.identifier == "ToChatrooms" {
-            var dst = segue.destinationViewController as! ChatroomTableController
+        } else if (segue.identifier == "ToChatrooms") {
+            var dst = (segue.destinationViewController as! UINavigationController).topViewController as!ChatroomTableController
             dst.event = self.event
             dst.user = self.user
         }
@@ -94,5 +96,9 @@ class EventDetailController: UIViewController {
         goes to the server and change the watched event table
       */
       //self.user.watchEvent[event.eventID] = self.event
+    }
+    @IBAction func MessageButtonPressed(sender: UIButton) {
+    }
+    @IBAction func ChatroomButtonPressed(sender: UIButton) {
     }
 }

@@ -49,7 +49,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func SendButtonPressed(sender: UIButton) {
         let message = TextField.text
         if message != nil {
-            chatroom.messages.append(Message(message: message, user: self.user,messageID: 1))
+            let new_message = Message(message: message, user: self.user,messageID: 1)
+            chatroom.messages.append(new_message)
+            println(NSDateFormatter().stringFromDate(new_message.date))
             /*TODO
               update the server and store in core data
             */
