@@ -41,6 +41,7 @@ class EventCoreDataService {
             request.predicate = NSPredicate(format: "category = %@", predicate)
         }
         var results: NSArray = context.executeFetchRequest(request, error: nil)!
+        
         events.removeAll(keepCapacity: false)
         for result in results {
             var res = result as! EventModel
@@ -48,6 +49,17 @@ class EventCoreDataService {
             events.append(event)
         }
         return events
+    }
+    
+    func deleteAllEntities(context: NSManagedObjectContext) {
+        let request = NSFetchRequest(entityName: "EventModel")
+        request.returnsObjectsAsFaults = false;
+        var results: NSArray = context.executeFetchRequest(request, error: nil)!
+        for ob in results {
+            context.deleteObject(ob as! NSManagedObject)
+        }
+        context.save(nil)
+       // println(fetchEvent(context, predicate: "").count)
     }
     
     
