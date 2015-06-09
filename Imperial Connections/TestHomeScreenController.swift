@@ -17,7 +17,6 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     var subscriptions:[Category] = [Category]()
     //var categoryCell: [CategoryCell] = [CategoryCell]()
     var events: [Event] = [Event]()
-    var index: Int = 0
     
     
     override func viewDidLoad() {
@@ -58,13 +57,10 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let newCategory = subscriptions[indexPath.row]
-        /*  TODO:
-        retrieves the new list of events to display
-        */
+        // Duplicate
         var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
         println(cell.category.rawValue)
-        //categoryCell.append(cell)
         events = cell.events
         EventCollection.reloadData()
     }

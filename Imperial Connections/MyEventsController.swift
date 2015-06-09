@@ -67,7 +67,7 @@ class MyEventsController: UICollectionViewController {
     func loadFromCoreData() {
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
-        events = events + eventCoreDataService.fetchEvent(context)
+        //events = events + eventCoreDataService.fetchEvent(context)
         
     }
     

@@ -95,4 +95,6 @@ class EventCollectionController: UICollectionViewController {
     */
     @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}
 
+    
+    
 }
