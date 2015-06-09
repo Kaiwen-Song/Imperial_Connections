@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SettingsController: UITableViewController {
 
@@ -97,9 +98,12 @@ class SettingsController: UITableViewController {
     @IBAction func unwindToSettings(segue:UIStoryboardSegue) {}
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let coredataservice = EventCoreDataService()
         if segue.identifier == "LogoutSegue" {
-            
+            coredataservice.deleteAllEntities(context)
         }
-    
+        
     }
 }
