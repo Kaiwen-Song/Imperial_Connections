@@ -8,11 +8,13 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginScreen: UIViewController {
 
     @IBOutlet weak var LoginField: UITextField!
     @IBOutlet weak var Password: UITextField!
+
     var successLogIn : Bool = true
     
     
@@ -26,6 +28,38 @@ class LoginScreen: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func saveToCoreData() {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let ent = NSEntityDescription.entityForName("user_id", inManagedObjectContext: context)
+        var newUser = UserModel(entity: ent!, insertIntoManagedObjectContext: context)
+        newUser.username = LoginField.text
+        newUser.password = Password.text
+        
+        context.save(nil)
+        // to handle the NSErrorPointer, please modify
+    }
+    
+    func loadFromCoreData() {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "user_id")
+        request.returnsObjectsAsFaults = false;
+        request.predicate = NSPredicate(format: "username = %@", LoginField.text)
+        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        if results.count > 0 {
+            //load
+            for user in results {
+                var thisUser = user as! UserModel
+            }
+        } else {
+            //log in page -> log in clicked (save)
+        }
+    }
+
     
 
     @IBAction func logOnButton(sender: AnyObject) {
@@ -42,6 +76,8 @@ class LoginScreen: UIViewController {
         }
         
     }
+    
+    
     
     // MARK: - Navigation
 
