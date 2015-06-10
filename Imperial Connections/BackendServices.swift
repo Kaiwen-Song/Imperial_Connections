@@ -184,6 +184,51 @@ class BackendServices{
         }
         return messages
     }
+    
+    private func charAsString(str:String, index:Int) -> String {
+    return String(Array(str)[index])
+    }
+
+    func convert_string_to_bitarray(string:String)->[Bool]{
+        var result = [Bool]()
+        for (var i = 0; i < count(string); ++i){
+            if charAsString(string,index: i).toInt() == 1 {
+                result.append(true)
+            } else {
+                result.append(false)
+            }
+        }
+        return result
+    }
+    
+    func convert_bitarray_to_string(array:[Bool]) -> String{
+        var result = String()
+        for(var i = 0; i < count(array); ++i){
+            if array[i] {result+="1"} else {result+="0"}
+        }
+        return result
+    }
+    
+    func subscription_to_bitarray(sub:[Category]) -> [Bool]{
+        var result = [Bool](count: Category.CategoryCount, repeatedValue:false)
+        for(var i = 0; i < sub.count; ++i){
+            var index:Int = find(Category.allCategories, sub[i])!
+            result[index] = true
+        }
+        return result
+    }
+    
+    func bitarray_to_subscription(bitarray:[Bool]) -> [Category]{
+        var result = [Category]()
+        for(var i = 0; i<bitarray.count; ++i){
+            if(bitarray[i]){
+                result.append(Category.allCategories[i])
+            }
+        }
+        return result
+    }
+    
+    
 
     /*
     private func request (url:String) -> [Event]{
