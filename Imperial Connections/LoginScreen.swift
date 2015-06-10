@@ -37,6 +37,20 @@ class LoginScreen: UIViewController {
         // to handle the NSErrorPointer, please modify
     }
     
+    func fetchUserFromCoreData() -> User {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "UserModel")
+        request.returnsObjectsAsFaults = false;
+        
+        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        var user:UserModel = results[0] as! UserModel
+        var newUser: User = User(login: user.username)
+      
+        return newUser
+    }
+    
     func loadFromCoreData() {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
