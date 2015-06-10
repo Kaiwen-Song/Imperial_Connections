@@ -52,13 +52,24 @@ class EventCoreDataService {
     }
     
     func deleteAllEntities(context: NSManagedObjectContext) {
-        let request = NSFetchRequest(entityName: "EventModel")
-        request.returnsObjectsAsFaults = false;
+        var request = NSFetchRequest(entityName: "EventModel")
+        request.returnsObjectsAsFaults = false
         var results: NSArray = context.executeFetchRequest(request, error: nil)!
         for ob in results {
             context.deleteObject(ob as! NSManagedObject)
         }
+        
         context.save(nil)
+
+        request = NSFetchRequest(entityName: "UserModel")
+        request.returnsObjectsAsFaults = false
+        results = context.executeFetchRequest(request, error: nil)!
+        for ob in results {
+            context.deleteObject(ob as! NSManagedObject)
+        }
+        context.save(nil)
+        
+        println("done")
        // println(fetchEvent(context, predicate: "").count)
     }
     

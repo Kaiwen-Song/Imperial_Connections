@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeScreenController: UITabBarController {
 
@@ -14,6 +15,8 @@ class HomeScreenController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        user = fetchUserFromCoreData()
         let subcontrollers = self.viewControllers
         let firstchild = subcontrollers![0] as! TestHomeScreenController
         let secondnav = subcontrollers![1] as! UINavigationController
@@ -57,5 +60,24 @@ class HomeScreenController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func fetchUserFromCoreData() -> User {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "UserModel")
+        request.returnsObjectsAsFaults = false;
+        
+        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        if (results.count > 0) {
+            var user:UserModel = results[0] as! UserModel
+            var newUser: User = User(login: user.username)
+            return newUser
+        }
+        
+        return User(login: "")
+        
+    }
+    
 
 }

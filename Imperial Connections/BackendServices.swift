@@ -52,6 +52,10 @@ class BackendServices{
         var data = NSData(contentsOfURL:NSURL(string:url)!)
         var array = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
         var result = [Category]()
+        if (array == []) {
+            return result
+        }
+        
         for item in array{
             var cate = (item["category"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             var category = Category(rawValue: cate)
@@ -141,10 +145,14 @@ class BackendServices{
       /*  if (eventss == nil) {
             return [Event]()
         }*/
+        println(url)
         var nsURL = NSURL(string: url)
         var data = NSData(contentsOfURL: nsURL!)
         let eventss = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
         var events = [Event]()
+        if (eventss == []) {
+            return events
+        }
         for event in eventss {
             var id = (event["event_id"]! as! String).toInt()!
             var owner = (event["owner"]! as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())

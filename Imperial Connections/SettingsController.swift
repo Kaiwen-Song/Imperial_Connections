@@ -101,6 +101,7 @@ class SettingsController: UITableViewController {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         let coredataservice = EventCoreDataService()
+        
         if segue.identifier == "LogoutSegue" {
             coredataservice.deleteAllEntities(context)
         }

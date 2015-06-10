@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         subscriptionController.delegate = eventController
 
 */
+        var storyboard = UIStoryboard(name:"Main", bundle:nil)
+        
+        println(loadFromCoreData())
+        
+        if(!loadFromCoreData()){
+            let loginscreen = storyboard.instantiateViewControllerWithIdentifier("LoginScreen") as! LoginScreen
+            self.window?.rootViewController = loginscreen
+        }
+        
         return true
     }
 
@@ -113,6 +122,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func loadFromCoreData()->Bool {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let request = NSFetchRequest(entityName: "UserModel")
+        request.returnsObjectsAsFaults = false;
+        //request.predicate = NSPredicate(format: "username = %@", LoginField.text)
+        var error: NSErrorPointer = NSErrorPointer()
+        var results:NSArray = context.executeFetchRequest(request, error: error)!
+        var isLoggedOn = results.count
+
+        if isLoggedOn > 0 { /* When the user is already logged on */
+            /* load the data from database and compare it with the core data using get_user */
+            for user in results {
+                var thisUser = user as! UserModel
+                var id = thisUser.username
+                var password = thisUser.password
+                if (BackendServices().get_user(id, password: password)) {
+                    /* log in detail of core data matches the database */
+                    /* skip the log in page */
+                   // self.performSegueWithIdentifier("ToTabScreen", sender: self)
+                    //break
+                    return true
+                }
+                else {
+                    return false
+                }
+            }
+        }
+        return false
     }
 
 

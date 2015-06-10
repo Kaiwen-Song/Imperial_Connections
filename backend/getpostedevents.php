@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-    $query = "SELECT events.event_id, owner, title, categories, content FROM events, my_events WHERE u_id = '" . $_GET['u_id'] . "' AND my_events.event_id = events.event_id";
+    $query = "SELECT events.event_id, owner, title, categories, content FROM events WHERE owner = '" . $_GET['u_id'] . "'";
     
     $connectString = 'host=db.doc.ic.ac.uk dbname=g1427123_u user=g1427123_u password=1by9jrkgJO';
     $link = pg_connect($connectString);
@@ -9,7 +9,11 @@
         echo "error";
     } else {
         $result = pg_query($link, $query);
-        $json = json_encode(array_values(pg_fetch_all($result)));
-        echo $json;
+        $json = pg_fetch_all($result);
+        if ($json == null){
+            echo "[]";
+        } else {
+            echo json_encode(array_values($json));
+        }
     }
     ?>

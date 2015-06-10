@@ -29,6 +29,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         
         subscriptions = backend.user_subscriptions(user)
         
+        
         // Do any additional setup after loading the view.
     }
 
@@ -40,8 +41,9 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
+
         cell.setCategory(subscriptions[indexPath.row])
-        println(cell.category.rawValue)
+        //println(cell.category.rawValue)
         //categoryCell.append(cell)
         events = cell.events
         return cell

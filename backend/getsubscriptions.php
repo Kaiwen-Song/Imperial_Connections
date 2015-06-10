@@ -9,7 +9,11 @@
         echo "error";
     } else {
         $result = pg_query($link, $query);
-        $row = json_encode(array_values(pg_fetch_all($result)));
-        echo $row;
+        $json = pg_fetch_all($result);
+        if ($json == null){
+            echo "[]";
+        } else {
+            echo json_encode(array_values($json));
+        }
     }
 ?>
