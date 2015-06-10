@@ -570,7 +570,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8c-gC-npu">
-                                <rect key="frame" x="221" y="285" width="159" height="30"/>
+                                <rect key="frame" x="221" y="330" width="159" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
@@ -580,23 +580,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3hW-nk-9Lg" firstAttribute="centerX" secondItem="gMg-Ix-4ew" secondAttribute="centerX" id="8ha-0l-hne"/>
-                            <constraint firstItem="JWm-04-BpD" firstAttribute="centerX" secondItem="gMg-Ix-4ew" secondAttribute="centerX" id="E8e-s3-tEq"/>
-                            <constraint firstItem="gMg-Ix-4ew" firstAttribute="top" secondItem="3hW-nk-9Lg" secondAttribute="bottom" constant="39" id="Fd6-9w-vWB"/>
-                            <constraint firstItem="3hW-nk-9Lg" firstAttribute="centerX" secondItem="THL-eh-SKQ" secondAttribute="centerX" id="PbI-0x-Obh"/>
-                            <constraint firstItem="JWm-04-BpD" firstAttribute="top" secondItem="gMg-Ix-4ew" secondAttribute="bottom" constant="59" id="Zxj-gO-x3v"/>
-                            <constraint firstItem="gMg-Ix-4ew" firstAttribute="centerY" secondItem="THL-eh-SKQ" secondAttribute="centerY" id="yN5-nH-zEa"/>
+                            <constraint firstItem="gMg-Ix-4ew" firstAttribute="top" secondItem="3hW-nk-9Lg" secondAttribute="bottom" constant="39" id="8dX-Sa-1h2"/>
+                            <constraint firstItem="X8c-gC-npu" firstAttribute="top" secondItem="gMg-Ix-4ew" secondAttribute="bottom" constant="15" id="HFP-Fi-E0O"/>
+                            <constraint firstItem="X8c-gC-npu" firstAttribute="trailing" secondItem="gMg-Ix-4ew" secondAttribute="trailing" id="JfA-za-bKX"/>
+                            <constraint firstItem="gMg-Ix-4ew" firstAttribute="centerX" secondItem="THL-eh-SKQ" secondAttribute="centerX" id="NGn-xc-Dqf"/>
+                            <constraint firstItem="gMg-Ix-4ew" firstAttribute="centerY" secondItem="THL-eh-SKQ" secondAttribute="centerY" id="TEV-4u-9eI"/>
+                            <constraint firstItem="JWm-04-BpD" firstAttribute="centerX" secondItem="X8c-gC-npu" secondAttribute="centerX" id="fhq-dB-eZP"/>
+                            <constraint firstItem="gMg-Ix-4ew" firstAttribute="centerX" secondItem="3hW-nk-9Lg" secondAttribute="centerX" id="ghq-ay-F6K"/>
+                            <constraint firstItem="JWm-04-BpD" firstAttribute="top" secondItem="X8c-gC-npu" secondAttribute="bottom" constant="14" id="i2S-kq-xal"/>
+                            <constraint firstItem="X8c-gC-npu" firstAttribute="leading" secondItem="gMg-Ix-4ew" secondAttribute="leading" id="wMF-yH-YAm"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="X8c-gC-npu"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="subviews">
-                                <include reference="X8c-gC-npu"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="LoginField" destination="gMg-Ix-4ew" id="gVV-ZF-M9N"/>
