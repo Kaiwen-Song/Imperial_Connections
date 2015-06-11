@@ -17,7 +17,7 @@ public enum Category : String{
     case Robotics = "Robotics"
     case Tech = "Tech"
     
-    static let allCategories = [Recommended, Football, Music, Dancing, Photography, Basketball, Robotics, Tech]
+    static let allCategories = [Recommended:0, Football:1, Music:2, Dancing:3, Photography:4, Basketball:5, Robotics:6, Tech:7]
     
-    static var CategoryCount = allCategories.count
+    static var CategoryCount = allCategories.keys.array.count
 }

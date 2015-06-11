@@ -18,7 +18,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     @IBOutlet weak var picker: UIPickerView!
     var user:User!
     
-    var data = Category.allCategories
+    var data = Category.allCategories.keys.array
     var CategorySelected = Category.Recommended
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
-        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories[
+        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories.keys.array[
             picker.selectedRowInComponent(0)])
         
         // Upload to database

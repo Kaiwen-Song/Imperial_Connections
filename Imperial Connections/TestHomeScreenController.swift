@@ -13,7 +13,6 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var EventCollection: UICollectionView!
     var user:User!
     let backend = BackendServices.SingleInstance
-    
     var subscriptions:[Category] = [Category]()
     //var categoryCell: [CategoryCell] = [CategoryCell]()
     var events: [Event] = [Event]()
@@ -26,7 +25,6 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         CategoryList.delegate = self
         EventCollection.dataSource = self
         EventCollection.delegate = self
-        
         subscriptions = backend.user_subscriptions(user)
         
         
@@ -46,6 +44,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         //println(cell.category.rawValue)
         //categoryCell.append(cell)
         events = cell.events
+            
         return cell
     }
     
@@ -65,6 +64,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         println(cell.category.rawValue)
         events = cell.events
         EventCollection.reloadData()
+
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

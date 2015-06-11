@@ -10,8 +10,12 @@ import UIKit
 
 class ManageSubscriptionController: UICollectionViewController {
 
-    var categories = [Category]()
-    var subscription = [Category]()
+    var subscription:[Bool]!
+    //temporary replacement for the user subscription
+    var userSubscription:[Bool]!
+    var user:User!
+    
+    let data = Category.allCategories.keys.array.sorted{$0.rawValue < $1.rawValue}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,9 @@ class ManageSubscriptionController: UICollectionViewController {
 
         // Register cell classes
         // Do any additional setup after loading the view.
+        
+        /*subscription = user.subscription)*/
+        
         self.collectionView?.allowsMultipleSelection  = true
     }
 
@@ -51,35 +58,36 @@ class ManageSubscriptionController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return Category.allCategories.count
+        return data.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCollectionCell", forIndexPath: indexPath) as! CategoryCollectionCell
-        
+        if userSubscription[indexPath.row] {
+            cell.selected = true
+        }
         // Configure the cell
-        cell.category = Category.allCategories[indexPath.row]
+        cell.category = Category.allCategories.keys.array[indexPath.row]
         return cell
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         let cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
-        cell.highlighted = true
-        self.subscription.append(cell.category)
+        cell.selected = true
+       // self.subscription.append(cell.category)
+        subscription[Category.allCategories[data[indexPath.row]]!] = true
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath){
         let cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
-        cell.highlighted = false
-        var index = 0
-        do{
-        if(subscription[index] == cell.category){
-            subscription.removeAtIndex(index)
-            break
-          }
-        }while (index<subscription.count)
+        cell.selected = false
+        subscription[Category.allCategories[data[indexPath.row]]!] = false
     }
     
+    @IBAction func SaveButtonPressed(sender: UIBarButtonItem) {
+        //pop alert box maybe?
+        //user.subscriptions = subscription
+    }
     // MARK: UICollectionViewDelegate
 
     /*

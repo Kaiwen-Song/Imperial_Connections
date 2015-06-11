@@ -189,6 +189,7 @@ class BackendServices{
     return String(Array(str)[index])
     }
 
+    //string is stored at a database, it's a binary array, use when retrieve from server
     func convert_string_to_bitarray(string:String)->[Bool]{
         var result = [Bool]()
         for (var i = 0; i < count(string); ++i){
@@ -201,6 +202,7 @@ class BackendServices{
         return result
     }
     
+    //user to push to server
     func convert_bitarray_to_string(array:[Bool]) -> String{
         var result = String()
         for(var i = 0; i < count(array); ++i){
@@ -209,20 +211,22 @@ class BackendServices{
         return result
     }
     
+    //user when you actually need tthe category objects
     func subscription_to_bitarray(sub:[Category]) -> [Bool]{
         var result = [Bool](count: Category.CategoryCount, repeatedValue:false)
         for(var i = 0; i < sub.count; ++i){
-            var index:Int = find(Category.allCategories, sub[i])!
+            var index:Int = find(Category.allCategories.keys.array, sub[i])!
             result[index] = true
         }
         return result
     }
     
+    //saved category, convert back to stored format
     func bitarray_to_subscription(bitarray:[Bool]) -> [Category]{
         var result = [Category]()
         for(var i = 0; i<bitarray.count; ++i){
             if(bitarray[i]){
-                result.append(Category.allCategories[i])
+                result.append(Category.allCategories.keys.array[i])
             }
         }
         return result

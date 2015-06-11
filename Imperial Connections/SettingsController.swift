@@ -11,6 +11,9 @@ import CoreData
 
 class SettingsController: UITableViewController {
 
+    
+    @IBOutlet weak var LoggedInAsField: UITableViewCell!
+    
     var user:User!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,7 @@ class SettingsController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        LoggedInAsField.textLabel?.text = user.login
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,6 +108,11 @@ class SettingsController: UITableViewController {
         
         if segue.identifier == "LogoutSegue" {
             coredataservice.deleteAllEntities(context)
+        }
+        
+        if segue.identifier == "ManageSubscription"{
+           let dst = (segue.destinationViewController as! UINavigationController).topViewController as! ManageSubscriptionController
+            dst.user = user
         }
         
     }
