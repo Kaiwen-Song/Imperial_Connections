@@ -18,10 +18,11 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     @IBOutlet weak var picker: UIPickerView!
     var user:User!
     
-    var data = Category.allCategories.keys.array
-    var CategorySelected = Category.Recommended
+    var data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
+    var CategorySelected:Category!
     override func viewDidLoad() {
         super.viewDidLoad()
+        CategorySelected = data[0]
         println(user.login)
         // Do any additional setup after loading the view.
         picker.delegate = self
@@ -50,7 +51,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
-        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories.keys.array[
+        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories[
             picker.selectedRowInComponent(0)])
         
         // Upload to database

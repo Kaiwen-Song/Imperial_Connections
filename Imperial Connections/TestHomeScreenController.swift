@@ -13,20 +13,19 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var EventCollection: UICollectionView!
     var user:User!
     let backend = BackendServices.SingleInstance
-    var subscriptions:[Category] = [Category]()
-    //var categoryCell: [CategoryCell] = [CategoryCell]()
+    var subscriptions:[Category]!
     var events: [Event] = [Event]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(user.login)
+
         CategoryList.dataSource = self
         CategoryList.delegate = self
         EventCollection.dataSource = self
         EventCollection.delegate = self
-        subscriptions = backend.user_subscriptions(user)
         
+
+        subscriptions = backend.bitarray_to_subscription(backend.new_get_user_subscriptions(user))
         
         // Do any additional setup after loading the view.
     }
@@ -39,10 +38,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
-
         cell.setCategory(subscriptions[indexPath.row])
-        //println(cell.category.rawValue)
-        //categoryCell.append(cell)
         events = cell.events
             
         return cell
@@ -61,7 +57,6 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         // Duplicate
         var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
-        println(cell.category.rawValue)
         events = cell.events
         EventCollection.reloadData()
 

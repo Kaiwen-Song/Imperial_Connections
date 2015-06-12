@@ -27,7 +27,6 @@ public class Event{
         self.description = description
         self.category = category
         self.date = NSDateFormatter().stringFromDate(NSDate())
-        println(date)
     }
  
     init(owner:User, title:String, description:String, category:Category){

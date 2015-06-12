@@ -68,9 +68,7 @@ class EventCoreDataService {
             context.deleteObject(ob as! NSManagedObject)
         }
         context.save(nil)
-        
-        println("done")
-       // println(fetchEvent(context, predicate: "").count)
+
     }
     
     

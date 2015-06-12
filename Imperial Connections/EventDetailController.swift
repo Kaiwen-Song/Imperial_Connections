@@ -87,17 +87,11 @@ class EventDetailController: UIViewController {
     @IBAction func unwindEventDetail(segue:UIStoryboardSegue) {}
     
     @IBAction func RemoveButtonClicked(sender: UIButton) {
-      /*  TODO:
-      goes to server and removes the event
-      */
         BackendServices.SingleInstance.remove_event(event)
     }
     
     @IBAction func WatchButtonclicked(sender: UIButton) {
-      /*  TODO:
-        goes to the server and change the watched event table
-      */
-      //self.user.watchEvent[event.eventID] = self.event
+        BackendServices.SingleInstance.add_to_watched_events(user, event: event)
     }
     @IBAction func MessageButtonPressed(sender: UIButton) {
     }

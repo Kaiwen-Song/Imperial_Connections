@@ -20,7 +20,6 @@ class MyEventsController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         events = BackendServices.SingleInstance.posted_events_for_user(user)
-        println(user.login)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         //let event = Event(eventID: 1, owner: User(login: "jefffer"), title: "test", description: "test event", category: Category.Photography)

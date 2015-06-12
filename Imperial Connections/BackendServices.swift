@@ -44,7 +44,7 @@ class BackendServices{
         return parseJSONforEvents(url)
     }
     
-    
+    /*
     //returns an array of subscriptions currently of the user
     func user_subscriptions(user:User) -> [Category]{
         var url = setting.getsubscriptionsurl + "?u_id=\(user.login)"
@@ -62,6 +62,18 @@ class BackendServices{
             result.append(category!)
         }
         return result
+    }
+    */
+    func new_get_user_subscriptions(user:User) -> [Bool]{
+        var url = setting.getsubscriptionsurl + "?username=\(user.login)"
+        var nsURL = NSURL(string:url)
+        var data = NSData(contentsOfURL:NSURL(string:url)!)
+        var array = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
+        var subscriptions = ""
+        for sub in array {
+            subscriptions = sub["subscriptions"] as! String
+        }
+        return convert_string_to_bitarray(subscriptions)
     }
     
     //returns an array of chatrooms associated with the events
@@ -108,6 +120,12 @@ class BackendServices{
         upload(url)
     }
     
+    func save_subscriptions(user:User){
+        var subscriptions = convert_bitarray_to_string(user.subscriptions)
+        var url:NSString = setting.savesubscriptionurl + "?username=\(user.login)&subscriptions=\(subscriptions)"
+        upload(url)
+    }
+    
     
     //saves a new chatroom under the event in the database
     func create_new_chatroom(event:Event, sender:User, chatroom:Chatroom){
@@ -140,12 +158,13 @@ class BackendServices{
         }
     }
     
+
+    
     private func parseJSONforEvents(url: String) -> [Event]{
         //events.removeAll(keepCapacity: false)
       /*  if (eventss == nil) {
             return [Event]()
         }*/
-        println(url)
         var nsURL = NSURL(string: url)
         var data = NSData(contentsOfURL: nsURL!)
         let eventss = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
@@ -199,6 +218,7 @@ class BackendServices{
                 result.append(false)
             }
         }
+
         return result
     }
     
@@ -215,7 +235,7 @@ class BackendServices{
     func subscription_to_bitarray(sub:[Category]) -> [Bool]{
         var result = [Bool](count: Category.CategoryCount, repeatedValue:false)
         for(var i = 0; i < sub.count; ++i){
-            var index:Int = find(Category.allCategories.keys.array, sub[i])!
+            var index:Int = find(Category.allCategories, sub[i])!
             result[index] = true
         }
         return result
@@ -223,10 +243,13 @@ class BackendServices{
     
     //saved category, convert back to stored format
     func bitarray_to_subscription(bitarray:[Bool]) -> [Category]{
+        for(var i = 0; i<Category.allCategories.count; ++i){
+            println(Category.allCategories[i].rawValue)
+        }
         var result = [Category]()
         for(var i = 0; i<bitarray.count; ++i){
             if(bitarray[i]){
-                result.append(Category.allCategories.keys.array[i])
+            result.append(Category.allCategories[i])
             }
         }
         return result

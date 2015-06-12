@@ -540,13 +540,17 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOC-uH-tbi">
                                             <rect key="frame" x="57" y="120" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="1" green="0.95846474380119617" blue="0.6027416212754384" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="Name" destination="qOC-uH-tbi" id="Zwj-tw-0y5"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -555,14 +559,14 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="sUg-ey-fQF">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="0ad-Gp-t4t">
+                        <barButtonItem key="leftBarButtonItem" title="Back" style="done" id="0ad-Gp-t4t">
                             <connections>
                                 <segue destination="PlM-tk-S75" kind="unwind" unwindAction="unwindToSettings:" id="NZG-1Y-LRK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="2rs-1A-Xcn">
                             <connections>
-                                <action selector="SaveButtonPressed:" destination="FeE-jv-EYM" id="B3F-fb-ycM"/>
+                                <action selector="SaveButtonPressed:" destination="FeE-jv-EYM" id="Dtu-Jc-KKO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

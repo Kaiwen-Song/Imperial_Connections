@@ -10,7 +10,7 @@ import Foundation
 public class User{
     
     let login:String
-    var subscriptions = [Category]()
+    var subscriptions = [Bool](count:Category.allCategories.count, repeatedValue:false)
     var watched_events = [Int:Event]()
     var posted_events = [Int:Event]()
     

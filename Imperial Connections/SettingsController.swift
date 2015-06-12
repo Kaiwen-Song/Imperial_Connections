@@ -113,6 +113,7 @@ class SettingsController: UITableViewController {
         if segue.identifier == "ManageSubscription"{
            let dst = (segue.destinationViewController as! UINavigationController).topViewController as! ManageSubscriptionController
             dst.user = user
+            dst.subscription = user.subscriptions
         }
         
     }

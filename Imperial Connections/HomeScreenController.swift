@@ -17,6 +17,8 @@ class HomeScreenController: UITabBarController {
         super.viewDidLoad()
         
         user = fetchUserFromCoreData()
+        user.subscriptions = BackendServices.SingleInstance.new_get_user_subscriptions(user)
+        println(BackendServices.SingleInstance.convert_bitarray_to_string(user.subscriptions))
         let subcontrollers = self.viewControllers
         let firstchild = subcontrollers![0] as! TestHomeScreenController
         let secondnav = subcontrollers![1] as! UINavigationController

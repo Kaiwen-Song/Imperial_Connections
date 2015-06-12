@@ -10,11 +10,18 @@ import UIKit
 
 class CategoryCollectionCell: UICollectionViewCell {
   
-    @IBOutlet weak var Icon: UIImageView!
+    //@IBOutlet weak var Icon: UIImageView!
     
     @IBOutlet weak var Name: UILabel!
     
     var category:Category!
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func update(){
+      Name.text = category.rawValue
+    }
     
 }
