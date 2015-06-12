@@ -24,6 +24,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         MessageTable.delegate = self
         // Do any additional setup after loading the view.
         chatroom.get_messages()
+        if chatroom.owner.login == user.login {
+          self.navigationItem.title = chatroom.sender.login
+        } else {
+            self.navigationItem.title = chatroom.owner.login
+        }
     }
 
     override func didReceiveMemoryWarning() {

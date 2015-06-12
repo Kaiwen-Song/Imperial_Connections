@@ -27,6 +27,7 @@ class ChatroomTableCell: UITableViewCell {
     }
     
     func updateCell(){
-        
+        MessageTitleLabel.text = chatroom.sender.login
+        StatusLabel.text = "new!"
     }
 }

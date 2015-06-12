@@ -14,13 +14,11 @@ public class Chatroom{
     let owner:User
     let event:Event
     var chatroomID:Int!
-    let title:String
     
-    init(event:Event, sender:User, title:String){
+    init(event:Event, sender:User){
         self.event = event
         self.owner = event.owner
         self.sender = sender
-        self.title = title
     }
     
     func get_chatroom_ID() -> Int{
