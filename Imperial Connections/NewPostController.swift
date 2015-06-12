@@ -13,7 +13,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
 
     
     @IBOutlet weak var TitleField: UITextField!
-    @IBOutlet weak var DescriptionField: UITextField!
+    @IBOutlet weak var DescriptionView: UITextView!
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     var user:User!
@@ -43,7 +43,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func clear() {
         TitleField.text = ""
-        DescriptionField.text = ""
+        DescriptionView.text = ""
     }
     
     
@@ -51,7 +51,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
-        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionField.text, category:Category.allCategories[
+        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category:Category.allCategories[
             picker.selectedRowInComponent(0)])
         
         // Upload to database
