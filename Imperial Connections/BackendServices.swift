@@ -82,9 +82,9 @@ class BackendServices{
     }
     
     //returns an array of messages that are within the specified chatroom
-    func get_messages(chatroom:Chatroom) -> [Message]{
+    func get_messages(chatroom:Chatroom, time:String, sender_id:String) -> [Message]{
 
-        return parseJSONforMessages(chatroom.chatroomID)
+        return parseJSONforMessages(chatroom.chatroomID, time: time, sender_id:sender_id)
     }
     
     //posts the event to the database, owner of the event is accessed through the event object
@@ -192,14 +192,16 @@ class BackendServices{
         return events
     }
     
-    private func parseJSONforMessages(chatroom_id: Int) -> [Message] {
-        var nsURL = NSURL(string: setting.getmessagesurl + "?chatroom_id=\(chatroom_id)")
+    private func parseJSONforMessages(chatroom_id: Int, time:String, sender_id: String) -> [Message] {
+        var url = setting.getmessagesurl + "?chatroom_id=\(chatroom_id)&send_time=\(time)&sender_id=\(sender_id)"
+        url = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        var nsURL = NSURL(string: url)
         var data = NSData(contentsOfURL: nsURL!)
-        if (NSString(data: data!, encoding: NSUTF8StringEncoding) as! String == "\n") {
-            return [Message]()
-        }
         let messagess = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
         var messages = [Message]()
+        if (messagess == []) {
+            return messages
+        }
         for message in messagess {
             var id = message["sender_id"] as! String
             var content = message["message_content"] as! String

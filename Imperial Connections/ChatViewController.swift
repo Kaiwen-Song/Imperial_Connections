@@ -16,6 +16,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var user:User!
     var event:Event!
     var chatroom:Chatroom!
+    var timer: NSTimer!
+    let dateFormatter = NSDateFormatter()
+    var time1: String!
     
     
     override func viewDidLoad() {
@@ -29,6 +32,27 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
           self.navigationItem.title = chatroom.sender.login
         }
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateMessages", userInfo: nil, repeats: true)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        time1 = dateFormatter.stringFromDate(NSDate())
+    }
+    
+    func updateMessages() {
+        let str = dateFormatter.stringFromDate(NSDate())
+        if (chatroom.sender.login == user.login) {
+            chatroom.update_messages(time1, sender_id: chatroom.owner.login)
+        } else {
+            chatroom.update_messages(time1, sender_id: chatroom.sender.login)
+        }
+        
+        println(time1 + str)
+        time1 = str
+        MessageTable.reloadData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer.invalidate()
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

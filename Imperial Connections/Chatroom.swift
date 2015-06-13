@@ -28,6 +28,7 @@ public class Chatroom{
         self.chatroomID = chatroomID
     }
     
+    
     func get_chatroom_ID() -> Int{
         var url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createChatroomID.php?event_id=\(event.eventID)"
         var data = NSData(contentsOfURL: NSURL(string: url as String)!)
@@ -38,7 +39,13 @@ public class Chatroom{
     }
     
     func get_messages() -> [Message] {
-        messages = BackendServices.SingleInstance.get_messages(self)
+        messages = BackendServices.SingleInstance.get_messages(self, time: "", sender_id: "")
         return messages
     }
+    
+    func update_messages(time: String, sender_id: String) -> [Message] {
+        messages += BackendServices.SingleInstance.get_messages(self, time: time, sender_id: sender_id)
+        return messages
+    }
+    
 }
