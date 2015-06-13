@@ -28,7 +28,7 @@ class EventCell: UICollectionViewCell {
         CategoryLabel.text = event.category.rawValue
         DateLabel.text = event.date
         var imageName = event.category.rawValue + ".png"
-        Icon.image = UIImage(named:imageName)
+        //Icon.image = UIImage(named:imageName)
     }
     
     

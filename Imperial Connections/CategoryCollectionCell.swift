@@ -24,7 +24,7 @@ class CategoryCollectionCell: UICollectionViewCell {
     func update(){
       Name.text = category.rawValue
         var imageName = category.rawValue + ".png"
-        Icon.image = UIImage(named:imageName)
+        //Icon.image = UIImage(named:imageName)
     }
     
 }
