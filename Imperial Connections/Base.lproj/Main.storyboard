@@ -285,9 +285,9 @@
                                 <exclude reference="0aH-w9-er6"/>
                                 <exclude reference="IRW-rU-ug9"/>
                                 <exclude reference="hMQ-HV-ZNZ"/>
-                                <exclude reference="5Nq-Hg-QYd"/>
                                 <exclude reference="nxj-4n-NEl"/>
                                 <exclude reference="xFK-f7-dbF"/>
+                                <exclude reference="5Nq-Hg-QYd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -296,9 +296,9 @@
                                 <include reference="0aH-w9-er6"/>
                                 <include reference="IRW-rU-ug9"/>
                                 <include reference="hMQ-HV-ZNZ"/>
-                                <include reference="5Nq-Hg-QYd"/>
                                 <include reference="nxj-4n-NEl"/>
                                 <include reference="xFK-f7-dbF"/>
+                                <include reference="5Nq-Hg-QYd"/>
                             </mask>
                         </variation>
                     </view>

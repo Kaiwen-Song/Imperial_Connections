@@ -17,8 +17,7 @@ public class Event{
     let category:Category
     let owner:User
     var chatrooms = [String: Chatroom]()
-    let date:String
-    
+    var date:String = "\(NSDate())"
     
     init(eventID:Int, owner:User, title:String, description:String, category:Category){
         self.eventID = eventID
@@ -26,7 +25,6 @@ public class Event{
         self.title = title
         self.description = description
         self.category = category
-        self.date = NSDateFormatter().stringFromDate(NSDate())
     }
  
     init(owner:User, title:String, description:String, category:Category){
@@ -34,7 +32,6 @@ public class Event{
         self.title = title
         self.description = description
         self.category = category
-        self.date = NSDateFormatter().stringFromDate(NSDate())
     }
     
     func get_event_ID() -> Int{
