@@ -145,7 +145,6 @@ class BackendServices{
     
     private func upload(input:NSString)->String{
         var url:NSString = input.stringByReplacingOccurrencesOfString(" ", withString: "%20")
-        url = url.stringByReplacingOccurrencesOfString("/n", withString: "%0A")
         var data = NSData(contentsOfURL: NSURL(string: url as String)!)
         var result = NSString(data: data!, encoding: NSUTF8StringEncoding)
         return result as! String
