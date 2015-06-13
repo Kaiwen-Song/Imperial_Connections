@@ -13,7 +13,7 @@ class EventCell: UICollectionViewCell {
     var event:Event!
     
     @IBOutlet weak var TitleLabel: UILabel!
-    @IBOutlet var Icon: UIImageView!
+    //@IBOutlet var Icon: UIImageView!
     
     @IBOutlet weak var CategoryLabel: UILabel!
     

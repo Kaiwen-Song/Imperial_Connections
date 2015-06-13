@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 
-class LoginScreen: UIViewController {
+class LoginScreen: UIViewController , UITextFieldDelegate{
 
     @IBOutlet weak var LoginField: UITextField!
     @IBOutlet weak var Password: UITextField!
@@ -18,6 +18,8 @@ class LoginScreen: UIViewController {
     var successLogIn : Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.LoginField.delegate = self
+        self.Password.delegate = self
        // loadFromCoreData()
         // Do any additional setup after loading the view.
     }
@@ -39,9 +41,9 @@ class LoginScreen: UIViewController {
     
 
 
-    
-    
-    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -39,6 +39,7 @@
 		6CF92F321B1CBD1D0001EAF1 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */; };
 		6CF92F341B1CBE2E0001EAF1 /* ManageSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */; };
 		A00C58441B2259730081FB49 /* EventCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C58431B2259730081FB49 /* EventCoreDataService.swift */; };
+		A0127F171B2C81F5008761AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02EA3A71B2C7CE4005F90BB /* CoreData.framework */; };
 		A07B01AB1B21118200CFCD3B /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B01AA1B21118200CFCD3B /* EventModel.swift */; };
 		A09EAE9E1B1F53BA00D8BE93 /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */; };
 		DD494F7F1B26FE1D009EC608 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD494F7E1B26FE1D009EC608 /* UserModel.swift */; };
@@ -58,7 +59,7 @@
 		6C2041A11B1D0EF700D5D198 /* EventService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		6C2041A21B1D0EF700D5D198 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6C2041A81B1D0F0700D5D198 /* backend */ = {isa = PBXFileReference; lastKnownFileType = folder; path = backend; sourceTree = SOURCE_ROOT; };
-		6C2456101B0B6FCC005DB245 /* Imperial Connections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Imperial Connections.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C2456101B0B6FCC005DB245 /* ImperialConnections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImperialConnections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2456141B0B6FCC005DB245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C2456151B0B6FCC005DB245 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C24561C1B0B6FCC005DB245 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSubscriptionController.swift; sourceTree = "<group>"; };
 		A00C58431B2259730081FB49 /* EventCoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCoreDataService.swift; sourceTree = "<group>"; };
+		A02EA3A71B2C7CE4005F90BB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A07B01AA1B21118200CFCD3B /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A09EAE9D1B1F53BA00D8BE93 /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
 		DD494F7E1B26FE1D009EC608 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0127F171B2C81F5008761AE /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +120,7 @@
 		6C2456071B0B6FCB005DB245 = {
 			isa = PBXGroup;
 			children = (
+				A02EA3A71B2C7CE4005F90BB /* CoreData.framework */,
 				6C2456121B0B6FCC005DB245 /* Imperial Connections */,
 				6C24562A1B0B6FCC005DB245 /* Imperial ConnectionsTests */,
 				6C2456111B0B6FCC005DB245 /* Products */,
@@ -126,7 +130,7 @@
 		6C2456111B0B6FCC005DB245 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C2456101B0B6FCC005DB245 /* Imperial Connections.app */,
+				6C2456101B0B6FCC005DB245 /* ImperialConnections.app */,
 				6C2456271B0B6FCC005DB245 /* Imperial ConnectionsTests.xctest */,
 			);
 			name = Products;
@@ -224,7 +228,7 @@
 			);
 			name = "Imperial Connections";
 			productName = "Imperial Connections";
-			productReference = 6C2456101B0B6FCC005DB245 /* Imperial Connections.app */;
+			productReference = 6C2456101B0B6FCC005DB245 /* ImperialConnections.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6C2456261B0B6FCC005DB245 /* Imperial ConnectionsTests */ = {
@@ -256,6 +260,7 @@
 				TargetAttributes = {
 					6C24560F1B0B6FCB005DB245 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QJQGH9NF7F;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -472,9 +477,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Imperial Connections/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_NAME = ImperialConnections;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -482,9 +491,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Imperial Connections/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				PRODUCT_NAME = ImperialConnections;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -27,7 +27,7 @@
         <!--My Events Controller-->
         <scene sceneID="3Y6-i5-AeY">
             <objects>
-                <collectionViewController id="sdB-rs-zbW" customClass="MyEventsController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="sdB-rs-zbW" customClass="MyEventsController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NZi-3S-s4K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="EventCell" id="eiU-ew-XHh" customClass="EventCell" customModule="Imperial_Connections" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="EventCell" id="eiU-ew-XHh" customClass="EventCell" customModule="ImperialConnections" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -184,7 +184,7 @@
         <!--Post-->
         <scene sceneID="cqa-5x-vWz">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="42q-V3-WvI" customClass="NewPostController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="42q-V3-WvI" customClass="NewPostController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JSx-VM-bOe"/>
                         <viewControllerLayoutGuide type="bottom" id="74u-Pl-fNU"/>
@@ -209,6 +209,7 @@
                                 <rect key="frame" x="414" y="373" width="62" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="62" id="rm2-Xd-zqb"/>
+                                    <constraint firstAttribute="height" constant="29" id="yXN-Gc-kp7"/>
                                 </constraints>
                                 <state key="normal" title="Submit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -220,23 +221,12 @@
                                     <action selector="SubmitButtonPress" destination="42q-V3-WvI" eventType="touchUpInside" id="mmL-1h-RyO"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uyv-j5-dkb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uyv-j5-dkb">
                                 <rect key="frame" x="84" y="42" width="433" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Description" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajC-2R-mkt">
-                                <rect key="frame" x="81" y="199" width="439" height="138"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="138" id="qZG-0G-nQe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="16" y="398" width="568" height="138"/>
-                                </variation>
-                            </textField>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MVx-aT-Snx">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVx-aT-Snx">
                                 <rect key="frame" x="237" y="96" width="126" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="7LQ-U8-YRm"/>
@@ -253,72 +243,68 @@
                                     </mask>
                                 </variation>
                             </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Insert Description" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7tJ-nE-Uxq">
+                                <rect key="frame" x="94" y="198" width="423" height="166"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="6sX-3b-y1P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ajC-2R-mkt" firstAttribute="top" secondItem="MVx-aT-Snx" secondAttribute="bottom" constant="18" id="04V-o3-seE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MVx-aT-Snx" secondAttribute="trailing" constant="89" id="0aH-w9-er6"/>
                             <constraint firstItem="74u-Pl-fNU" firstAttribute="top" secondItem="ppa-cD-5uI" secondAttribute="bottom" constant="149" id="3h0-ki-YE7"/>
                             <constraint firstItem="74u-Pl-fNU" firstAttribute="top" secondItem="s58-lI-AI8" secondAttribute="bottom" constant="361" id="5Nq-Hg-QYd"/>
                             <constraint firstAttribute="trailing" secondItem="ppa-cD-5uI" secondAttribute="trailing" constant="124" id="8Xf-3o-fMd"/>
-                            <constraint firstItem="ajC-2R-mkt" firstAttribute="leading" secondItem="cfa-OA-EdL" secondAttribute="leadingMargin" constant="65" id="9Ct-Df-x6B"/>
                             <constraint firstItem="74u-Pl-fNU" firstAttribute="top" secondItem="s58-lI-AI8" secondAttribute="bottom" constant="148" id="DNq-7E-rnu"/>
                             <constraint firstItem="s58-lI-AI8" firstAttribute="leading" secondItem="cfa-OA-EdL" secondAttribute="leading" constant="126" id="FUv-O9-3HB"/>
                             <constraint firstItem="MVx-aT-Snx" firstAttribute="leading" secondItem="ppa-cD-5uI" secondAttribute="leading" id="IRW-rU-ug9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uyv-j5-dkb" secondAttribute="trailing" constant="67" id="JbC-ha-mMG"/>
                             <constraint firstItem="s58-lI-AI8" firstAttribute="baseline" secondItem="ppa-cD-5uI" secondAttribute="firstBaseline" id="NWE-09-mhL"/>
                             <constraint firstItem="ppa-cD-5uI" firstAttribute="baseline" secondItem="s58-lI-AI8" secondAttribute="firstBaseline" id="OEa-hl-Xeg"/>
+                            <constraint firstItem="7tJ-nE-Uxq" firstAttribute="trailing" secondItem="Uyv-j5-dkb" secondAttribute="trailing" id="SzI-KL-c1L"/>
                             <constraint firstItem="MVx-aT-Snx" firstAttribute="leading" secondItem="cfa-OA-EdL" secondAttribute="leadingMargin" constant="221" id="Ucq-sa-Dlu"/>
                             <constraint firstItem="Uyv-j5-dkb" firstAttribute="top" secondItem="JSx-VM-bOe" secondAttribute="bottom" constant="135" id="W4N-7g-dtv"/>
                             <constraint firstItem="MVx-aT-Snx" firstAttribute="top" secondItem="Uyv-j5-dkb" secondAttribute="bottom" constant="24" id="YHR-Sm-3IT"/>
-                            <constraint firstItem="ajC-2R-mkt" firstAttribute="leading" secondItem="cfa-OA-EdL" secondAttribute="leadingMargin" id="cdd-zu-yLp"/>
-                            <constraint firstItem="ajC-2R-mkt" firstAttribute="trailing" secondItem="cfa-OA-EdL" secondAttribute="trailingMargin" id="cpi-VU-qaF"/>
-                            <constraint firstItem="s58-lI-AI8" firstAttribute="top" secondItem="ajC-2R-mkt" secondAttribute="bottom" constant="8" symbolic="YES" id="eLK-Ko-BrZ"/>
+                            <constraint firstItem="s58-lI-AI8" firstAttribute="top" secondItem="7tJ-nE-Uxq" secondAttribute="bottom" constant="9" id="e8i-Ja-DDr"/>
                             <constraint firstItem="s58-lI-AI8" firstAttribute="top" secondItem="ppa-cD-5uI" secondAttribute="top" id="gFv-TN-xZH"/>
                             <constraint firstItem="MVx-aT-Snx" firstAttribute="top" secondItem="JSx-VM-bOe" secondAttribute="bottom" constant="172" id="hMQ-HV-ZNZ"/>
-                            <constraint firstItem="Uyv-j5-dkb" firstAttribute="centerX" secondItem="ajC-2R-mkt" secondAttribute="centerX" id="kyJ-Bv-i67"/>
                             <constraint firstItem="Uyv-j5-dkb" firstAttribute="top" secondItem="JSx-VM-bOe" secondAttribute="bottom" constant="22" id="mub-EO-hcB"/>
                             <constraint firstItem="ppa-cD-5uI" firstAttribute="leading" secondItem="s58-lI-AI8" secondAttribute="trailing" constant="97" id="nxj-4n-NEl"/>
-                            <constraint firstItem="ppa-cD-5uI" firstAttribute="top" secondItem="ajC-2R-mkt" secondAttribute="bottom" constant="36" id="tOt-cD-Vaf"/>
+                            <constraint firstItem="7tJ-nE-Uxq" firstAttribute="leading" secondItem="cfa-OA-EdL" secondAttribute="leadingMargin" constant="78" id="qc1-SC-d6D"/>
                             <constraint firstItem="Uyv-j5-dkb" firstAttribute="leading" secondItem="cfa-OA-EdL" secondAttribute="leadingMargin" constant="68" id="uCF-2J-0ki"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MVx-aT-Snx" secondAttribute="trailing" constant="221" id="uJZ-3J-5Sp"/>
                             <constraint firstItem="ppa-cD-5uI" firstAttribute="top" secondItem="MVx-aT-Snx" secondAttribute="bottom" constant="11" id="xFK-f7-dbF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ajC-2R-mkt" secondAttribute="trailing" constant="64" id="yem-kp-0cW"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="W4N-7g-dtv"/>
-                                <exclude reference="kyJ-Bv-i67"/>
-                                <exclude reference="cdd-zu-yLp"/>
-                                <exclude reference="cpi-VU-qaF"/>
                                 <exclude reference="0aH-w9-er6"/>
                                 <exclude reference="IRW-rU-ug9"/>
                                 <exclude reference="hMQ-HV-ZNZ"/>
-                                <exclude reference="eLK-Ko-BrZ"/>
+                                <exclude reference="5Nq-Hg-QYd"/>
                                 <exclude reference="nxj-4n-NEl"/>
                                 <exclude reference="xFK-f7-dbF"/>
-                                <exclude reference="5Nq-Hg-QYd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
                                 <include reference="W4N-7g-dtv"/>
-                                <include reference="kyJ-Bv-i67"/>
-                                <include reference="cdd-zu-yLp"/>
-                                <include reference="cpi-VU-qaF"/>
                                 <include reference="0aH-w9-er6"/>
                                 <include reference="IRW-rU-ug9"/>
                                 <include reference="hMQ-HV-ZNZ"/>
-                                <include reference="eLK-Ko-BrZ"/>
+                                <include reference="5Nq-Hg-QYd"/>
                                 <include reference="nxj-4n-NEl"/>
                                 <include reference="xFK-f7-dbF"/>
-                                <include reference="5Nq-Hg-QYd"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" selectedImage="NewPost" id="3m6-XP-2WC"/>
                     <connections>
-                        <outlet property="DescriptionField" destination="ajC-2R-mkt" id="QGM-tL-hKE"/>
+                        <outlet property="DescriptionView" destination="7tJ-nE-Uxq" id="TkO-5o-e7H"/>
                         <outlet property="TitleField" destination="Uyv-j5-dkb" id="WGe-5d-Oys"/>
                         <outlet property="picker" destination="MVx-aT-Snx" id="COe-Wm-501"/>
                     </connections>
@@ -380,7 +366,7 @@
         <!--Settings-->
         <scene sceneID="gu3-hH-Xoo">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="aud-Vr-hdI" customClass="SettingsController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="aud-Vr-hdI" customClass="SettingsController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="mK4-GG-SDx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -519,7 +505,7 @@
         <!--Manage Subscription Controller-->
         <scene sceneID="28B-Cg-LeP">
             <objects>
-                <collectionViewController id="FeE-jv-EYM" customClass="ManageSubscriptionController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="FeE-jv-EYM" customClass="ManageSubscriptionController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ai8-N9-47D">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -531,7 +517,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionCell" id="J88-XW-0KE" customClass="CategoryCollectionCell" customModule="Imperial_Connections" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionCell" id="J88-XW-0KE" customClass="CategoryCollectionCell" customModule="ImperialConnections" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -579,7 +565,7 @@
         <!--Login Screen-->
         <scene sceneID="YeO-GN-rJH">
             <objects>
-                <viewController storyboardIdentifier="LoginScreen" id="Wfj-sh-Wxc" customClass="LoginScreen" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginScreen" id="Wfj-sh-Wxc" customClass="LoginScreen" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RAI-LL-Tz3"/>
                         <viewControllerLayoutGuide type="bottom" id="4jl-LH-BAb"/>
@@ -612,7 +598,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8c-gC-npu">
                                 <rect key="frame" x="221" y="330" width="159" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="221" y="423" width="159" height="30"/>
                                 </variation>
@@ -643,7 +629,7 @@
         <!--Main scene-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" userLabel="Main scene" customClass="HomeScreenController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" userLabel="Main scene" customClass="HomeScreenController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -664,7 +650,7 @@
         <!--Event Detail View-->
         <scene sceneID="ty0-oG-xrQ">
             <objects>
-                <viewController title="Event Detail View" id="GhE-2C-cYZ" customClass="EventDetailController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Event Detail View" id="GhE-2C-cYZ" customClass="EventDetailController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P6d-yu-eHe"/>
                         <viewControllerLayoutGuide type="bottom" id="bcU-hq-icN"/>
@@ -1025,7 +1011,7 @@
         <!--Item-->
         <scene sceneID="bEs-ee-3BR">
             <objects>
-                <viewController id="hHB-qe-15Y" customClass="TestHomeScreenController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hHB-qe-15Y" customClass="TestHomeScreenController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YWJ-iJ-VeS"/>
                         <viewControllerLayoutGuide type="bottom" id="Mu5-do-mPk"/>
@@ -1044,7 +1030,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="EventCell" id="to9-ce-Pk4" customClass="EventCell" customModule="Imperial_Connections" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="EventCell" id="to9-ce-Pk4" customClass="EventCell" customModule="ImperialConnections" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1123,7 +1109,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryTableCell" rowHeight="86" id="rSH-Er-RSY" customClass="CategoryCell" customModule="Imperial_Connections" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryTableCell" rowHeight="86" id="rSH-Er-RSY" customClass="CategoryCell" customModule="ImperialConnections" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="rSH-Er-RSY" id="Lzf-FT-NaU">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1195,7 +1181,7 @@
         <!--Chat View-->
         <scene sceneID="jMC-0J-QJn">
             <objects>
-                <viewController title="Chat View" id="tZE-yx-tB5" customClass="ChatViewController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chat View" id="tZE-yx-tB5" customClass="ChatViewController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rrd-Sj-kw2"/>
                         <viewControllerLayoutGuide type="bottom" id="oOx-u1-scz"/>
@@ -1360,13 +1346,13 @@
         <!--Chatrooms-->
         <scene sceneID="f4Y-ig-D53">
             <objects>
-                <tableViewController title="Chatrooms" id="ObT-bi-gq4" customClass="ChatroomTableController" customModule="Imperial_Connections" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Chatrooms" id="ObT-bi-gq4" customClass="ChatroomTableController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="22" sectionFooterHeight="22" id="em2-Hx-2pm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageTableCell" rowHeight="91" id="Ftp-QS-APR" customClass="ChatroomTableCell" customModule="Imperial_Connections" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageTableCell" rowHeight="91" id="Ftp-QS-APR" customClass="ChatroomTableCell" customModule="ImperialConnections" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ftp-QS-APR" id="uIr-Qa-yXq">
                                     <autoresizingMask key="autoresizingMask"/>

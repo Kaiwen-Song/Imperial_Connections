@@ -28,6 +28,10 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         picker.delegate = self
         picker.dataSource = self
     }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

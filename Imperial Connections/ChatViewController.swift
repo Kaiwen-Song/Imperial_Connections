@@ -30,6 +30,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
           self.navigationItem.title = chatroom.sender.login
         }
     }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

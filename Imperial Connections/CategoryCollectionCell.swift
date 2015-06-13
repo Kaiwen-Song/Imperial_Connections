@@ -12,7 +12,7 @@ class CategoryCollectionCell: UICollectionViewCell {
   
     //@IBOutlet weak var Icon: UIImageView!
     
-    @IBOutlet var Icon: UIImageView!
+    //@IBOutlet var Icon: UIImageView!
     @IBOutlet weak var Name: UILabel!
     
     var category:Category!
