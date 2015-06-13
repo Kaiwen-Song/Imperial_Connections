@@ -16,6 +16,7 @@ class MyEventsController: UICollectionViewController {
     var user:User!
     var events:[Event]!
     var eventCoreDataService = EventCoreDataService()
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +151,12 @@ class MyEventsController: UICollectionViewController {
         default:break
         }
         self.collectionView?.reloadData()
+    }
+    
+    func collectionView(collectionView:UICollectionView,
+        layout collectionViewLayOut: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
     }
     
     @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}

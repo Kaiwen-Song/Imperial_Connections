@@ -10,16 +10,18 @@ import UIKit
 
 class EventCell: UICollectionViewCell {
 
-    var event:Event!
-    
-    @IBOutlet weak var TitleLabel: UILabel!
-    //@IBOutlet var Icon: UIImageView!
-    
-    @IBOutlet weak var CategoryLabel: UILabel!
-    
-    @IBOutlet weak var DateLabel: UILabel!
 
+    //@IBOutlet weak var Icon: UIImageView!
+
+
+    @IBOutlet weak var Icon: UIImageView!
+    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var CategoryLabel: UILabel!
+    @IBOutlet weak var DateLabel: UILabel!
+    
+    var event:Event!
     required init(coder aDecoder: NSCoder) {
+    
         super.init(coder: aDecoder)
     }
     
@@ -28,7 +30,7 @@ class EventCell: UICollectionViewCell {
         CategoryLabel.text = event.category.rawValue
         DateLabel.text = event.date
         var imageName = event.category.rawValue + ".png"
-        //Icon.image = UIImage(named:imageName)
+        Icon.image = UIImage(named:imageName)
     }
     
     

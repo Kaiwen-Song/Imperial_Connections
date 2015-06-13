@@ -15,6 +15,9 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     let backend = BackendServices.SingleInstance
     var subscriptions:[Category]!
     var events: [Event] = [Event]()
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,5 +102,10 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     }
     */
 
+    func collectionView(collectionView:UICollectionView,
+        layout collectionViewLayOut: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
+    }
     @IBAction func unwindToSegue(segue:UIStoryboardSegue) {}
 }
