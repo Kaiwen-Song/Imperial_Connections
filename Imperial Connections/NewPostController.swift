@@ -9,24 +9,21 @@
 import UIKit
 import CoreData
 
-class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class NewPostController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     
     @IBOutlet weak var TitleField: UITextField!
     @IBOutlet weak var DescriptionView: UITextView!
     @IBOutlet weak var CategoryLabel: UILabel!
-    @IBOutlet weak var picker: UIPickerView!
+
     var user:User!
-    
-    var data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
     var CategorySelected:Category!
+    var Date:NSDate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        CategorySelected = data[0]
         println(user.login)
         // Do any additional setup after loading the view.
-        picker.delegate = self
-        picker.dataSource = self
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -55,8 +52,7 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         /*  TODO:
           pop up a box asking for confirmation
         */
-        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category:Category.allCategories[
-            picker.selectedRowInComponent(0)])
+        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category: CategorySelected)
         
         // Upload to database
 
@@ -71,25 +67,28 @@ class NewPostController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
         clear()
     }
+    
+    @IBAction func SelectCategorySelected(sender: UIButton) {
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ToDatePicker" {
+          var vc = segue.destinationViewController as! DatePickerViewer
+          var controller = vc.popoverPresentationController
+          if controller != nil {
+            controller?.delegate = self
+          }
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
-      return 1
+        }else {
+          var vc = segue.destinationViewController as! CategoryPickerView
+            var controller = vc.popoverPresentationController
+            controller?.delegate = self
+        }
     }
     
-    func pickerView(pickerView: UIPickerView,
-        numberOfRowsInComponent component: Int) -> Int{
-            return data.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int,
-        forComponent component: Int) -> String!{
-            return data[row].rawValue
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int,
-        inComponent component: Int){
-            println("selected row is " + data[row].rawValue)
-            CategorySelected = data[row]
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
     
     /*
