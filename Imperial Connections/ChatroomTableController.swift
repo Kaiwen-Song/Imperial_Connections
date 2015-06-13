@@ -53,7 +53,6 @@ class ChatroomTableController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableCell", forIndexPath: indexPath) as! ChatroomTableCell
         cell.chatroom = self.event.chatrooms[keys[indexPath.row]]
-        // Configure the cell...
         cell.updateCell()
         return cell
     }

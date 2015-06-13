@@ -28,4 +28,5 @@ class Settings{
     var categorieseventsurl = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/getcategoriesevents.php"
     var createChatroomID = server_address + "createChatroomID.php"
     var savesubscriptionurl = server_address + "savesubscriptions.php"
+    var geteventurl = server_address + "getevent.php"
 }

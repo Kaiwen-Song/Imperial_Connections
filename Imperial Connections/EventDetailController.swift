@@ -72,15 +72,18 @@ class EventDetailController: UIViewController {
             if(event.chatrooms[user.login] != nil) {
                 dst.chatroom = event.chatrooms[user.login]
             } else {
-                var newchatroom = Chatroom(event: event, sender: user, title: "hi")
-                BackendServices.SingleInstance.create_new_chatroom(event, sender: user, chatroom: newchatroom)
+                var newchatroom = Chatroom(event: event, sender: user)
+                event.chatrooms[user.login] = newchatroom
+                BackendServices.SingleInstance.create_new_chatroom(event, chatroom: newchatroom)
                 dst.chatroom = newchatroom
             }
             
         } else if (segue.identifier == "ToChatrooms") {
             var dst = (segue.destinationViewController as! UINavigationController).topViewController as!ChatroomTableController
+            event.chatrooms = BackendServices.SingleInstance.get_chatrooms(event)
             dst.event = self.event
             dst.user = self.user
+            
         }
     }
     

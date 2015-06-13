@@ -24,6 +24,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         MessageTable.delegate = self
         // Do any additional setup after loading the view.
         chatroom.get_messages()
+        if(chatroom.sender.login == user.login){
+          self.navigationItem.title = chatroom.owner.login
+        } else {
+          self.navigationItem.title = chatroom.sender.login
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +63,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             */
             BackendServices.SingleInstance.send_message(new_message, chatroom: chatroom)
             MessageTable.reloadData()
+            TextField.text = ""
         }
     }
     

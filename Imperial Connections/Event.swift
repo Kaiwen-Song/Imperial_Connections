@@ -16,7 +16,7 @@ public class Event{
     let title:String
     let category:Category
     let owner:User
-    var chatrooms = [String:Chatroom]()
+    var chatrooms = [String: Chatroom]()
     let date:String
     
     

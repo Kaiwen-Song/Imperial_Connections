@@ -77,12 +77,13 @@ class BackendServices{
     }
     
     //returns an array of chatrooms associated with the events
-    func get_chatrooms(event:Event) -> [Chatroom]{
-        return [Chatroom]()
+    func get_chatrooms(event:Event) -> [String:Chatroom]{
+        return parseJSONforChatrooms(event.eventID)
     }
     
     //returns an array of messages that are within the specified chatroom
     func get_messages(chatroom:Chatroom) -> [Message]{
+
         return parseJSONforMessages(chatroom.chatroomID)
     }
     
@@ -128,12 +129,18 @@ class BackendServices{
     
     
     //saves a new chatroom under the event in the database
-    func create_new_chatroom(event:Event, sender:User, chatroom:Chatroom){
+    func create_new_chatroom(event:Event, chatroom:Chatroom){
         if(chatroom.chatroomID == nil){
             chatroom.get_chatroom_ID()
         }
-        var url:NSString = setting.newchatroomurl + "?event_id=\(event.eventID)&event_owner_id=\(event.owner.login)&sender_id=\(sender.login)&chatroom_id=\(chatroom.chatroomID)"
+        var url:NSString = setting.newchatroomurl + "?event_id=\(event.eventID)&event_owner_id=\(event.owner.login)&sender_id=\(chatroom.sender.login)&chatroom_id=\(chatroom.chatroomID)"
+        println(url as! String)
         upload(url)
+    }
+    
+    func get_event(event_id: Int) -> [Event] {
+        var url = setting.geteventurl + "?event_id=\(event_id)"
+        return parseJSONforEvents(url)
     }
     
     private func upload(input:NSString)->String{
@@ -202,6 +209,27 @@ class BackendServices{
             messages.append(message)
         }
         return messages
+    }
+    
+    private func parseJSONforChatrooms (event_id: Int) -> [String:Chatroom] {
+        var nsURL = NSURL(string: setting.getchatroomsurl + "?event_id=\(event_id)")
+        var data = NSData(contentsOfURL: nsURL!)
+        let chatroomss = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
+        var chatrooms = [String:Chatroom]()
+        if (chatroomss == []) {
+            return chatrooms
+        }
+        for chatroom in chatroomss {
+            var event_id = (chatroom["event_id"] as! String).toInt()
+            var sender_id = chatroom["sender_id"] as! String
+            var event_owner_id = chatroom["event_owner_id"] as! String
+            var chatroom_id = (chatroom["chatroom_id"]! as! String).toInt()
+            var chatroom = Chatroom(event: (get_event(event_id!))[0], sender: User(login: sender_id))
+            chatrooms[sender_id] = chatroom
+        }
+        
+        println(chatrooms.keys.array.count)
+        return chatrooms
     }
     
     private func charAsString(str:String, index:Int) -> String {
