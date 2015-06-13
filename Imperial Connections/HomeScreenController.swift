@@ -12,7 +12,6 @@ import CoreData
 class HomeScreenController: UITabBarController {
 
     var user:User!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +79,5 @@ class HomeScreenController: UITabBarController {
         return User(login: "")
         
     }
-    
 
 }

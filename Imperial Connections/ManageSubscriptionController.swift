@@ -15,6 +15,8 @@ class ManageSubscriptionController: UICollectionViewController {
     
     let data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
     var subscription:[Bool]!
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,5 +126,19 @@ class ManageSubscriptionController: UICollectionViewController {
     
     }
     */
-
+    
+    /*
+    func collectionView(collectionView: UICollectionView!,
+        layout collectionViewLayout: UICollectionViewLayout!,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            return CGSize(width: 200, height: 200)
+    }
+    
+*/
+    func collectionView(collectionView:UICollectionView,
+        layout collectionViewLayOut: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
+    }
+    
 }
