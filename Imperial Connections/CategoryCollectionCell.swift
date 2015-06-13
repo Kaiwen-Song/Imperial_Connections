@@ -12,6 +12,7 @@ class CategoryCollectionCell: UICollectionViewCell {
   
     //@IBOutlet weak var Icon: UIImageView!
     
+    @IBOutlet var Icon: UIImageView!
     @IBOutlet weak var Name: UILabel!
     
     var category:Category!
@@ -22,6 +23,8 @@ class CategoryCollectionCell: UICollectionViewCell {
     
     func update(){
       Name.text = category.rawValue
+        var imageName = category.rawValue + ".png"
+        Icon.image = UIImage(named:imageName)
     }
     
 }

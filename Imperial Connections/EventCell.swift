@@ -13,6 +13,7 @@ class EventCell: UICollectionViewCell {
     var event:Event!
     
     @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet var Icon: UIImageView!
     
     @IBOutlet weak var CategoryLabel: UILabel!
     
@@ -26,6 +27,8 @@ class EventCell: UICollectionViewCell {
         TitleLabel.text = event.title
         CategoryLabel.text = event.category.rawValue
         DateLabel.text = event.date
+        var imageName = event.category.rawValue + ".png"
+        Icon.image = UIImage(named:imageName)
     }
     
     
