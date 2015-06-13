@@ -224,8 +224,8 @@ class BackendServices{
             var sender_id = chatroom["sender_id"] as! String
             var event_owner_id = chatroom["event_owner_id"] as! String
             var chatroom_id = (chatroom["chatroom_id"]! as! String).toInt()
-            var chatroom = Chatroom(event: (get_event(event_id!))[0], sender: User(login: sender_id))
-            chatrooms[sender_id] = chatroom
+            var chatroom = Chatroom(event: (get_event(event_id!))[0], sender: User(login: sender_id), chatroomID: chatroom_id!)
+            chatrooms[event_owner_id] = chatroom
         }
         
         println(chatrooms.keys.array.count)

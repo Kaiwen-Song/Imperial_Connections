@@ -162,7 +162,7 @@
                     <navigationItem key="navigationItem" id="jqK-Tq-1iJ">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="rB4-kj-fdd">
-                            <rect key="frame" x="174" y="8" width="253" height="29"/>
+                            <rect key="frame" x="173.5" y="7.5" width="253" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="My Activities"/>

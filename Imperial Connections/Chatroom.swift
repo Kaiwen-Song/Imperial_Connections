@@ -21,6 +21,13 @@ public class Chatroom{
         self.sender = sender
     }
     
+    init(event:Event, sender: User, chatroomID: Int) {
+        self.event = event
+        self.owner = event.owner
+        self.sender = sender
+        self.chatroomID = chatroomID
+    }
+    
     func get_chatroom_ID() -> Int{
         var url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createChatroomID.php?event_id=\(event.eventID)"
         var data = NSData(contentsOfURL: NSURL(string: url as String)!)

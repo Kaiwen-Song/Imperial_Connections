@@ -99,15 +99,19 @@ class ChatroomTableController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ChatroomToMessage"{
-        var dst = segue.destinationViewController as! ChatViewController
-        dst.user = self.user
-        dst.event = self.event
-        if event.chatrooms[user.login] != nil {
-            let chatroom = event.chatrooms[user.login]
-            dst.chatroom = chatroom
-        } else {
-            //event.chatrooms[user.login] = Chatroom(event: self.event, sender: self.user, owner: event.owner,chatroomID:1)
-        }
+            var dst = segue.destinationViewController as! ChatViewController
+            dst.user = self.user
+            dst.event = self.event
+        
+            dst.chatroom = BackendServices.SingleInstance.get_chatrooms(event)[user.login]
+            println("Here")
+            
+            /*if event.chatrooms[user.login] != nil {
+                let chatroom = event.chatrooms[user.login]
+                dst.chatroom = chatroom
+            } else {
+                event.chatrooms[user.login] = Chatroom(event: self.event, sender: self.user)
+            }*/
         }
         
     }
