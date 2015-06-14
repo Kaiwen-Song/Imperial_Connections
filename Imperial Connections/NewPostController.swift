@@ -21,6 +21,9 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
     var user:User!
     var CategorySelected:Category!
     var Date:String!
+    var datesel = false
+    var categorysel = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +57,23 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
         /*  TODO:
           pop up a box asking for confirmation
         */
+        println(categorysel)
+        println(datesel)
+        
+        
+        if(!categorysel) {
+            var alert = UIAlertController(title: "Oops", message: "Please Select a category", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        }
+        
+        if(!datesel) {
+            var alert = UIAlertController(title: "Oops", message: "Please choose a time", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
         let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category: CategorySelected)
         
         // Upload to database

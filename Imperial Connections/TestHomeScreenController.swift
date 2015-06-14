@@ -26,10 +26,11 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         CategoryList.delegate = self
         EventCollection.dataSource = self
         EventCollection.delegate = self
-        
-
+        CategoryList.allowsMultipleSelection = false
+        CategoryList.allowsMultipleSelectionDuringEditing = false
         subscriptions = backend.bitarray_to_subscription(backend.new_get_user_subscriptions(user))
-        
+        subscriptions.append(Category.Recommended)
+        subscriptions.reverse()
         // Do any additional setup after loading the view.
     }
 
@@ -58,7 +59,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let newCategory = subscriptions[indexPath.row]
         // Duplicate
-        var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
+        var cell:CategoryCell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
         events = cell.events
         EventCollection.reloadData()

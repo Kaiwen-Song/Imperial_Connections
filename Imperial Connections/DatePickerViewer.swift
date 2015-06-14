@@ -30,6 +30,7 @@ class DatePickerViewer: UIViewController{
     @IBAction func ConfirmButtonPress(sender: UIButton) {
         delegate.Date = formatter.stringFromDate(picker.date)
         delegate.SelectDateButton.setTitle(delegate.Date, forState: UIControlState.Normal)
+        delegate.datesel = true
     }
 
     /*

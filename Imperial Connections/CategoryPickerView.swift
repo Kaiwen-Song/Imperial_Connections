@@ -49,6 +49,7 @@ class CategoryPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBAction func ConfirmButtonPress(sender: UIButton) {
         delegate.CategorySelected = categorySelected
         delegate.SelectCategoryButton.setTitle(categorySelected.rawValue, forState: UIControlState.Normal)
+        delegate.categorysel = true
     }
     
     
