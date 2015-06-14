@@ -33,6 +33,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
           self.navigationItem.title = chatroom.sender.login
         }
         
+        MessageTable.allowsSelection = false
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateMessages", userInfo: nil, repeats: true)
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         time1 = dateFormatter.stringFromDate(NSDate())
@@ -70,8 +72,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let chatMessage = chatroom.messages[indexPath.row]
-        let cell =  UITableViewCell()
-        cell.textLabel!.text = chatMessage.message
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
+        
+        cell.MessageLabel.text = chatMessage.message
+        cell.TimeLabel.text = "Sent at: " + chatMessage.message
+        if(chatMessage.user.login == user.login){
+            cell.SenderLabel.text = "Sent by: You"
+        } else {
+            cell.SenderLabel.text = "Sent by:" + chatMessage.user.login
+        }
+        
         return cell
     }
     
