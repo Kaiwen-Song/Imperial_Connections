@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatViewController: ResponsiveTextFieldViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var TextField: UITextView!
+    //@IBOutlet weak var TextField: UITextView!
+    
+    @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var MessageTable: UITableView!
     @IBOutlet weak var SendButton: UIButton!
     var user:User!
@@ -36,7 +38,18 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateMessages", userInfo: nil, repeats: true)
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         time1 = dateFormatter.stringFromDate(NSDate())
+        
     }
+    
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if (self.activeTextField != nil)
+        {
+            self.activeTextField?.resignFirstResponder()
+            self.activeTextField = nil
+        }
+    }
+    
     
     func updateMessages() {
         let str = dateFormatter.stringFromDate(NSDate())
@@ -52,13 +65,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         timer.invalidate()
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -115,24 +125,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        animateViewMoving(true, moveValue: 100)
-    }
-    func textFieldDidEndEditing(textField: UITextField) {
-        animateViewMoving(false, moveValue: 100)
-    }
-    
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        var movementDuration:NSTimeInterval = 0.3
-        var movement:CGFloat = ( up ? -moveValue : moveValue)
-        UIView.beginAnimations( "animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration )
-        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
-        UIView.commitAnimations()
-    }
-    
+
     /*
     // MARK: - Navigation
 
