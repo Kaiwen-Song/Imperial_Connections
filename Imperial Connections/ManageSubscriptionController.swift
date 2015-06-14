@@ -16,7 +16,8 @@ class ManageSubscriptionController: UICollectionViewController {
     let data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
     var subscription:[Bool]!
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    
+    let selectedColour = UIColor(red: 0.40, green: 0.40, blue: 0.40, alpha: 1.0)
+    let unselectedColour = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,26 +67,31 @@ class ManageSubscriptionController: UICollectionViewController {
         cell.category = data[indexPath.item]
         println(cell.category.rawValue)
         cell.update()
-        println(subscription[indexPath.item])
+        println(indexPath.item)
+        cell.backgroundColor = unselectedColour
         if(subscription[indexPath.item]) {
+           cell.selected = true
            self.collectionView?.selectItemAtIndexPath(indexPath, animated: true, scrollPosition:UICollectionViewScrollPosition())
-           //println("cellselected")
+            cell.backgroundColor = selectedColour
         }
         return cell
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
-        cell.highlighted = true
         subscription[Category.categoryindex[cell.category]!] = true
         println(cell.category.rawValue + "selected!")
+       // cell.backgroundColor = UIColor.redColor()
+        cell.backgroundColor = selectedColour
+        
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath){
         let cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
-        cell.highlighted = false
         subscription[Category.categoryindex[cell.category]!] = false
         println(cell.category.rawValue + "unselected!")
+       // cell.backgroundColor = UIColor.blueColor()
+        cell.backgroundColor = unselectedColour
     }
     
     @IBAction func SaveButtonPressed(sender: UIBarButtonItem) {
