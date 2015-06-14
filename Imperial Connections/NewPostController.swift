@@ -29,6 +29,10 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
         super.viewDidLoad()
         println(user.login)
         DescriptionView.textColor = UIColor.lightGrayColor()
+        DescriptionView.layer.cornerRadius = 10
+        DescriptionView.layer.borderWidth = 1
+        DescriptionView.layer.borderColor = UIColor.whiteColor().CGColor
+
         // Do any additional setup after loading the view.
     }
     

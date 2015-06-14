@@ -32,7 +32,10 @@ class EventDetailController: UIViewController {
             RemoveButton.hidden = true
         }*/
         configurateEventDetail()
-        DescriptionLabel.lineBreakMode = .ByWordWrapping
+       // DescriptionLabel.lineBreakMode = .ByWordWrapping
+        DescriptionLabel.layer.cornerRadius = 10
+        DescriptionLabel.layer.borderWidth = 2
+        DescriptionLabel.layer.borderColor = UIColor.whiteColor().CGColor
         println("\n\n\n\n" + event.owner.login + user.login + "\n\n\n")
     }
     
