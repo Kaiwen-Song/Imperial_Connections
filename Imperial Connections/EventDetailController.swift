@@ -12,6 +12,9 @@ class EventDetailController: UIViewController {
 
     @IBOutlet weak var TitleLabel: UILabel!
     
+    @IBOutlet weak var RemoveImage: UIImageView!
+    @IBOutlet weak var ChatImage: UIImageView!
+    @IBOutlet weak var WatchImage: UIImageView!
     @IBOutlet weak var DescriptionLabel: UILabel!
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var WatchButton: UIButton!
@@ -46,8 +49,10 @@ class EventDetailController: UIViewController {
         if(event.owner.login == user.login){
             WatchButton.hidden = true
             Message.hidden = true
+            WatchImage.hidden = true
         } else {
             RemoveButton.hidden = true
+            RemoveImage.hidden = true
             Chatrooms.hidden = true
         }
     }
