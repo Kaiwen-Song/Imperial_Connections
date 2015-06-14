@@ -15,7 +15,7 @@ class EventCollectionController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let event:Event = Event(eventID: 1, owner: User(login: "test owner"), title: "test event", description: "empty description", category: Category.Photography)
+        let event:Event = Event(eventID: 1, owner: User(login: "test owner"), title: "test event", description: "empty description", category: Category.Photography, date:"test")
         
         events.append(event)
         

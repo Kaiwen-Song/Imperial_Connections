@@ -52,6 +52,10 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
         DescriptionView.text = ""
         SelectCategoryButton.setTitle("Select Date", forState: .Normal)
         SelectDateButton.setTitle("Select Category", forState: .Normal)
+        datesel = false
+        Date = nil
+        categorysel = false
+        CategorySelected = nil
     }
     
     func textViewDidEndEditing(DescriptionView: UITextView) {
@@ -74,9 +78,6 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
         /*  TODO:
           pop up a box asking for confirmation
         */
-        println(categorysel)
-        println(datesel)
-        
         
         if(!categorysel) {
             var alert = UIAlertController(title: "Oops", message: "Please Select a category", preferredStyle: UIAlertControllerStyle.Alert)

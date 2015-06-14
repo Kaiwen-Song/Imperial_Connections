@@ -186,7 +186,8 @@ class BackendServices{
             var cate = (event["categories"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             var category = Category(rawValue: cate)
             var description = (event["content"] as! String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: category!)
+            var date = (event["event_date"] as! String)
+            var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: category!, date: date)
             events.append(event)
         }
         return events

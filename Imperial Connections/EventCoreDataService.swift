@@ -45,7 +45,7 @@ class EventCoreDataService {
         events.removeAll(keepCapacity: false)
         for result in results {
             var res = result as! EventModel
-            var event = Event(eventID: res.eventID.toInt()!, owner: User(login: res.owner), title: res.title, description: res.descriptions, category: Category(rawValue: res.category)!)
+            var event = Event(eventID: res.eventID.toInt()!, owner: User(login: res.owner), title: res.title, description: res.descriptions, category: Category(rawValue: res.category)!, date:res.date)
             events.append(event)
         }
         return events
