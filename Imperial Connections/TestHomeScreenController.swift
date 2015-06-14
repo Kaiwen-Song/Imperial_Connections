@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate{
     @IBOutlet weak var CategoryList: UITableView!
     @IBOutlet weak var EventCollection: UICollectionView!
+   
     var user:User!
     let backend = BackendServices.SingleInstance
     var subscriptions:[Category]!
@@ -44,6 +45,7 @@ class TestHomeScreenController: UIViewController,UITableViewDataSource, UITableV
         var cell:CategoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryTableCell", forIndexPath: indexPath) as! CategoryCell
         cell.setCategory(subscriptions[indexPath.row])
         events = cell.events
+        
             
         return cell
     }

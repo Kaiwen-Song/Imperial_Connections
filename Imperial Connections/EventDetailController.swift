@@ -32,7 +32,7 @@ class EventDetailController: UIViewController {
             RemoveButton.hidden = true
         }*/
         configurateEventDetail()
-        
+        DescriptionLabel.lineBreakMode = .ByWordWrapping
         println("\n\n\n\n" + event.owner.login + user.login + "\n\n\n")
     }
     

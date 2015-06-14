@@ -18,11 +18,13 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var DateLabel: UILabel!
-    
+    @IBOutlet var background: UIImageView!
     var event:Event!
     required init(coder aDecoder: NSCoder) {
     
         super.init(coder: aDecoder)
+     
+        
     }
     
     func update(){
@@ -31,6 +33,12 @@ class EventCell: UICollectionViewCell {
         DateLabel.text = event.date
         var imageName = event.category.rawValue + ".png"
         Icon.image = UIImage(named:imageName)
+        background.backgroundColor = UIColor.clearColor()
+        background.layer.cornerRadius = 5
+        background.layer.borderWidth = 1
+        background.layer.borderColor = UIColor.grayColor().CGColor
+       
+        
     }
     
     

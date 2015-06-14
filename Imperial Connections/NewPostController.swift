@@ -28,6 +28,7 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         println(user.login)
+        DescriptionView.textColor = UIColor.lightGrayColor()
         // Do any additional setup after loading the view.
     }
     

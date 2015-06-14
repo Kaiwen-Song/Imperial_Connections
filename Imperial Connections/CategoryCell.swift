@@ -15,6 +15,7 @@ class CategoryCell: UITableViewCell {
     var category:Category!
     var events: [Event] = [Event]()
 
+    @IBOutlet var Icon: UIImageView!
     required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
@@ -22,6 +23,8 @@ class CategoryCell: UITableViewCell {
     func setCategory(category:Category){
         self.category = category
         CategoryLabel.text = category.rawValue
+        var imageName = category.rawValue + ".png"
+        Icon.image = UIImage(named: imageName)
         
         
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
