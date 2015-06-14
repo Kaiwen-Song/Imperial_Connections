@@ -9,12 +9,16 @@
 import UIKit
 
 class CategoryPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    var delegate:NewPostController!
     @IBOutlet weak var picker: UIPickerView!
     var data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
+    var categorySelected:Category!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
         picker.dataSource = self
+        categorySelected = data[0]
         // Do any additional setup after loading the view.
     }
     
@@ -39,9 +43,14 @@ class CategoryPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int,
         inComponent component: Int){
-            println("selected row is " + data[row].rawValue)
-        //CategorySelected = data[row]
+        categorySelected = data[row]
     }
+    
+    @IBAction func ConfirmButtonPress(sender: UIButton) {
+        delegate.CategorySelected = categorySelected
+        delegate.SelectCategoryButton.setTitle(categorySelected.rawValue, forState: UIControlState.Normal)
+    }
+    
     
     /*
     // MARK: - Navigation

@@ -9,13 +9,17 @@
 import UIKit
 
 class DatePickerViewer: UIViewController{
-
+    var delegate:NewPostController!
     
+    var formatter:NSDateFormatter!
+    @IBOutlet weak var picker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        formatter.timeStyle = NSDateFormatterStyle.ShortStyle
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +27,10 @@ class DatePickerViewer: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func ConfirmButtonPress(sender: UIButton) {
+        delegate.Date = formatter.stringFromDate(picker.date)
+        delegate.SelectDateButton.setTitle(delegate.Date, forState: UIControlState.Normal)
+    }
 
     /*
     // MARK: - Navigation

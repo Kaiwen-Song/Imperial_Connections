@@ -12,13 +12,15 @@ import CoreData
 class NewPostController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     
+    @IBOutlet weak var SelectCategoryButton: UIButton!
+    @IBOutlet weak var SelectDateButton: UIButton!
     @IBOutlet weak var TitleField: UITextField!
     @IBOutlet weak var DescriptionView: UITextView!
     @IBOutlet weak var CategoryLabel: UILabel!
 
     var user:User!
     var CategorySelected:Category!
-    var Date:NSDate!
+    var Date:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,14 +78,13 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
         if segue.identifier == "ToDatePicker" {
           var vc = segue.destinationViewController as! DatePickerViewer
           var controller = vc.popoverPresentationController
-          if controller != nil {
             controller?.delegate = self
-          }
-
-        }else {
+            vc.delegate = self
+        } else {
           var vc = segue.destinationViewController as! CategoryPickerView
             var controller = vc.popoverPresentationController
             controller?.delegate = self
+            vc.delegate = self
         }
     }
     
