@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: ResponsiveTextFieldViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class ChatViewController: KeyboardViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
     //@IBOutlet weak var TextField: UITextView!
     

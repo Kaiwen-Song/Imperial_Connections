@@ -10,6 +10,7 @@
 		6C2041A51B1D0EF700D5D198 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2041A11B1D0EF700D5D198 /* EventService.swift */; };
 		6C2041A61B1D0EF700D5D198 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2041A21B1D0EF700D5D198 /* Settings.swift */; };
 		6C2041A91B1D0F0700D5D198 /* backend in Resources */ = {isa = PBXBuildFile; fileRef = 6C2041A81B1D0F0700D5D198 /* backend */; };
+		6C236A4B1B2E323200580E9A /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C236A4A1B2E323200580E9A /* KeyboardViewController.swift */; };
 		6C2456161B0B6FCC005DB245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2456151B0B6FCC005DB245 /* AppDelegate.swift */; };
 		6C24561D1B0B6FCC005DB245 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C24561B1B0B6FCC005DB245 /* Main.storyboard */; };
 		6C24561F1B0B6FCC005DB245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C24561E1B0B6FCC005DB245 /* Images.xcassets */; };
@@ -40,7 +41,6 @@
 		6CF92F341B1CBE2E0001EAF1 /* ManageSubscriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */; };
 		A00C58441B2259730081FB49 /* EventCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C58431B2259730081FB49 /* EventCoreDataService.swift */; };
 		A0127F171B2C81F5008761AE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A02EA3A71B2C7CE4005F90BB /* CoreData.framework */; };
-		A01543C11B2E1F8800B5A4A0 /* ResponsiveTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01543C01B2E1F8800B5A4A0 /* ResponsiveTextFieldViewController.swift */; };
 		A07B01AB1B21118200CFCD3B /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B01AA1B21118200CFCD3B /* EventModel.swift */; };
 		A09EAE9E1B1F53BA00D8BE93 /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09EAE9C1B1F53BA00D8BE93 /* EventModel.xcdatamodeld */; };
 		DD33438F1B2CC215005A5D7C /* DatePickerViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD33438E1B2CC215005A5D7C /* DatePickerViewer.swift */; };
@@ -62,6 +62,7 @@
 		6C2041A11B1D0EF700D5D198 /* EventService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		6C2041A21B1D0EF700D5D198 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6C2041A81B1D0F0700D5D198 /* backend */ = {isa = PBXFileReference; lastKnownFileType = folder; path = backend; sourceTree = SOURCE_ROOT; };
+		6C236A4A1B2E323200580E9A /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		6C2456101B0B6FCC005DB245 /* ImperialConnections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImperialConnections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2456141B0B6FCC005DB245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C2456151B0B6FCC005DB245 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		6CF92F331B1CBE2E0001EAF1 /* ManageSubscriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSubscriptionController.swift; sourceTree = "<group>"; };
 		A00C58431B2259730081FB49 /* EventCoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCoreDataService.swift; sourceTree = "<group>"; };
-		A01543C01B2E1F8800B5A4A0 /* ResponsiveTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponsiveTextFieldViewController.swift; path = ../../../../Downloads/ResponsiveTextFieldViewController.swift; sourceTree = "<group>"; };
 		A02EA3A71B2C7CE4005F90BB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A07B01AA1B21118200CFCD3B /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A09EAE9D1B1F53BA00D8BE93 /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
@@ -151,9 +151,9 @@
 				6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */,
 				DDCBC2AE1B2CE98800FCDBCE /* CategoryPickerView.swift */,
 				6CF92F2B1B1CA9330001EAF1 /* ChatroomTableCell.swift */,
+				6C236A4A1B2E323200580E9A /* KeyboardViewController.swift */,
 				6CF92F291B1CA8A10001EAF1 /* ChatroomTableController.swift */,
 				6CF92F271B1C9C3F0001EAF1 /* ChatViewController.swift */,
-				A01543C01B2E1F8800B5A4A0 /* ResponsiveTextFieldViewController.swift */,
 				6C5D7A0A1B1DE0A000C2C26E /* ClassFiles */,
 				DD33438E1B2CC215005A5D7C /* DatePickerViewer.swift */,
 				6C4C98A81B16276B00CBA12E /* EventCell.swift */,
@@ -333,6 +333,7 @@
 				DD33438F1B2CC215005A5D7C /* DatePickerViewer.swift in Sources */,
 				6C25AEFB1B23528300B1554C /* BackendServices.swift in Sources */,
 				6CF92F281B1C9C3F0001EAF1 /* ChatViewController.swift in Sources */,
+				6C236A4B1B2E323200580E9A /* KeyboardViewController.swift in Sources */,
 				A07B01AB1B21118200CFCD3B /* EventModel.swift in Sources */,
 				6CA783D61B19D3B3008DF4D9 /* MyEventsController.swift in Sources */,
 				6CA783D81B19DBB7008DF4D9 /* EventDetailController.swift in Sources */,
@@ -357,7 +358,6 @@
 				6C5910E81B1481A200CA4F83 /* Category.swift in Sources */,
 				A09EAE9E1B1F53BA00D8BE93 /* EventModel.xcdatamodeld in Sources */,
 				6CF92F301B1CB2240001EAF1 /* CategoryCell.swift in Sources */,
-				A01543C11B2E1F8800B5A4A0 /* ResponsiveTextFieldViewController.swift in Sources */,
 				DD494F7F1B26FE1D009EC608 /* UserModel.swift in Sources */,
 				6CF92F341B1CBE2E0001EAF1 /* ManageSubscriptionController.swift in Sources */,
 			);
