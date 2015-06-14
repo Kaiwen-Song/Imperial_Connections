@@ -147,11 +147,12 @@
 				6C2041A81B1D0F0700D5D198 /* backend */,
 				6CF92F2F1B1CB2240001EAF1 /* CategoryCell.swift */,
 				6CF92F311B1CBD1D0001EAF1 /* CategoryCollectionCell.swift */,
+				DDCBC2AE1B2CE98800FCDBCE /* CategoryPickerView.swift */,
 				6CF92F2B1B1CA9330001EAF1 /* ChatroomTableCell.swift */,
 				6CF92F291B1CA8A10001EAF1 /* ChatroomTableController.swift */,
 				6CF92F271B1C9C3F0001EAF1 /* ChatViewController.swift */,
-				DDCBC2AE1B2CE98800FCDBCE /* CategoryPickerView.swift */,
 				6C5D7A0A1B1DE0A000C2C26E /* ClassFiles */,
+				DD33438E1B2CC215005A5D7C /* DatePickerViewer.swift */,
 				6C4C98A81B16276B00CBA12E /* EventCell.swift */,
 				6C569EEF1B1907960052CF75 /* EventCollectionController.swift */,
 				6CA783D71B19DBB7008DF4D9 /* EventDetailController.swift */,
@@ -169,7 +170,6 @@
 				6CDF395C1B138BD2001CDF13 /* SettingsController.swift */,
 				6C2456131B0B6FCC005DB245 /* Supporting Files */,
 				6CF92F2D1B1CABED0001EAF1 /* TestHomeScreenController.swift */,
-				DD33438E1B2CC215005A5D7C /* DatePickerViewer.swift */,
 			);
 			path = "Imperial Connections";
 			sourceTree = "<group>";

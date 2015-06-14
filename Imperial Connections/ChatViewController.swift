@@ -70,15 +70,35 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let chatMessage = chatroom.messages[indexPath.row]
-        let cell =  UITableViewCell()
-        cell.textLabel!.text = chatMessage.message
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
+        cell.TimeLabel.hidden = true
+        cell.SenderLabel.hidden = true
+        cell.MessageLabel.text = chatMessage.message
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let chatMessage = chatroom.messages[indexPath.row]
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MessageCell
+        var sender:String!
+        if(chatMessage.user.login == user.login) {
+            sender = "You"
+        } else {
+            sender = chatMessage.user.login
+        }
         
+        var date = chatMessage.date
+        let startindex = advance(date.startIndex,2)
+        let endindex = advance(date.startIndex, 19)
+        date = date.substringToIndex(endindex)
+        date = date.substringFromIndex(startindex)
+        cell.TimeLabel.text = "Sent at: " + date
+        
+        cell.SenderLabel.text = "Sent by: " + sender
+        
+        cell.TimeLabel.hidden = false
+        cell.SenderLabel.hidden = false
     }
-
     
     @IBAction func SendButtonPressed(sender: UIButton) {
         let message = TextField.text
