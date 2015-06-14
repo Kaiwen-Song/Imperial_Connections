@@ -50,8 +50,25 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
     func clear() {
         TitleField.text = ""
         DescriptionView.text = ""
+        SelectCategoryButton.setTitle("Select Date", forState: .Normal)
+        SelectDateButton.setTitle("Select Category", forState: .Normal)
     }
     
+    func textViewDidEndEditing(DescriptionView: UITextView) {
+        if DescriptionView.text.isEmpty {
+            DescriptionView.text = "Insert Description"
+            DescriptionView.textColor = UIColor.lightGrayColor()
+        }
+    }
+    
+    func textViewDidBeginEditing(DescriptionView: UITextView) {
+        if DescriptionView.textColor == UIColor.lightGrayColor() {
+            DescriptionView.text = nil
+            DescriptionView.textColor = UIColor.blackColor()
+        }
+    }
+    
+
     
     @IBAction func SubmitButtonPress() {
         /*  TODO:
@@ -74,7 +91,7 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
-        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category: CategorySelected)
+        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category: CategorySelected, date:Date)
         
         // Upload to database
 

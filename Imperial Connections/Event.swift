@@ -27,11 +27,12 @@ public class Event{
         self.category = category
     }
  
-    init(owner:User, title:String, description:String, category:Category){
+    init(owner:User, title:String, description:String, category:Category, date:String){
         self.owner = owner
         self.title = title
         self.description = description
         self.category = category
+        self.date = date
     }
     
     func get_event_ID() -> Int{

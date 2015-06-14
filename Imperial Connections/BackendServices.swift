@@ -92,7 +92,8 @@ class BackendServices{
         if (event.eventID == nil) {
             event.get_event_ID()
         }
-        var url: NSString = setting.uploadurl + "?event_id=\(event.eventID)&owner=\(event.owner.login)&title=\(event.title)&category=\(event.category.rawValue)&description=\(event.description)"
+        var url: NSString = setting.uploadurl + "?event_id=\(event.eventID)&owner=\(event.owner.login)&title=\(event.title)&category=\(event.category.rawValue)&description=\(event.description)&event_date=\(event.date)"
+        
         upload(url)
     }
     
