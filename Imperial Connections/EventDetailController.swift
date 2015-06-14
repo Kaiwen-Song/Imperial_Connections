@@ -69,7 +69,7 @@ class EventDetailController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject!){
         if (segue.identifier == "EventDetailToChat") {
-            var dst = segue.destinationViewController as! ChatViewController
+            var dst = (segue.destinationViewController as! UINavigationController).topViewController as! ChatViewController
             dst.user = self.user
             dst.event = self.event
             if(event.chatrooms[user.login] != nil) {

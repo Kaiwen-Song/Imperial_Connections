@@ -10,8 +10,8 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var TextField: UITextView!
     @IBOutlet weak var MessageTable: UITableView!
-    @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var SendButton: UIButton!
     var user:User!
     var event:Event!
