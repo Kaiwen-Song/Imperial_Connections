@@ -68,11 +68,11 @@ class ManageSubscriptionController: UICollectionViewController {
         println(cell.category.rawValue)
         cell.update()
         println(indexPath.item)
-        cell.backgroundColor = unselectedColour
+         cell.background.image = UIImage(named: "simple-gray-texture")
         if(subscription[indexPath.item]) {
            cell.selected = true
            self.collectionView?.selectItemAtIndexPath(indexPath, animated: true, scrollPosition:UICollectionViewScrollPosition())
-            cell.backgroundColor = selectedColour
+             cell.background.image = UIImage(named: "white_background")
         }
         return cell
     }
@@ -82,7 +82,7 @@ class ManageSubscriptionController: UICollectionViewController {
         subscription[Category.categoryindex[cell.category]!] = true
         println(cell.category.rawValue + "selected!")
        // cell.backgroundColor = UIColor.redColor()
-        cell.backgroundColor = selectedColour
+         cell.background.image = UIImage(named: "white_background")
         
     }
     
@@ -91,7 +91,7 @@ class ManageSubscriptionController: UICollectionViewController {
         subscription[Category.categoryindex[cell.category]!] = false
         println(cell.category.rawValue + "unselected!")
        // cell.backgroundColor = UIColor.blueColor()
-        cell.backgroundColor = unselectedColour
+         cell.background.image = UIImage(named: "simple-gray-texture")
     }
     
     @IBAction func SaveButtonPressed(sender: UIBarButtonItem) {

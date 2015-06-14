@@ -13,6 +13,7 @@ class CategoryCollectionCell: UICollectionViewCell {
     //@IBOutlet weak var Icon: UIImageView!
     
     
+    @IBOutlet var background: UIImageView!
     @IBOutlet weak var Icon: UIImageView!
     @IBOutlet weak var Name: UILabel!
     
@@ -26,6 +27,10 @@ class CategoryCollectionCell: UICollectionViewCell {
         Name.text = category.rawValue
         var imageName = category.rawValue + ".png"
         Icon.image = UIImage(named:imageName)
+        background.backgroundColor = UIColor.clearColor()
+        background.layer.cornerRadius = 5
+        background.layer.borderWidth = 1
+        background.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
 }
