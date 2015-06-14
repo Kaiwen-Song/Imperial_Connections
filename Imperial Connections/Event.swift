@@ -17,14 +17,15 @@ public class Event{
     let category:Category
     let owner:User
     var chatrooms = [String: Chatroom]()
-    var date:String = "\(NSDate())"
+    let date:String
     
-    init(eventID:Int, owner:User, title:String, description:String, category:Category){
+    init(eventID:Int, owner:User, title:String, description:String, category:Category, date:String){
         self.eventID = eventID
         self.owner = owner
         self.title = title
         self.description = description
         self.category = category
+        self.date = date
     }
  
     init(owner:User, title:String, description:String, category:Category, date:String){

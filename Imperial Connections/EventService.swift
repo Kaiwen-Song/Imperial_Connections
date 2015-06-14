@@ -57,7 +57,8 @@ class EventService {
             var cate = event["categories"] as! String
             var category = Category(rawValue: cate)
             var description = event["content"] as! String
-            var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: Category.Recommended)
+            var date = event["event_date"] as! String
+            var event = Event(eventID: id, owner: User(login: owner), title: title, description: description, category: Category.Recommended, date:date)
             events.append(event)
         }
         return events
