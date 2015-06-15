@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -1065,8 +1065,6 @@
         <!--Chat View-->
         <scene sceneID="jMC-0J-QJn">
             <objects>
-                <exit id="1Rv-c8-AV1" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e3P-lR-dfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Chat View" id="tZE-yx-tB5" customClass="ChatViewController" customModule="ImperialConnections" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i8F-OQ-ERl"/>
@@ -1087,13 +1085,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V99-Dw-wgH">
-                                                    <rect key="frame" x="8" y="-5" width="572" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V99-Dw-wgH">
+                                                    <rect key="frame" x="8" y="-5" width="363" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="363" id="gyM-Ne-bzu"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Jd-Epf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Jd-Epf">
                                                     <rect key="frame" x="8" y="27" width="203" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="203" id="8Li-Hp-y7J"/>
@@ -1103,7 +1104,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyX-LD-sWb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyX-LD-sWb">
                                                     <rect key="frame" x="230" y="27" width="141" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="107" id="csm-b1-VYj"/>
@@ -1114,15 +1115,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="top" secondItem="vv7-ml-ei1" secondAttribute="topMargin" constant="-13" id="1Me-lb-y0i"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xpZ-Jd-Epf" secondAttribute="bottom" constant="-9" id="EaO-7J-FHU"/>
-                                                <constraint firstItem="xpZ-Jd-Epf" firstAttribute="leading" secondItem="V99-Dw-wgH" secondAttribute="leading" id="Eib-6m-nxU"/>
-                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="leading" secondItem="vv7-ml-ei1" secondAttribute="leadingMargin" id="ICX-eu-zGd"/>
-                                                <constraint firstItem="pyX-LD-sWb" firstAttribute="top" secondItem="V99-Dw-wgH" secondAttribute="bottom" constant="-3" id="K0Q-ld-Jic"/>
-                                                <constraint firstAttribute="bottom" secondItem="pyX-LD-sWb" secondAttribute="bottom" constant="1" id="MSO-2F-0VD"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="V99-Dw-wgH" secondAttribute="trailing" constant="12" id="Oqb-Ei-mLm"/>
-                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="centerX" secondItem="pyX-LD-sWb" secondAttribute="centerX" id="ljr-do-0Wz"/>
-                                                <constraint firstItem="xpZ-Jd-Epf" firstAttribute="top" secondItem="V99-Dw-wgH" secondAttribute="bottom" constant="-2" id="sYb-Vz-bWG"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="V99-Dw-wgH" secondAttribute="bottom" constant="10" id="H07-Id-iq4"/>
+                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="top" secondItem="vv7-ml-ei1" secondAttribute="topMargin" constant="-13" id="KXa-ia-j4n"/>
+                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="leading" secondItem="vv7-ml-ei1" secondAttribute="leadingMargin" constant="-7" id="YJC-ih-IM8"/>
+                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="leading" secondItem="xpZ-Jd-Epf" secondAttribute="leading" id="jVS-Yr-kj9"/>
+                                                <constraint firstItem="V99-Dw-wgH" firstAttribute="trailing" secondItem="pyX-LD-sWb" secondAttribute="trailing" id="tJK-Bd-aBV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.97043867504894854" green="1" blue="0.95102768433283058" alpha="1" colorSpace="calibratedRGB"/>
@@ -1175,6 +1172,8 @@
                         <outlet property="TextField" destination="gLB-yV-H4u" id="jwO-Xx-efU"/>
                     </connections>
                 </viewController>
+                <exit id="1Rv-c8-AV1" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3P-lR-dfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3191" y="-1651"/>
         </scene>

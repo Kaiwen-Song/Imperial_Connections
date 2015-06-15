@@ -83,6 +83,10 @@ class ChatViewController: KeyboardViewController, UITextViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
         cell.TimeLabel.hidden = true
         cell.SenderLabel.hidden = true
+        if(chatMessage.user.login == user.login) {
+            cell.MessageLabel.textAlignment = .Right
+            cell.backgroundColor = UIColor.clearColor()
+        } 
         cell.MessageLabel.text = chatMessage.message
         return cell
     }
