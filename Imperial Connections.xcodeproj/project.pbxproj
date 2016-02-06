@@ -264,6 +264,8 @@
 		6C2456081B0B6FCB005DB245 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "HJK Webapps";
 				TargetAttributes = {

@@ -30,10 +30,10 @@ public class Chatroom{
     
     
     func get_chatroom_ID() -> Int{
-        var url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createChatroomID.php?event_id=\(event.eventID)"
-        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
-        var result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
-        let resultint = result.stringByReplacingOccurrencesOfString("\n", withString:"").toInt()!
+        let url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createChatroomID.php?event_id=\(event.eventID)"
+        let data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        let result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+        let resultint = Int(result.stringByReplacingOccurrencesOfString("\n", withString:""))!
         self.chatroomID = resultint
         return resultint
     }

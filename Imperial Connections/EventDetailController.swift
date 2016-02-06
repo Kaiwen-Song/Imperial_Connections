@@ -39,7 +39,7 @@ class EventDetailController: UIViewController {
         DescriptionLabel.layer.cornerRadius = 10
         DescriptionLabel.layer.borderWidth = 2
         DescriptionLabel.layer.borderColor = UIColor.whiteColor().CGColor
-        println("\n\n\n\n" + event.owner.login + user.login + "\n\n\n")
+        print("\n\n\n\n" + event.owner.login + user.login + "\n\n\n")
     }
     
     func configurateEventDetail(){
@@ -74,20 +74,20 @@ class EventDetailController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject!){
         if (segue.identifier == "EventDetailToChat") {
-            var dst = (segue.destinationViewController as! UINavigationController).topViewController as! ChatViewController
+            let dst = (segue.destinationViewController as! UINavigationController).topViewController as! ChatViewController
             dst.user = self.user
             dst.event = self.event
             if(event.chatrooms[user.login] != nil) {
                 dst.chatroom = event.chatrooms[user.login]
             } else {
-                var newchatroom = Chatroom(event: event, sender: user)
+                let newchatroom = Chatroom(event: event, sender: user)
                 event.chatrooms[user.login] = newchatroom
                 BackendServices.SingleInstance.create_new_chatroom(event, chatroom: newchatroom)
                 dst.chatroom = newchatroom
             }
             
         } else if (segue.identifier == "ToChatrooms") {
-            var dst = (segue.destinationViewController as! UINavigationController).topViewController as!ChatroomTableController
+            let dst = (segue.destinationViewController as! UINavigationController).topViewController as!ChatroomTableController
             event.chatrooms = BackendServices.SingleInstance.get_chatrooms(event)
             dst.event = self.event
             dst.user = self.user

@@ -42,7 +42,7 @@ class ChatViewController: KeyboardViewController, UITextViewDelegate, UITableVie
     }
     
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (self.activeTextField != nil)
         {
             self.activeTextField?.resignFirstResponder()
@@ -59,7 +59,7 @@ class ChatViewController: KeyboardViewController, UITextViewDelegate, UITableVie
             chatroom.update_messages(time1, sender_id: chatroom.sender.login)
         }
         
-        println(time1 + str)
+        print(time1 + str)
         time1 = str
         MessageTable.reloadData()
     }
@@ -102,8 +102,8 @@ class ChatViewController: KeyboardViewController, UITextViewDelegate, UITableVie
         }
         
         var date = chatMessage.date
-        let startindex = advance(date.startIndex,2)
-        let endindex = advance(date.startIndex, 19)
+        let startindex = date.startIndex.advancedBy(2)
+        let endindex = date.startIndex.advancedBy(19)
         date = date.substringToIndex(endindex)
         date = date.substringFromIndex(startindex)
         cell.TimeLabel.text = "Sent at: " + date
@@ -117,7 +117,7 @@ class ChatViewController: KeyboardViewController, UITextViewDelegate, UITableVie
     @IBAction func SendButtonPressed(sender: UIButton) {
         let message = TextField.text
         if message != nil {
-            let new_message = Message(message: message, user: self.user, messageID: 1, date: "\(NSDate())")
+            let new_message = Message(message: message!, user: self.user, messageID: 1, date: "\(NSDate())")
             chatroom.messages.append(new_message)
             // println(NSDateFormatter().stringFromDate(new_message.date))
             /*TODO

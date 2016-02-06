@@ -20,7 +20,7 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet var background: UIImageView!
     var event:Event!
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
     
         super.init(coder: aDecoder)
      
@@ -31,7 +31,7 @@ class EventCell: UICollectionViewCell {
         TitleLabel.text = event.title
         CategoryLabel.text = event.category.rawValue
         DateLabel.text = event.date
-        var imageName = event.category.rawValue + ".png"
+        let imageName = event.category.rawValue + ".png"
         Icon.image = UIImage(named:imageName)
         background.backgroundColor = UIColor.clearColor()
         background.layer.cornerRadius = 5

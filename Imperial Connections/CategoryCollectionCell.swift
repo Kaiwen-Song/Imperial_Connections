@@ -19,13 +19,13 @@ class CategoryCollectionCell: UICollectionViewCell {
     
     var category:Category!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     func update(){
         Name.text = category.rawValue
-        var imageName = category.rawValue + ".png"
+        let imageName = category.rawValue + ".png"
         Icon.image = UIImage(named:imageName)
         background.backgroundColor = UIColor.clearColor()
         background.layer.cornerRadius = 5

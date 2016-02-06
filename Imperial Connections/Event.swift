@@ -37,10 +37,10 @@ public class Event{
     }
     
     func get_event_ID() -> Int{
-        var url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createEventID.php"
-        var data = NSData(contentsOfURL: NSURL(string: url as String)!)
-        var result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
-        let resultint = result.stringByReplacingOccurrencesOfString("\n", withString:"").toInt()!
+        let url:NSString = "http://www.doc.ic.ac.uk/project/2014/271/g1427123/web/createEventID.php"
+        let data = NSData(contentsOfURL: NSURL(string: url as String)!)
+        let result = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+        let resultint = Int(result.stringByReplacingOccurrencesOfString("\n", withString:""))!
         eventID = resultint
         return resultint
     }

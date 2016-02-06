@@ -17,10 +17,10 @@ class ChatroomTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("\n\n\n\n\n\n\n" + event.title + "\n\n\n\n\n")
+        print("\n\n\n\n\n\n\n" + event.title + "\n\n\n\n\n")
         
         //index into all the chatrooms of the event
-        keys = event.chatrooms.keys.array
+        let keys:[String] = [String](event.chatrooms.keys)
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -99,12 +99,12 @@ class ChatroomTableController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ChatroomToMessage"{
-            var dst = (segue.destinationViewController as! UINavigationController).topViewController as! ChatViewController
+            let dst = (segue.destinationViewController as! UINavigationController).topViewController as! ChatViewController
             dst.user = self.user
             dst.event = self.event
         
             dst.chatroom = BackendServices.SingleInstance.get_chatrooms(event)[user.login]
-            println("Here")
+            print("Here")
             
             /*if event.chatrooms[user.login] != nil {
                 let chatroom = event.chatrooms[user.login]

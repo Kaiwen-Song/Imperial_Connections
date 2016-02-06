@@ -13,7 +13,7 @@ class ManageSubscriptionController: UICollectionViewController {
     //temporary replacement for the user subscription
     var user:User!
     
-    let data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
+    let data = Category.allCategories.sort{$0.rawValue < $1.rawValue}
     var subscription:[Bool]!
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     let selectedColour = UIColor(red: 0.40, green: 0.40, blue: 0.40, alpha: 1.0)
@@ -27,7 +27,7 @@ class ManageSubscriptionController: UICollectionViewController {
 
         // Register cell classes
         // Do any additional setup after loading the view.
-        println(subscription)
+        print(subscription)
         self.collectionView?.allowsMultipleSelection  = true
     }
 
@@ -65,9 +65,9 @@ class ManageSubscriptionController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCollectionCell", forIndexPath: indexPath) as! CategoryCollectionCell
         cell.category = data[indexPath.item]
-        println(cell.category.rawValue)
+        print(cell.category.rawValue)
         cell.update()
-        println(indexPath.item)
+        print(indexPath.item)
          cell.background.image = UIImage(named: "simple-gray-texture")
         if(subscription[indexPath.item]) {
            cell.selected = true
@@ -80,7 +80,7 @@ class ManageSubscriptionController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
         subscription[Category.categoryindex[cell.category]!] = true
-        println(cell.category.rawValue + "selected!")
+        print(cell.category.rawValue + "selected!")
        // cell.backgroundColor = UIColor.redColor()
          cell.background.image = UIImage(named: "white_background")
         
@@ -89,16 +89,16 @@ class ManageSubscriptionController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath){
         let cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as! CategoryCollectionCell
         subscription[Category.categoryindex[cell.category]!] = false
-        println(cell.category.rawValue + "unselected!")
+        print(cell.category.rawValue + "unselected!")
        // cell.backgroundColor = UIColor.blueColor()
          cell.background.image = UIImage(named: "simple-gray-texture")
     }
     
     @IBAction func SaveButtonPressed(sender: UIBarButtonItem) {
         //pop alert box maybe?
-        println(BackendServices.SingleInstance.convert_bitarray_to_string(subscription))
+        print(BackendServices.SingleInstance.convert_bitarray_to_string(subscription))
         user.subscriptions = subscription
-        println(BackendServices.SingleInstance.convert_bitarray_to_string(user.subscriptions))
+        print(BackendServices.SingleInstance.convert_bitarray_to_string(user.subscriptions))
         BackendServices.SingleInstance.save_subscriptions(user)
         
     }

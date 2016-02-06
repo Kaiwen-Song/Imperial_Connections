@@ -17,7 +17,7 @@ class HomeScreenController: UITabBarController {
         
         user = fetchUserFromCoreData()
         user.subscriptions = BackendServices.SingleInstance.new_get_user_subscriptions(user)
-        println(BackendServices.SingleInstance.convert_bitarray_to_string(user.subscriptions))
+        print(BackendServices.SingleInstance.convert_bitarray_to_string(user.subscriptions))
         let subcontrollers = self.viewControllers
         let firstchild = subcontrollers![0] as! TestHomeScreenController
         let secondnav = subcontrollers![1] as! UINavigationController
@@ -69,10 +69,10 @@ class HomeScreenController: UITabBarController {
         let request = NSFetchRequest(entityName: "UserModel")
         request.returnsObjectsAsFaults = false;
         
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        let results:NSArray = try! context.executeFetchRequest(request)
         if (results.count > 0) {
-            var user:UserModel = results[0] as! UserModel
-            var newUser: User = User(login: user.username)
+            let user:UserModel = results[0] as! UserModel
+            let newUser: User = User(login: user.username)
             return newUser
         }
         

@@ -27,7 +27,7 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(user.login)
+        print(user.login)
         DescriptionView.textColor = UIColor.lightGrayColor()
         DescriptionView.layer.cornerRadius = 10
         DescriptionView.layer.borderWidth = 1
@@ -36,7 +36,7 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
         // Do any additional setup after loading the view.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
 
@@ -97,7 +97,7 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
-        let newEvent = Event(owner: user, title: TitleField.text, description: DescriptionView.text, category: CategorySelected, date:Date)
+        let newEvent = Event(owner: user, title: TitleField.text!, description: DescriptionView.text, category: CategorySelected, date:Date)
         
         // Upload to database
 
@@ -119,13 +119,13 @@ class NewPostController: UIViewController, UIPopoverPresentationControllerDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ToDatePicker" {
-          var vc = segue.destinationViewController as! DatePickerViewer
-          var controller = vc.popoverPresentationController
+          let vc = segue.destinationViewController as! DatePickerViewer
+          let controller = vc.popoverPresentationController
             controller?.delegate = self
             vc.delegate = self
         } else {
-          var vc = segue.destinationViewController as! CategoryPickerView
-            var controller = vc.popoverPresentationController
+          let vc = segue.destinationViewController as! CategoryPickerView
+            let controller = vc.popoverPresentationController
             controller?.delegate = self
             vc.delegate = self
         }

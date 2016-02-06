@@ -16,20 +16,20 @@ class CategoryCell: UITableViewCell {
     var events: [Event] = [Event]()
 
     @IBOutlet var Icon: UIImageView!
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
     
     func setCategory(category:Category){
         self.category = category
         CategoryLabel.text = category.rawValue
-        var imageName = category.rawValue + ".png"
+        let imageName = category.rawValue + ".png"
         Icon.image = UIImage(named: imageName)
         
         
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
-        var coreDataService = EventCoreDataService()
+        let coreDataService = EventCoreDataService()
         if (events.count == 0) {
             // Retrieve certain category events
             let backend = BackendServices.SingleInstance

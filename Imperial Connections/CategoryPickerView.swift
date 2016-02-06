@@ -11,7 +11,7 @@ import UIKit
 class CategoryPickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var delegate:NewPostController!
     @IBOutlet weak var picker: UIPickerView!
-    var data = Category.allCategories.sorted{$0.rawValue < $1.rawValue}
+    var data = Category.allCategories.sort{$0.rawValue < $1.rawValue}
     var categorySelected:Category!
     
     override func viewDidLoad() {

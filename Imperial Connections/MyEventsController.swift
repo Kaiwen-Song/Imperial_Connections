@@ -105,7 +105,7 @@ class MyEventsController: UICollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject!){
         if segue.identifier == "MyEventToEventDetail" {
-            var dst = segue.destinationViewController as! EventDetailController
+            let dst = segue.destinationViewController as! EventDetailController
             dst.user = self.user
             let src = sender as! EventCell
             dst.event = src.event

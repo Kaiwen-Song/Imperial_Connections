@@ -15,10 +15,10 @@ class EventCoreDataService {
     var events = [Event]()
     
     func saveEvent(context: NSManagedObjectContext, newEvent: Event) {
-        var ent = NSEntityDescription.entityForName("EventModel", inManagedObjectContext: context)
+        let ent = NSEntityDescription.entityForName("EventModel", inManagedObjectContext: context)
         
         // Create entity for the core data model.
-        var event = EventModel(entity: ent!, insertIntoManagedObjectContext: context)
+        let event = EventModel(entity: ent!, insertIntoManagedObjectContext: context)
         event.title = newEvent.title
         event.eventID = "\(newEvent.eventID)"
         event.descriptions = newEvent.description
@@ -26,10 +26,13 @@ class EventCoreDataService {
         event.owner = newEvent.owner.login
         event.category = newEvent.category.rawValue
         
-        context.save(nil)
+        do {
+            try context.save()
+        } catch _ {
+        }
         
-        println(event)
-        println("Object saved!")
+        print(event)
+        print("Object saved!")
         
     }
     
@@ -40,12 +43,12 @@ class EventCoreDataService {
         if (predicate == "") {
             request.predicate = NSPredicate(format: "category = %@", predicate)
         }
-        var results: NSArray = context.executeFetchRequest(request, error: nil)!
+        let results: NSArray = try! context.executeFetchRequest(request)
         
         events.removeAll(keepCapacity: false)
         for result in results {
-            var res = result as! EventModel
-            var event = Event(eventID: res.eventID.toInt()!, owner: User(login: res.owner), title: res.title, description: res.descriptions, category: Category(rawValue: res.category)!, date:res.date)
+            let res = result as! EventModel
+            let event = Event(eventID: Int(res.eventID)!, owner: User(login: res.owner), title: res.title, description: res.descriptions, category: Category(rawValue: res.category)!, date:res.date)
             events.append(event)
         }
         return events
@@ -54,20 +57,26 @@ class EventCoreDataService {
     func deleteAllEntities(context: NSManagedObjectContext) {
         var request = NSFetchRequest(entityName: "EventModel")
         request.returnsObjectsAsFaults = false
-        var results: NSArray = context.executeFetchRequest(request, error: nil)!
+        var results: NSArray = try! context.executeFetchRequest(request)
         for ob in results {
             context.deleteObject(ob as! NSManagedObject)
         }
         
-        context.save(nil)
+        do {
+            try context.save()
+        } catch _ {
+        }
 
         request = NSFetchRequest(entityName: "UserModel")
         request.returnsObjectsAsFaults = false
-        results = context.executeFetchRequest(request, error: nil)!
+        results = try! context.executeFetchRequest(request)
         for ob in results {
             context.deleteObject(ob as! NSManagedObject)
         }
-        context.save(nil)
+        do {
+            try context.save()
+        } catch _ {
+        }
 
     }
     

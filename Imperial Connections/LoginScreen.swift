@@ -30,18 +30,21 @@ class LoginScreen: UIViewController , UITextFieldDelegate{
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         
         let ent = NSEntityDescription.entityForName("UserModel", inManagedObjectContext: context)
-        var newUser = UserModel(entity: ent!, insertIntoManagedObjectContext: context)
-        newUser.username = LoginField.text
-        newUser.password = Password.text
+        let newUser = UserModel(entity: ent!, insertIntoManagedObjectContext: context)
+        newUser.username = LoginField.text!
+        newUser.password = Password.text!
         
-        context.save(nil)
-        println("SAVED!!!")
+        do {
+            try context.save()
+        } catch _ {
+        }
+        print("SAVED!!!")
         // to handle the NSErrorPointer, please modify
     }
     
 
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
 
@@ -58,14 +61,14 @@ class LoginScreen: UIViewController , UITextFieldDelegate{
         if (LoginField.text == "" || Password.text == "") {
             successLogIn = false
         } else {
-            successLogIn = backend.get_user(LoginField.text!, password: Password.text)
+            successLogIn = backend.get_user(LoginField.text!, password: Password.text!)
         }
        // successLogIn = backend.get_user("Jeffrey", password: "11111")
         if successLogIn {
             saveToCoreData()
             self.performSegueWithIdentifier("ToTabScreen", sender: self)
         } else {
-            var alert = UIAlertController(title: "Log On Error", message: "Please check your log in details or your internet connection", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Log On Error", message: "Please check your log in details or your internet connection", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
